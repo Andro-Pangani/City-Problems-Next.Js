@@ -17,7 +17,9 @@ export default function Posts () {
  useEffect(() => {
   
   async function load(){
-   const response = await fetch('http://api.tvmaze.com/shows?page=1');
+
+   try{
+    const response = await fetch('http://api.tvmaze.com/shows?page=1');
 
    const data = await response.json();
    let i = 0;
@@ -28,8 +30,12 @@ export default function Posts () {
    }
 
    dispatch(mainDataSuccess(sorted))
-
    console.log(sorted, ' data from Posts');
+   } catch (err){
+    console.log('###### Error Handler', err)
+   }
+
+
   }
   load();
 
