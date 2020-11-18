@@ -16,29 +16,29 @@ export default function Posts () {
  
  useEffect(() => {
   
-  async function load(){
+  // async function load(){
 
-   try{
-    const response = await fetch('http://api.tvmaze.com/shows?page=1');
+  //  try{
+  //   const response = await fetch('http://api.tvmaze.com/shows?page=1');
 
-   const data = await response.json();
-   let i = 0;
-   let sorted = [];
-   while(i < 30){
-    sorted.push(data[i]);
-    i++;
-   }
+  //  const data = await response.json();
+  //  let i = 0;
+  //  let sorted = [];
+  //  while(i < 30){
+  //   sorted.push(data[i]);
+  //   i++;
+  //  }
 
-   dispatch(mainDataSuccess(sorted))
-   console.log(sorted, ' data from Posts');
-   } catch (err){
-    console.log('###### Error Handler', err)
-    throw err;
-   }
+  //  dispatch(mainDataSuccess(sorted))
+  //  console.log(sorted, ' data from Posts');
+  //  } catch (err){
+  //   console.log('###### Error Handler', err)
+  //   throw err;
+  //  }
 
 
-  }
-  load();
+  // }
+  // load();
 
   return () => {
    console.log('Component Post Unmounted');
