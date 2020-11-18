@@ -9,7 +9,7 @@
     "start": "next start -p $PORT",
     "mock": "json-server -w db.json -p 4200 -d 450",
     "serve": "concurrently \"npm run dev\" \"npm run mock\"",
-    "post-build": "npm run build"
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
