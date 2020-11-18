@@ -6,8 +6,8 @@
     "dev": "next dev",
     "server": "nodemon server/index.js",
     "build": "next build",
-    "heroku-postbuild": "npm run build",
     "start": "next start -p $PORT",
+    "heroku-postbuild": "npm run build",
     "mock": "json-server -w db.json -p 4200 -d 450",
     "serve": "concurrently \"npm run dev\" \"npm run mock\""
   },
