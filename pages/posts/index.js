@@ -33,6 +33,7 @@ export default function Posts () {
    console.log(sorted, ' data from Posts');
    } catch (err){
     console.log('###### Error Handler', err)
+    throw err;
    }
 
 

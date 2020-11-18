@@ -51,9 +51,14 @@ export default function Post({data}){
 
 export async function getServerSideProps(context){
  
+try{
  const response = await fetch(`http://api.tvmaze.com/shows/${context.params.postId}`);
 
-   const data = await response.json();
+ const data = await response.json();
+} catch(error) {
+ console.log("Error Handler on Server Side post Id", error);
+ throw error;
+}
   
 
    console.log(context.params.postId,data, ' ######  data from SERVER SIDE PROPS');
