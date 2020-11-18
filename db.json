@@ -1,0 +1,18 @@
+{
+ "articles": [
+  {"id": 1, 
+   "title": "Server side rendering", 
+   "content": "Next. js is a minimalist framework for server side rendering of react applications. This framework makes using react easier because it has a lot of built in things under the hood such as: Server rendered react-apps, page routing, automated code splitting, hot reloading, deployment and built in css support(styles jsx)."
+  },
+  {
+   "id": 2,
+   "title": "Single Page Application",
+   "content": "A single-page application (SPA) is a web application or website that interacts with the user by dynamically rewriting the current web page with new data from the web server, instead of the default method of the browser loading entire new pages."
+  },
+  {
+   "id": 35,
+   "title": "Javascript",
+   "content": "JavaScript (JS) is a lightweight, interpreted, or just-in-time compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as Node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, single-threaded, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. Read more about JavaScript."
+  }
+ ]
+}
