@@ -2,7 +2,7 @@ import {useRouter} from 'next/router'
 import {useState, useEffect} from 'react';
 import Head from 'next/head';
 import { MainLayout } from '../../Csr/mainLayout';
-import { HeaderComponent } from '../../Csr/header_section';
+import { HeaderComponent } from '../../Csr/nextComponents/header_section';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 
