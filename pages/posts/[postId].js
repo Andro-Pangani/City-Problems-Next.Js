@@ -55,17 +55,20 @@ try{
  const response = await fetch(`http://api.tvmaze.com/shows/${context.params.postId}`);
 
  const data = await response.json();
+ console.log(context.params.postId,data, ' ######  data from SERVER SIDE PROPS');
+
+ return{
+  props: {
+   data: data ?? null
+  }
+ }
+
 } catch(error) {
  console.log("Error Handler on Server Side post Id", error);
  throw error;
 }
   
 
-   console.log(context.params.postId,data, ' ######  data from SERVER SIDE PROPS');
 
- return{
-  props: {
-   data: data
-  }
- }
+
 }

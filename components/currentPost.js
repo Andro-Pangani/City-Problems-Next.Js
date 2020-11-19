@@ -21,7 +21,6 @@ export function CurrentPostComponent(props){
   <div className="post_title"
  >
    {props.data.name}
-  {/* </Link> */}
  </div>
   <img className="post_image" src={props.data.image.medium} />
  </div>

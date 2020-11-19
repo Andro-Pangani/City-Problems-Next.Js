@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import {useSelector, useDispatch} from 'react-redux'
 import {useState, useEffect} from 'react';
-import {CurrentPostComponent} from './currentPost'
+import {CurrentPostComponent} from '../../components/currentPost'
 import { MainLayout } from '../../components/mainLayout'
 import { mainDataSlice } from '../../Redux/actions/(_a-_r)_main_data';
 const {mainDataSuccess} = mainDataSlice.actions;
@@ -16,29 +16,29 @@ export default function Posts () {
  
  useEffect(() => {
   
-  // async function load(){
+  async function load(){
 
-  //  try{
-  //   const response = await fetch('http://api.tvmaze.com/shows?page=1');
+   try{
+    const response = await fetch('http://api.tvmaze.com/shows?page=1');
 
-  //  const data = await response.json();
-  //  let i = 0;
-  //  let sorted = [];
-  //  while(i < 30){
-  //   sorted.push(data[i]);
-  //   i++;
-  //  }
+   const data = await response.json();
+   let i = 0;
+   let sorted = [];
+   while(i < 30){
+    sorted.push(data[i]);
+    i++;
+   }
 
-  //  dispatch(mainDataSuccess(sorted))
-  //  console.log(sorted, ' data from Posts');
-  //  } catch (err){
-  //   console.log('###### Error Handler', err)
-  //   throw err;
-  //  }
+   dispatch(mainDataSuccess(sorted))
+   console.log(sorted, ' data from Posts');
+   } catch (err){
+    console.log('###### Error Handler', err)
+    throw err;
+   }
 
 
-  // }
-  // load();
+  }
+  load();
 
   return () => {
    console.log('Component Post Unmounted');
@@ -55,7 +55,7 @@ export default function Posts () {
 
   <h1>Posts Main Page</h1>
   {
-   main_data ? (<ul className="posts_list">
+   main_data.length ? (<ul className="posts_list">
    {
     main_data.map((post, index) => {
      return(
