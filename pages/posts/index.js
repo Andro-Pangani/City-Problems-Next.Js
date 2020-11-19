@@ -29,7 +29,7 @@ export default function Posts () {
     i++;
    }
 
-   dispatch(mainDataSuccess(sorted))
+   // dispatch(mainDataSuccess(sorted))
    console.log(sorted, ' data from Posts');
    } catch (err){
     console.log('###### Error Handler', err)
