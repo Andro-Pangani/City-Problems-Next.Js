@@ -19,7 +19,7 @@ export default function Posts () {
   async function load(){
 
    try{
-    const response = await fetch('http://api.tvmaze.com/shows?page=1');
+    const response = await fetch('https://next-app-city.herokuapp.com/api/tv');
 
    const data = await response.json();
    let i = 0;
