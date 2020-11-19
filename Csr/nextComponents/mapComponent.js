@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from '../styles/main.module.css'
+import styles from '../../styles/main.module.css'
 export function MapComponent(){
 
  return(

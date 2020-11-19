@@ -1,0 +1,78 @@
+.header_section {
+  border: 1px solid #333333;
+  border-top-color: #252323;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.nav_menu {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-family: "ALK Tall Mtavruli", sans-serif;
+  font-size: 1.5rem;
+
+  .nav_menu_item {
+    background: #272727;
+
+    &:first-child {
+      padding-left: 10px;
+    }
+
+    &:last-child {
+      padding-right: 10px;
+    }
+
+    span {
+      position: relative;
+      text-decoration: none;
+      color: #848484;
+      padding: 0 10px;
+      border-radius: 1px;
+      // background: #131313;
+      &:hover {
+        cursor: pointer;
+        background: #272727;
+      }
+    }
+  }
+}
+
+.item_count {
+  position: absolute;
+  width: 0.9rem;
+  height: 0.9rem;
+  text-align: center;
+  left: 100%;
+  top: -0.5rem;
+  font-size: 0.7rem;
+  border: 1px solid #4a4a4a;
+  color: #9a9a9a;
+  border-radius: 1px;
+  margin-left: 2px;
+  font-family: "alk-sanet", monospace;
+}
+
+.lang_active {
+  position: relative;
+  background: #616161;
+  border-radius: 3px;
+  padding: 0.1rem 0.5rem;
+  color: #c9c9c9;
+}
+
+.languages_list {
+  position: absolute;
+  display: flex;
+  top: 3rem;
+  flex-direction: column;
+  transform: translateX(-70%);
+  z-index: 999;
+  .languages_list_item {
+    background: gray;
+    span {
+      color: rgb(218, 218, 218);
+      font-size: 1.8rem;
+    }
+  }
+}

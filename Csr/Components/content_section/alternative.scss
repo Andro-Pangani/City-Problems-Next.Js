@@ -1,0 +1,128 @@
+.altSectionHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.altSectionContent {
+  background: #ffffff;
+  border-bottom: 1px solid #212121;
+  .data_list {
+    background: transparent;
+  }
+}
+
+.alternative_container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #040404d7;
+  border: 1px solid #171717;
+  transition: 0.3s ease-in-out;
+  top: 0;
+  z-index: 3;
+}
+
+.alternative_button {
+  position: absolute;
+  color: #ffffff;
+  width: 2rem;
+  background: rgb(72, 72, 72);
+  height: 2.5rem;
+  top: 50%;
+  border-radius: 0.2rem;
+  transform: translate(-2.8rem, -50%);
+  // background: #2b2b2bdc;
+  overflow: hidden;
+  z-index: 5;
+  svg {
+    fill: #dddddd;
+    padding: 0.2rem 0 0.2rem;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.alternative_content_container {
+  display: inline-block;
+}
+
+.alternative_uploading_block {
+  padding: 20px;
+}
+
+.alternative_question_block {
+  text-align: center;
+
+  padding: 15px;
+  font-family: "alk-sanet", monospace;
+  background: #0a0a0a;
+
+  .alternative_block-question {
+    color: #b3b3b3;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .alternative_block-answer {
+    button {
+      font-family: "alk-sanet", monospace;
+      background: #d0d0d0;
+      color: black;
+    }
+  }
+}
+
+.alternativeToolsSection {
+}
+
+.altToolsList {
+  position: absolute;
+  top: 0.5rem;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  .altToolsItem {
+    margin-left: 0.1rem;
+    margin-top: 0.3rem;
+  }
+}
+
+.alternativeDataHeader {
+  background: #b3b3b3;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.alternativeDataTitle {
+  background: #4c4c4c;
+  color: #d8d8d8;
+  font-size: 1.2rem;
+  padding: 5px 3px 5px;
+}
+.addYourAlternative {
+  padding: 0.3rem;
+  background: #1c6314;
+  color: #b3b3b3;
+  border-right: 1px solid gray;
+}
+
+.alternativeItemButton {
+  &-approove {
+    background: #b3b3b3;
+    color: #1c6314;
+  }
+
+  &-delete {
+    background: #b3b3b3;
+    color: #000000;
+  }
+}
+
+.fileQuantity {
+  color: #0a5a00;
+  font-size: 1.3em;
+}

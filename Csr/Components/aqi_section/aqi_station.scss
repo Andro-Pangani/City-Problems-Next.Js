@@ -1,0 +1,253 @@
+.aqi_station {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 0.5rem;
+  background: #2f2f2ff8;
+  border: 1px solid #252424;
+  border-radius: 3px;
+  box-shadow: 0 0 3px 3px #3a3a3a;
+  overflow: hidden;
+
+  &:last-child {
+    margin-bottom: 1rem;
+  }
+}
+
+.aqi_station_header {
+  display: flex;
+  padding-right: 0.5rem;
+  align-items: center;
+  background: #171717;
+  box-shadow: 0 0px 6px 1px #212121;
+}
+
+.locationPinContainer {
+  background: #171616;
+  // border-bottom: 1px solid #2b2929;
+  // padding: 0.3rem;
+  // padding-bottom: 0.1rem;
+}
+
+.locationPin {
+  height: 1.5rem;
+  width: 1.5rem;
+  fill: #636363;
+}
+
+.aqi_station_address {
+  display: inline-block;
+  width: 100%;
+  padding: 0.8rem 0;
+  letter-spacing: 0.2rem;
+  border-radius: 1px;
+  // font-family: "Alk Tall Mtavruli", sans-serif;
+  color: #929292;
+  letter-spacing: 0.1rem;
+  font-size: 1.8rem;
+  padding-left: 10px;
+  text-align: center;
+}
+
+.station_data_container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.substance_block_container {
+  padding: 5px 0 15px;
+}
+
+.substance_block {
+  display: flex;
+  color: rgb(126, 126, 126);
+  font-size: 14px;
+  align-items: center;
+  li {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+  }
+}
+
+.substance_name {
+  display: inline-block;
+  width: 15%;
+  margin-bottom: 3px;
+  // background: #949494;
+}
+
+.aqi_name_text {
+  display: inline-block;
+  font-weight: bold;
+  color: #a9a9a9;
+  padding: 2px;
+  font-size: 0.8rem;
+  font-family: sans-serif;
+}
+
+.substance_value {
+  position: relative;
+  display: inline-block;
+  width: 72%;
+  margin-left: 5px;
+  // font-family: "alk-sanet", monospace;
+  color: #c1c1c1;
+}
+.substance_value_chart-container {
+  position: relative;
+  margin-left: 0.5rem;
+  border-bottom: 1px solid #3c3c3c;
+  // background: #a9a9a9;
+  // border: 1px solid #a9a9a9;
+}
+
+.substance_value_chart {
+  // position: absolute;
+  color: white;
+  z-index: 1;
+}
+
+.aqi_value_minichart {
+  // position: absolute;
+  color: #ff1010;
+  max-width: 100%;
+  height: 0.2rem;
+  transition: 1s;
+  background: #000000;
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  z-index: 0;
+}
+
+.substance_level_dangerous {
+  width: 10%;
+  text-align: center;
+}
+
+.svg_element {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+// ._no_data_sign {
+//   height: 1px;
+// }
+
+.aqiDataLoading {
+  text-align: center;
+  height: 100%;
+  font-size: 2.5rem;
+  padding-top: 50%;
+  background: #424242;
+  animation: aqiDataPreloader 1s infinite linear;
+}
+
+.alertVeryPoor {
+  font-size: 0.9rem;
+  letter-spacing: 0.1rem;
+  background: #191919;
+  color: #a50000;
+  border-radius: 6px;
+  margin: 0.4rem 0 0.4rem;
+  box-shadow: 0 0 15px #ea0000;
+  padding: 0.4rem;
+  text-align: center;
+}
+
+.cancerZone {
+  background: #101010;
+  color: #e66f1a;
+  padding: 0.2rem 0;
+  margin: 0.3rem;
+  border-radius: 0.3rem;
+  box-shadow: 0 0 11px #f10000;
+}
+
+@keyframes aqiDataPreloader {
+  from {
+    color: #424242;
+  }
+  to {
+    color: #2b2b2b;
+  }
+}
+
+.firstPreloader {
+  position: absolute;
+  height: 10rem;
+  width: 10rem;
+  background: #414141;
+  top: 50%;
+  left: 50%;
+  margin: -5rem 0 0 -5rem;
+  border-radius: 50%;
+  border: 2rem solid #424242;
+  border-right-color: #424141;
+  border-left-color: #5a5a5a;
+  box-shadow: 0 0 11px #313030;
+  animation: aqiPreloader1 2s infinite linear;
+
+  $before1: 0rem;
+  &:before {
+    content: "";
+    position: absolute;
+    top: $before1;
+    left: $before1;
+    bottom: $before1;
+    right: $before1;
+    border-radius: 50%;
+    border: 1rem solid #fdfdfd;
+    animation: aqiPreloader1 5s infinite linear;
+    animation: 1s beforesPreloader infinite linear;
+  }
+
+  $before2: 0rem;
+  &:after {
+    content: "";
+    position: absolute;
+    top: $before2;
+    left: $before2;
+    bottom: $before2;
+    right: $before2;
+    background: #5f5f5f;
+    border-radius: 50%;
+    border: 1rem solid #444343;
+    border-left-color: hsl(0, 0%, 29%);
+  }
+}
+
+@keyframes beforesPreloader {
+  from {
+    border-color: #ffffff;
+  }
+
+  to {
+    border-color: #4bbdfa;
+  }
+}
+
+@keyframes aqiPreloader1 {
+  from {
+    transform: translate(-50%, -50%);
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%);
+    transform: rotate(360deg);
+  }
+}
+
+.no_aqi_data_container {
+  position: relative;
+  font-size: 5rem;
+  text-align: center;
+  min-height: 100%;
+  box-shadow: inset 0 55px 112px 9px #ffffff;
+  background: #000000;
+  border: 10px solid #a0a0a0;
+  color: #3c3c3c;
+  padding: 2rem;
+  font-family: "Alk Tall Mtavruli";
+}

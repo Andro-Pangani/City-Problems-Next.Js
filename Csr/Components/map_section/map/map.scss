@@ -1,0 +1,240 @@
+$border: rgb(36, 36, 36);
+
+@import "./map_libraries.scss";
+
+.map_container {
+  position: relative;
+  display: inline-block;
+  width: 95%;
+  height: 95%;
+  margin-top: 2.5%;
+  border: 1px solid $border;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  border: 1px solid $border;
+}
+
+.mapListContainer {
+  position: absolute;
+  max-height: 160px;
+  width: 260px;
+  top: 10%;
+  margin-left: 10px;
+  overflow: auto;
+  margin-left: 10px;
+  box-shadow: 0 0 15px 3px rgb(20, 20, 20);
+  z-index: 1;
+}
+.AddressListHeader {
+  display: flex;
+  position: absolute;
+  width: 100%;
+
+  justify-content: space-between;
+  letter-spacing: 0px;
+  font-size: 14px;
+  border: 1px solid #3f3f3f;
+  background: #202426;
+
+  .listHeader-text {
+    line-height: 20px;
+    padding: 3px;
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: center;
+    font-family: "alk-sanet", monospace;
+    color: #8b973d;
+    animation: textBlinking 1s infinite;
+  }
+
+  @keyframes textBlinking {
+    0% {
+      color: #f24141;
+    }
+
+    5% {
+      color: #d1d1d1;
+      background: rgb(182, 175, 149);
+    }
+
+    60% {
+      background: rgb(19, 19, 19);
+    }
+
+    95% {
+      color: rgb(151, 157, 96);
+    }
+
+    100% {
+      color: #8d8d8d;
+    }
+  }
+
+  .closeList {
+    font-family: sans-serif;
+    font-size: 1rem;
+    line-height: 19px;
+    padding: 3px;
+    border: 1px solid #2f2f2f;
+    color: #919090;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.MapAddressList {
+  box-sizing: border-box;
+  margin-top: 30px;
+  .map_list_item {
+    display: inline-block;
+    padding: 8px 5px 8px 5px;
+    color: #ababab;
+    margin-bottom: 1px;
+    background: #1d1d1d;
+    border: 1px solid #404040;
+
+    .plusSign {
+      font-family: Roboto-Black;
+      color: gray;
+    }
+
+    .mapAddressName {
+      display: inline-block;
+    }
+
+    &:hover {
+      background: #252525cc;
+      cursor: pointer;
+    }
+  }
+}
+
+div[role="button"] {
+  font-family: Roboto-Light !important;
+  padding: 7px 23px !important;
+}
+#search-input {
+  max-width: 50%;
+}
+
+.currentLocationButton {
+  position: absolute;
+  background: #000;
+  left: 0;
+  color: #5d5d5d;
+  top: 99%;
+  border-left: #ffdead;
+  transform: translateY(-100%);
+  z-index: 200;
+  padding: 5px;
+  border-radius: 3px;
+  box-shadow: 0 0 9px 0px #000000;
+  font-style: italic;
+  &:focus {
+    outline: none;
+    border-color: gray;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.aqiMapMarkerOuter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid;
+}
+
+.aqiMapMarkerInner {
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: gray;
+  border-radius: 50%;
+}
+
+.infoWindowContainer {
+  position: relative;
+  background: black;
+  max-height: 100%;
+  border: 1px solid #dadada;
+  border-radius: 0.5rem;
+  overflow: auto;
+}
+
+.aqiInfoAddress {
+  font-family: "Alk Tall Mtavruli";
+  font-size: 2rem;
+  padding: 0.5rem;
+  color: #1f1f1f;
+  background: #e4e4e4;
+  font-weight: 600;
+}
+.aqiInfoContent {
+  height: 100px;
+}
+.aqiInfoLevel {
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: "alk-sanet";
+  padding: 0.5rem;
+  background: #272727;
+  // padding-bottom: 0;
+  text-transform: uppercase;
+}
+
+.aqiInfoRecomendations {
+  font-size: 1.8rem;
+  min-height: 100%;
+  background: #b5b5b5;
+  color: black;
+  padding: 1rem;
+  box-shadow: inset 0 4px 8px #d60000;
+  font-family: "Alk Tall Mtavruli";
+  overflow: auto;
+}
+
+.info_lang_list {
+  position: absolute;
+  display: flex;
+
+  &-item {
+    color: rgb(197, 197, 197);
+    background: black;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+.geolocationInfoWindow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background: #000;
+}
+
+.closeGeolocationInfoWindow {
+  color: #d6d6d6;
+  display: inline-block;
+  padding: 0.5rem;
+  border: 1px solid rgb(56, 56, 56);
+  border-radius: 3px;
+}

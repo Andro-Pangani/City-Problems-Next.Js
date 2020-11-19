@@ -1,5 +1,5 @@
 import Router from 'next/router'
-import { MainLayout } from '../components/mainLayout'
+import { MainLayout } from '../Csr/mainLayout'
 import styles from '../styles/main.module.css';
 
 export default function AboutPage(){

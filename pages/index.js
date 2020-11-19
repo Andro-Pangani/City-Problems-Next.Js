@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link';
-import { AqiSection } from '../components/aqiSection';
-import { HeaderComponent } from '../components/header_section';
-import { MainLayout } from '../components/mainLayout';
+import { AqiSection } from '../Csr/nextComponents/aqiSection';
+import { HeaderComponent } from '../Csr/nextComponents/header_section';
+import { MainLayout } from '../Csr/mainLayout';
 
 import styles from '../styles/Home.module.css'
 

@@ -1,0 +1,113 @@
+@import "../../_fonts/geo_fonts/geo_fonts.scss";
+
+.form_section {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  float: left;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: "alk-sanet";
+}
+form {
+  width: 50%;
+  margin: auto;
+  margin-top: 10%;
+  color: #9e9a9a;
+  min-width: 270px;
+  .form_list-item {
+    margin-top: 5px;
+  }
+}
+
+input,
+textarea,
+select {
+  background: #0a0a0a;
+  color: rgb(190, 190, 190);
+  outline: none;
+  border-color: #272727;
+  padding: 5px;
+  width: 100%;
+}
+
+input[type="submit"] {
+  font-family: "alk-sanet", sans-serif;
+  font-size: 1.2rem;
+  color: gray;
+}
+
+input[type="file"] {
+  &::button {
+    background: gray;
+  }
+}
+
+.addressInput {
+  font-size: 1rem;
+  padding: 5px;
+  height: 8vh;
+  color: #7c8249;
+  line-height: 1.2;
+  font-family: square, monospace;
+
+  &::placeholder {
+    font-family: "alk-sanet", sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    color: #7c8249;
+  }
+}
+
+.descriptionInput {
+  line-height: 1.2;
+
+  &::placeholder {
+    font-family: "alk-sanet", sans-serif;
+
+    font-size: 1rem;
+    text-align: center;
+    color: #7c8249;
+  }
+}
+
+.descriptionInput {
+  height: 8vh;
+}
+
+.address_notation {
+  font-size: 0.4rem;
+}
+
+input[type="file"] {
+  padding-left: 0;
+  font-size: 1.2rem;
+  &::-webkit-file-upload-button {
+    background: gray;
+  }
+}
+
+.form_item_title {
+  font-family: "alk-sanet", sans-serif;
+
+  font-size: 1rem;
+  padding: 3px 0 3px 3px;
+}
+
+.form_notification {
+  position: absolute;
+  top: 25%;
+  font-size: 1rem;
+  left: 50%;
+  background: #040404;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #39483d;
+  transform: translate(-50%, 0%);
+  color: #636363;
+  box-shadow: 0 0 25px 0px #364858;
+}

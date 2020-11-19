@@ -1,0 +1,133 @@
+$bgColor: #0f0f0f;
+$borderColor: #3a3a3a;
+
+.aqi_section {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-bottom: none;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #4e4e4e;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border-radius: 3px;
+}
+
+.aqi_section_title {
+  position: relative;
+  letter-spacing: 0.3rem;
+  padding: 0.5rem;
+  max-width: 100%;
+  text-align: center;
+  font-size: 3rem;
+  margin: 0px 0px 1.5rem 0;
+  box-shadow: 0 0.5rem 0.8rem 0.3rem #5d3e3e;
+  background: #1d1d1d;
+  border-top: 1px solid #525252;
+  color: #555f65;
+  font-family: "ALK Tall Mtavruli", sans-serif;
+}
+
+.aqi_nav_menu {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 0.5rem 1rem #212121;
+  justify-content: space-around;
+}
+.aqi_nav_item {
+  position: relative;
+  padding: 0.5rem;
+  width: 25%;
+  text-align: center;
+
+  border-top: 1px solid #6d6d6d;
+  border-right: 1px solid $borderColor;
+  border-bottom: 1px solid $borderColor;
+
+  &:first-child {
+    margin-left: 0;
+  }
+  &:last-child {
+    border-right: none;
+  }
+  .aqi_nav_item-text {
+    display: inline-block;
+    font-size: 1.1rem;
+    padding: 0rem;
+    font-family: monospace;
+    text-decoration: none;
+    color: #b1b1b1;
+  }
+}
+
+.aqi_city_sign {
+  position: absolute;
+  display: block;
+  width: 80%;
+  height: 70%;
+  margin-bottom: 1px;
+  margin-right: 3px;
+  // border: 1px solid gray;
+  // border-right-color: transparent;
+}
+
+.aqi_content {
+  position: absolute;
+  width: 100%;
+  max-height: 83%;
+  height: 83%;
+  margin-bottom: 2.5rem;
+  padding-bottom: 5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.no_data_section {
+  text-align: center;
+  background: #b5b5b5;
+  border-radius: 3px;
+  display: flex;
+  padding: 0.5rem;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.7rem;
+  box-shadow: inset -10px 3px 4px 12px #656565;
+  &::first-child {
+    border-top: 1px solid gray;
+  }
+  // padding-left: 10px;
+}
+
+.no_data_address {
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+  color: #969191;
+  background: #3a3a3a;
+  letter-spacing: 0.2rem;
+  border-radius: 1px;
+  font-family: "ALK Tall Mtavruli", sans-serif;
+}
+
+.no_data_text {
+  font-family: "alk-sanet", sans-serif;
+  color: #484848;
+  font-size: 1.7rem;
+  width: 80%;
+  line-height: 1.5rem;
+  letter-spacing: 0.2rem;
+  padding: 2px;
+  padding-left: 5px;
+}
+
+.aqi_data_container {
+  margin-top: 30px;
+  padding: 5px;
+  text-align: center;
+}

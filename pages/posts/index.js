@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import {useSelector, useDispatch} from 'react-redux'
 import {useState, useEffect} from 'react';
-import {CurrentPostComponent} from '../../components/currentPost'
-import { MainLayout } from '../../components/mainLayout'
+import {CurrentPostComponent} from '../../Csr/nextComponents/currentPost'
+import { MainLayout } from '../../Csr/mainLayout'
 import { mainDataSlice } from '../../Redux/actions/(_a-_r)_main_data';
 const {mainDataSuccess} = mainDataSlice.actions;
 

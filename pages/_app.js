@@ -1,7 +1,7 @@
 import {Provider} from 'react-redux';
 
 import '../styles/globals.scss'
-import { store } from '../Redux/main_redux';
+import { store } from '../Csr/Redux/Store';
 
 export default function MyApp({ Component, pageProps }) {
   return (
