@@ -22,7 +22,7 @@
 const domain = "powerful-thicket-90466.herokuapp.com";
 
 export const _url = {
-  main: `https:${domain}/main`,
+  main: `https://${domain}/main`,
   delete: `https://${domain}/delete`,
   admin: `https://${domain}/admin`,
   approove: `https://${domain}/approove`,
