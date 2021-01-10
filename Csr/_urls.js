@@ -19,7 +19,7 @@
 //   share: "http://localhost:3000/share",
 // };
 
-const domain = 'https://next-app-city.herokuapp.com'
+const domain = "https://next-app-city.herokuapp.com";
 
 export const _url = {
   main: `https://${domain}/main`,
@@ -31,13 +31,13 @@ export const _url = {
     upload: `https://${domain}/alternative/upload`,
     single: {
       approove: `https://${domain}/alternative/singleApproove`,
-      delete: "https://${domain}/alternative/singleDelete`,
+      delete: `https://${domain}/alternative/singleDelete`,
     },
   },
   upload: {
     case: `https://${domain}/file/upload`,
   },
- share: `https://${domain}/share`
+  share: `https://${domain}/share`,
 };
 
 // export const _url = {
