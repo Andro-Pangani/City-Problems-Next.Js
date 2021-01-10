@@ -19,10 +19,10 @@
 //   share: "http://localhost:3000/share",
 // };
 
-const domain = "https://powerful-thicket-90466.herokuapp.com";
+const domain = "powerful-thicket-90466.herokuapp.com";
 
 export const _url = {
-  main: `https://https://powerful-thicket-90466.herokuapp.com/main`,
+  main: `https:${domain}/main`,
   delete: `https://${domain}/delete`,
   admin: `https://${domain}/admin`,
   approove: `https://${domain}/approove`,
