@@ -1,42 +1,44 @@
 // local Server urls
 
-export const _url = {
-  main: "http://localhost:3000/main",
-  delete: "http://localhost:3000/delete",
-  admin: "http://localhost:3000/admin",
-  approove: "http://localhost:3000/approove",
-  aqi: "http://localhost:3000/aqi",
-  alternative: {
-    upload: "http://localhost:3000/alternative/upload",
-    single: {
-      approove: "http://localhost:3000/alternative/singleApproove",
-      delete: "http://localhost:3000/alternative/singleDelete",
-    },
-  },
-  upload: {
-    case: "http://localhost:3000/file/upload",
-  },
-  share: "http://localhost:3000/share",
-};
-
 // export const _url = {
-//   main: "https://hiddenwood.herokuapp.com/main",
-//   delete: "https://hiddenwood.herokuapp.com/delete",
-//   admin: "https://hiddenwood.herokuapp.com/admin",
-//   approove: "https://hiddenwood.herokuapp.com/approove",
-//   aqi: "https://hiddenwood.herokuapp.com/aqi",
+//   main: "http://localhost:3000/main",
+//   delete: "http://localhost:3000/delete",
+//   admin: "http://localhost:3000/admin",
+//   approove: "http://localhost:3000/approove",
+//   aqi: "http://localhost:3000/aqi",
 //   alternative: {
-//     upload: "https://hiddenwood.herokuapp.com/alternative/upload",
+//     upload: "http://localhost:3000/alternative/upload",
 //     single: {
-//       approove: "https://hiddenwood.herokuapp.com/alternative/singleApproove",
-//       delete: "https://hiddenwood.herokuapp.com/alternative/singleDelete",
+//       approove: "http://localhost:3000/alternative/singleApproove",
+//       delete: "http://localhost:3000/alternative/singleDelete",
 //     },
 //   },
 //   upload: {
-//     case: "https://hiddenwood.herokuapp.com/file/upload",
+//     case: "http://localhost:3000/file/upload",
 //   },
-//  share: "https://hiddenwood.herokuapp.com/share"
+//   share: "http://localhost:3000/share",
 // };
+
+const domain = 'https://next-app-city.herokuapp.com'
+
+export const _url = {
+  main: `https://${domain}/main`,
+  delete: `https://${domain}/delete`,
+  admin: `https://${domain}/admin`,
+  approove: `https://${domain}/approove`,
+  aqi: `https://${domain}/aqi`,
+  alternative: {
+    upload: `https://${domain}/alternative/upload`,
+    single: {
+      approove: `https://${domain}/alternative/singleApproove`,
+      delete: "https://${domain}/alternative/singleDelete`,
+    },
+  },
+  upload: {
+    case: `https://${domain}/file/upload`,
+  },
+ share: `https://${domain}/share`
+};
 
 // export const _url = {
 //   main: "https://hiddenwood.herokuapp.com/main",
