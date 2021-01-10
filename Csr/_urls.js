@@ -19,7 +19,7 @@
 //   share: "http://localhost:3000/share",
 // };
 
-const domain = "https://next-app-city.herokuapp.com";
+const domain = "https://powerful-thicket-90466";
 
 export const _url = {
   main: `https://${domain}/main`,
