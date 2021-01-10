@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import "./map.scss";
 
 import { ConnectedMapComponent } from "./MapComponent";
 

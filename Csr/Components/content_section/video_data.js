@@ -12,13 +12,13 @@ export class VideoTag extends React.Component {
   clickhandler = (e) => {
     e.preventDefault();
 
-    console.log(
-      "e Video",
-      e.target,
-      e.currentTarget,
-      this.videoTag,
-      " < videoTag"
-    );
+    // console.log(
+    //   "e Video",
+    //   e.target,
+    //   e.currentTarget,
+    //   this.videoTag,
+    //   " < videoTag"
+    // );
   };
 
   render() {

@@ -1,0 +1,38 @@
+.mobileMenu {
+  display: none;
+  background: #2d2d2d;
+  padding: 0.2rem 2rem;
+}
+
+.mobileMenuList {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+
+  .mobileMenuItem {
+    padding: 0.5rem 0 0.2rem;
+    font-size: 1.5rem;
+  }
+  .mMenuText {
+    display: inline-block;
+    color: #908f8f;
+    background: #3e3c3c;
+    border: 2px solid #5a5a5a;
+    font-size: 1.3rem;
+    padding: 0 0.1rem;
+    box-shadow: 0 0 10px 1px black;
+    border-radius: 3px;
+    margin-top: 0.3rem;
+  }
+
+  #mobileHomeComponent {
+    width: 1.8rem;
+    fill: rgb(220, 220, 220);
+  }
+  .o2Component {
+    width: 2rem;
+    height: 2rem;
+    fill: white;
+  }
+}

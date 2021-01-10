@@ -28,6 +28,7 @@ export const getMainDataReducer = (state = main_content, action) => {
   switch (action.type) {
     case type.getMainDataRequest:
       return { ...state, isLoading: true };
+
     case type.getMainDataSuccess:
       return {
         ...state,
@@ -35,6 +36,13 @@ export const getMainDataReducer = (state = main_content, action) => {
         lastSnapshot: action.payload.lastSnapshot,
         isLoading: false,
       };
+
+    case type.getLastSnapshotRefresh:
+      return {
+        ...state,
+        lastSnapshot: action.payload,
+      };
+
     case type.Scroll.getContentSuccess:
       return {
         ...state,

@@ -12,7 +12,7 @@ import {
 
 import {
   getMapReferenceRequest,
- setAqiMarkersToStore,
+  setAqiMarkersToStore,
   setMarkersToStoreRequest,
 } from "../../../Redux/Map/A_R_getMapReference";
 
@@ -77,7 +77,10 @@ class MapComponent extends React.Component {
 
     window.document.body.appendChild(googleMapScript);
     googleMapScript.addEventListener("load", this.scriptOnload);
-    console.log(this.props.addresses, ' ################# Map Component Did Mount');
+    console.log(
+      this.props.addresses,
+      " ################# Map Component Did Mount"
+    );
   }
 
   componentWillUnmount() {
@@ -87,41 +90,47 @@ class MapComponent extends React.Component {
     )[0];
     if (window.document.body.contains(this.mapScript)) {
       this.mapOthers.removeEventListener("load", this.scriptOnload);
-      let result = window.document.body.removeChild(this.mapScript);
+      window.document.body.removeChild(this.mapScript);
       if (this.mapOthers) window.document.body.removeChild(this.mapOthers);
       window.google.maps = null;
     }
 
-    this.mapTag.removeEventListener("click", this.handleClickFunction);
+    if (this.mapTag) {
+      console.log("################### this Map Tag", this.mapTag);
+      // this.mapTag.removeEventListener("click", this.handleClickFunction);
+    }
   }
 
   componentDidUpdate() {
-   
-   if(this.props.addresses !== this.state.addresses){
-    this.AddMarkers(this.props.addresses);
-    this.setState({
-     addresses: this.props.addresses
-    })
-   }
+    if (this.props.addresses !== this.state.addresses) {
+      this.AddMarkers(this.props.addresses);
+      this.setState({
+        addresses: this.props.addresses,
+      });
+    }
 
-   if(this.props.stationCoords !== this.state.stationCoords){
-    this.AddAqiMarkers(this.props.stationCoords);
-    this.setState({
-     stationCoords: this.props.stationCoords
-    })
-   }
+    if (this.props.stationCoords !== this.state.stationCoords) {
+      this.AddAqiMarkers(this.props.stationCoords);
+      this.setState({
+        stationCoords: this.props.stationCoords,
+      });
+    }
 
-   if(this.props.language !== this.state.language){
-    let markers = this.props.aqiMarkers.map(item => {
-     return item.setMap(null);
-    })
-    console.log('@language Changed <<>>>>>>>>>>>  ', this.props.language, markers);
+    if (this.props.language !== this.state.language) {
+      let markers = this.props.aqiMarkers.map((item) => {
+        return item.setMap(null);
+      });
+      console.log(
+        "@language Changed <<>>>>>>>>>>>  ",
+        this.props.language,
+        markers
+      );
 
-    this.AddAqiMarkers(this.props.stationCoords);
-    this.setState({
-     language: this.props.language
-    })
-   }
+      this.AddAqiMarkers(this.props.stationCoords);
+      this.setState({
+        language: this.props.language,
+      });
+    }
 
     if (this.state.clickedOnMap == true) {
       this.setState({
@@ -140,7 +149,7 @@ class MapComponent extends React.Component {
         addresses.forEach((item) => {
           if (typeof item.coords.lat === "number") {
             var marker = "";
-            if (window.google) {
+            if (window.google && window.google.maps) {
               marker = new window.google.maps.Marker({
                 position: item.coords,
                 map: this.mapTag,
@@ -151,81 +160,79 @@ class MapComponent extends React.Component {
               });
               this.markers.push(marker);
               marker.setMap(this.mapTag);
-    this.props.setMarkersToStoreRequest(marker);
+              this.props.setMarkersToStoreRequest(marker);
 
               // set markers request
-             }
             }
-           });
-           console.log(this.updated, ' ((((((())))))) <  A D D   -   M A R K E R  > (((((((()))))) ', this.markers);
+          }
+        });
+        console.log(
+          this.updated,
+          " ((((((())))))) <  A D D   -   M A R K E R  > (((((((()))))) ",
+          this.markers
+        );
       }
     }
   }
 
   AddAqiMarkers(addresses) {
-   if (addresses) {
-     if (addresses.length) {
-      const image = {
-       url:
-         "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+    if (addresses) {
+      if (addresses.length && window.google.maps) {
+        const image = {
+          url:
+            "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
 
-         // This marker is 20 pixels wide by 32 pixels high.
-       size: new window.google.maps.Size(10, 10),
-     
-     };
+          // This marker is 20 pixels wide by 32 pixels high.
+          size: new window.google.maps.Size(10, 10),
+        };
 
-     let aqiMarkers = [];
-       addresses.forEach((item) => {
-         if (typeof item.coords.lat === "number") {
-          // aqiMarker.fillColor = aqiMapMarker[item.props.aqi_level].color;
-          // aqiMarker.strokeColor = item.props.color;
-          let infoWindow = new window.google.maps.InfoWindow({
-           content: aqiInfoWindow(item, this.props.language),
-           maxWidth: 300
-          })
-          var marker = "";
-           if (window.google) {
-           
+        let aqiMarkers = [];
+        addresses.forEach((item) => {
+          if (typeof item.coords.lat === "number") {
+            // aqiMarker.fillColor = aqiMapMarker[item.props.aqi_level].color;
+            // aqiMarker.strokeColor = item.props.color;
+            let infoWindow = new window.google.maps.InfoWindow({
+              content: aqiInfoWindow(item, this.props.language),
+              maxWidth: 300,
+            });
+            var marker = "";
+            if (window.google) {
+              marker = new window.google.maps.Marker({
+                position: item.coords,
+                map: this.mapTag,
+                station_id: item.station_id.toString(),
+                infoWindow: infoWindow,
+                marker: marker,
+                icon: image,
+              });
 
-             marker = new window.google.maps.Marker({
-               position: item.coords,
-               map: this.mapTag,
-               station_id: item.station_id.toString(),
-               infoWindow: infoWindow,
-               marker: marker,
-               icon: image
-               
-             });
+              marker.addListener("click", (e) => {
+                infoWindow.open(this.mapTag, marker);
+              });
+              this.markers.push(marker);
+              marker.setMap(this.mapTag);
 
-             marker.addListener("click", (e) => {
-               infoWindow.open(this.mapTag, marker)
-             });
-             this.markers.push(marker);
-             marker.setMap(this.mapTag);
-             
-             aqiMarkers.push(marker);
+              aqiMarkers.push(marker);
 
-
-             myOvelayMarker(
-              { coords: item.coords, 
-                mapTag: this.mapTag, 
+              myOvelayMarker({
+                coords: item.coords,
+                mapTag: this.mapTag,
                 infoWindow: infoWindow,
                 marker: marker,
                 props: {
-                 color: aqiMapMarker[item.props.aqi_level].color
-                }
-               })
+                  color: aqiMapMarker[item.props.aqi_level].color,
+                },
+              });
+            }
+          }
+        });
 
-           }
-         }
-       });
-
-       // set aqiMarkers to store here with 
-       // aqiMarkers var
-       this.props.setAqiMarkersToStore(aqiMarkers);
-     }
-   }
- }
+        // set aqiMarkers to store here with
+        // aqiMarkers var
+        this.props.setAqiMarkersToStore(aqiMarkers);
+      }
+    }
+  }
 
   // MARKER CLICK HANDLER
   markerEventHandlerFunc = (marker, item) => {
@@ -280,43 +287,45 @@ class MapComponent extends React.Component {
   // My Location handler
   myLocationHandler = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          let pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          if (window.google) {
+            this.mapTag.setCenter(pos);
+          }
 
-        let pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        };
-        if (window.google) {
-          this.mapTag.setCenter(pos);
-        }
+          const geocoder = new window.google.maps.Geocoder();
 
-        const geocoder = new window.google.maps.Geocoder();
+          if (this.props.inUploadingSection) {
+            geocoder.geocode({ location: pos }, (results, status) => {
+              if (status === "OK") {
+                let addresses = [];
+                if (results[0]) {
+                  addresses = results.map((address) => ({
+                    name: address.formatted_address,
+                    latLng: pos,
+                  }));
 
-        if (this.props.inUploadingSection) {
-          geocoder.geocode({ location: pos }, (results, status) => {
-            if (status === "OK") {
-              let addresses = [];
-              if (results[0]) {
-                addresses = results.map((address) => ({
-                  name: address.formatted_address,
-                  latLng: pos,
-                }));
-            
-                this.props.mapTempAddressList(addresses);
+                  this.props.mapTempAddressList(addresses);
 
-                this.openAddressList();
+                  this.openAddressList();
+                }
               }
-            }
-          });
+            });
+          }
+        },
+        (error) => {
+          if (error.code == error.PERMISSION_DENIED) {
+            console.log("@@@Permision Denied");
+            this.setState({
+              my_geolocation_info: true,
+            });
+          }
         }
-      }, (error) => {
-       if(error.code == error.PERMISSION_DENIED){
-        console.log('@@@Permision Denied');
-        this.setState({
-         my_geolocation_info: true
-        })
-       }
-      });
+      );
     }
   };
 
@@ -336,21 +345,24 @@ class MapComponent extends React.Component {
         >
           MyLocation
         </button>
-        {this.state.my_geolocation_info ? 
-         <div className="geolocationInfoWindow">
-          <span className='my_geolocation_infowindow'>
-         Permission Denied. Setup you geolocation permission in browser settings.
-        </span>
-        <div className="closeGeolocationInfoWindow"
-         onClick={()=>{
-          this.setState({
-           my_geolocation_info: false
-          })
-         }}
-        >
-         X
-        </div>
-         </div> : null}
+        {this.state.my_geolocation_info ? (
+          <div className="geolocationInfoWindow">
+            <span className="my_geolocation_infowindow">
+              Permission Denied. Setup you geolocation permission in browser
+              settings.
+            </span>
+            <div
+              className="closeGeolocationInfoWindow"
+              onClick={() => {
+                this.setState({
+                  my_geolocation_info: false,
+                });
+              }}
+            >
+              X
+            </div>
+          </div>
+        ) : null}
         <div id="map" ref={this.googleMapRef}>
           map
         </div>
@@ -378,7 +390,7 @@ const stateToProps = (state) => {
     inUploadingSection: state.upload.inUploadingSection,
     mapReference: state.mapRef,
     mobileMode: state.mobile.mobileMode,
-    language: state.language
+    language: state.language,
   };
 };
 
@@ -392,7 +404,7 @@ const mapDispatchtoProps = {
   getDataByMarker,
   setMobileTabIndex,
   setMobileNavItemClicked,
-  setAqiMarkersToStore
+  setAqiMarkersToStore,
 };
 export const ConnectedMapComponent = connect(
   stateToProps,

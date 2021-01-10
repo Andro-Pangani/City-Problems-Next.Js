@@ -65,10 +65,11 @@ class StockForm extends React.PureComponent {
           </div>
         ) : this.props.uploading ? (
           <div className="form_notification">მასალა იტვირთება ...</div>
-        ) : this.props.failure ? 
-        <div className="form_notification">შეფერხება ! მასალა არ ატვირთულა, სცადეთ ხელახლა.</div>
-       : null
-       }
+        ) : this.props.failure ? (
+          <div className="form_notification">
+            შეფერხება ! მასალა არ ატვირთულა, სცადეთ ხელახლა.
+          </div>
+        ) : null}
         <form onSubmit={this.handleSubmit}>
           <ul>
             <li className="form_list-item">
@@ -149,7 +150,7 @@ export default connect(
     coords: state.new_item_address.coords,
     uploaded: state.upload.uploaded,
     uploading: state.upload.uploading,
-    failure: state.upload.failure
+    failure: state.upload.failure,
   }),
 
   {

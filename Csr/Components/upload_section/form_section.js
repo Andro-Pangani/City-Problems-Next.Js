@@ -1,7 +1,6 @@
 import React from "react";
 import StockForm from "./stock_form";
 import { connect } from "react-redux";
-import "./form.scss";
 import {
   stopUploadingProcess,
   startUploadingProcess,

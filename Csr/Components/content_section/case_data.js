@@ -11,6 +11,7 @@ export class CaseData extends React.Component {
       x: 0,
       currentFileIndex: 1,
       listWidth: 0,
+      reset: false,
     };
 
     this.liRef = React.createRef();
@@ -22,13 +23,16 @@ export class CaseData extends React.Component {
   }
 
   changeX = (value) => {
+    //  SINGLE
     if (this.state.length == 1) {
       this.setState({
         x: 0,
         length: this.props.urls.length,
         currentFileIndex: 1,
       });
-    } else {
+      console.log("******* LIST LENGTH * 1");
+    } else if (this.state.length > 1) {
+      // LIST
       this.setState({
         x: this.state.x + value,
         length: this.state.length - 1,
@@ -38,20 +42,53 @@ export class CaseData extends React.Component {
   };
 
   handleClick = (e) => {
-   // if clicked on share button 
-   if(e.target.name === 'start_sharing_button') return ;
+    // if clicked on share button
+    if (e.target.name === "start_sharing_button") return;
 
     this.changeX(this.listItem.width);
-    this.setState({
-      listWidth: this.listItem.width,
-    });
-    console.log(" <<< List Item clicked", window.navigator, e.currentTarget, e.target.name);
   };
 
-  componentDidUpdate() {
-    if (this.props.currentParrentIndex !== this.state.currentFileIndex) {
-      this.props.changeIndex(this.state.currentFileIndex);
+  componentDidUpdate(prevProps) {
+    // console.log("* CHILD DID UPDATE * ");
+    // ITEM IS NEW
+    // : RESET COMPONENT STATE
+    // : UPDATE PARRENT INDEX [1]
+    // ELSE
+    // CHANGE INDEX
+    // AND UPDATE PARRENT WITH CURRENT INDEX
+
+    //IF DATA IS NEW
+    if (prevProps.id !== this.props.id) {
+      console.log(" ######## RESETED ");
+      console.log(
+        "- CHILD - ************* BEFORE CURRENT iNDEX",
+        this.state.currentFileIndex
+      );
+      this.setState({
+        length: this.props.urls.length,
+        x: 0,
+        currentFileIndex: 1,
+      });
+
+      this.props.changeParrentIndex(this.state.currentFileIndex, false);
+
+      // IF MY INDEX CHANGED UPDATE PARRENT INDEX
+    } else if (this.props.currentParentIndex !== this.state.currentFileIndex) {
+      this.props.changeParrentIndex(this.state.currentFileIndex, false);
+    } else {
+      this.props.changeParrentIndex(this.state.currentFileIndex);
+      // console.log("- CHILD - Updated list length ###### ", this.state.length);
     }
+
+    // console.log(
+    //   "- CHILD - ###### After CURRENT iNDEX",
+    //   this.state.currentFileIndex
+    // );
+
+    // when parrent updates
+    // it comes here and then
+    // i send my current File index to parrent
+    // }
   }
 
   render() {
@@ -75,19 +112,9 @@ export class CaseData extends React.Component {
                 }}
               >
                 {link.type === "image" ? (
-                  <ImageTag 
-                  index={index} 
-                  link={link.link} 
-                  id={item.id} 
-                  
-                  />
+                  <ImageTag index={index} link={link.link} id={item.id} />
                 ) : link.type === "video" ? (
-                  <VideoTag 
-                  index={index} 
-                  link={link.link} 
-                  id={item.id} 
-                  
-                  />
+                  <VideoTag index={index} link={link.link} id={item.id} />
                 ) : null}
               </li>
             );

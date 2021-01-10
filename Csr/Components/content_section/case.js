@@ -1,10 +1,10 @@
 import React from "react";
-import "./case.scss";
 import { CaseData } from "./case_data";
 import { ShowOnMapComponent } from "./click/show_on_map";
 import DeleteSection from "./click/delete_section";
 import ApprooveSection from "./click/approove_section";
 import { AlternativeComponent } from "./AlternativeComponent";
+import Link from "next/link";
 
 export class Case extends React.Component {
   constructor(props) {
@@ -16,6 +16,7 @@ export class Case extends React.Component {
       containerWidth: undefined,
       filesQuantity: props.item.Url.length,
       currentFileIndex: 1,
+      reset: false,
     };
   }
 
@@ -24,7 +25,12 @@ export class Case extends React.Component {
     this.props.centerMap(this.props.item.coords);
   };
 
-  changeIndex = (index) => {
+  // DERIVING THIS FUNCTION
+  // TO CASE_DATA COMPONENT
+
+  changeMyIndex = (index) => {
+    // console.log("- FUNCTION PARRENT - |||||||||||| ", index);
+
     if (this.state.currentFileIndex !== index) {
       this.setState({
         currentFileIndex: index,
@@ -41,8 +47,25 @@ export class Case extends React.Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    let _prevItemId = prevProps.item.id;
+    let _currentItemId = this.props.item.id;
+
+    console.log("- PARRENT DID UPDATE - ");
+
+    //IF DATA IS NEW
+    // RESETTING INDEX TO 1
+    if (_prevItemId !== _currentItemId) {
+      this.setState({
+        currentFileIndex: 1,
+        reset: true,
+      });
+    }
+  }
+
   render() {
     let item = this.props.item;
+
     let [
       approoved,
       urls,
@@ -72,7 +95,7 @@ export class Case extends React.Component {
             <ShowOnMapComponent handleClick={this.showonmap} />
           </div>
           <div className="mainDataQuantity">
-            {this.state.currentFileIndex}/{this.state.filesQuantity}
+            {this.state.currentFileIndex}/{urls.length}
           </div>
           {/* {!approoved ? <ApprooveSection id={this.props.item.id} /> : null}
           <div className="admin_section"></div>
@@ -89,12 +112,21 @@ export class Case extends React.Component {
         </div>
         <div className="case_content">
           <CaseData
-            changeIndex={this.changeIndex}
+            changeParrentIndex={this.changeMyIndex}
+            // reset helps child update
+            // sets childs current index
+            // to 1
+            reset={this.state.reset}
             currentParentIndex={this.state.currentFileIndex}
             urls={urls}
             data_type={data_type}
             id={this.props.item.id}
           />
+          <div className="case_see-more">
+            <Link href="/about">
+              <a>More</a>
+            </Link>
+          </div>
         </div>
         <div className="case_footer">
           <div className="case_description">{desc}</div>

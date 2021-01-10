@@ -12,8 +12,6 @@ import {
 import { setMobileTabIndex } from "../content_section/reduxThunk/mobile/( a - r ) mobileMenu";
 import { navItemStyle } from "./headerJsxStyles";
 
-
-
 export function NavItem(props) {
   const [active, setActive] = useState(false);
   const isLoading = useSelector((state) => state.isLoading);
@@ -59,7 +57,11 @@ export function NavItem(props) {
   }
 
   return (
-    <span onClick={handleClick} style={navItemStyle(active, props.lang)}>
+    <span
+      className="nav_item-title"
+      onClick={handleClick}
+      style={navItemStyle(active, props.lang)}
+    >
       {props.type}
       {props.data ? (
         <div className="item_count">{props.data.length}</div>

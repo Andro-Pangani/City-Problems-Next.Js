@@ -5,7 +5,7 @@
   background: #2f2f2ff8;
   border: 1px solid #252424;
   border-radius: 3px;
-  box-shadow: 0 0 3px 3px #3a3a3a;
+  box-shadow: 0 0 3px 3px #232323;
   overflow: hidden;
 
   &:last-child {
@@ -42,8 +42,11 @@
   border-radius: 1px;
   // font-family: "Alk Tall Mtavruli", sans-serif;
   color: #929292;
+  background: linear-gradient(#e0a644, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   letter-spacing: 0.1rem;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   padding-left: 10px;
   text-align: center;
 }
@@ -62,18 +65,22 @@
   display: flex;
   color: rgb(126, 126, 126);
   font-size: 14px;
-  align-items: center;
+  align-items: stretch;
+  border-radius: 3px;
+  margin-bottom: 0.5rem;
   li {
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     box-sizing: border-box;
   }
 }
 
 .substance_name {
-  display: inline-block;
   width: 15%;
-  margin-bottom: 3px;
+  background: #151515;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
   // background: #949494;
 }
 
@@ -144,13 +151,16 @@
 }
 
 .alertVeryPoor {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   letter-spacing: 0.1rem;
-  background: #191919;
   color: #a50000;
+  font-family: "alk-sanet", monospace;
   border-radius: 6px;
   margin: 0.4rem 0 0.4rem;
-  box-shadow: 0 0 15px #ea0000;
+  // box-shadow: 0 0 15px #ea0000;
+  background: linear-gradient(#e04444, #4498e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   padding: 0.4rem;
   text-align: center;
 }
@@ -158,10 +168,13 @@
 .cancerZone {
   background: #101010;
   color: #e66f1a;
+  background: linear-gradient(#e04444, #ee941e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   padding: 0.2rem 0;
   margin: 0.3rem;
   border-radius: 0.3rem;
-  box-shadow: 0 0 11px #f10000;
+  // box-shadow: 0 0 11px #f10000;
 }
 
 @keyframes aqiDataPreloader {

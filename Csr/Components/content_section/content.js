@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./content.scss";
 import { connect, useDispatch } from "react-redux";
 import { Case } from "./case";
 import { getMainDataRequest } from "../../Redux/( a-r )getMainData";
@@ -25,12 +24,9 @@ function Content(props) {
     if (isError !== props.isError) {
       setError(props.isError);
     }
-
-
   });
 
   const centerMap = (val) => {
-   
     if (val && typeof val.lng === "number") {
       if (props.mapReference) {
         props.mapReference.setCenter(val);
@@ -44,7 +40,6 @@ function Content(props) {
     let scrollEnd = content.scrollHeight - bounding.height - 5;
 
     if (isLoading === false) {
-     
       if (content.scrollTop >= scrollEnd) {
         if (send == false) {
           dispatch(
@@ -63,6 +58,7 @@ function Content(props) {
     }
   };
 
+  console.log(props.data, "!! ********** * PROPS DATA FROM CONTENT ");
   return (
     <section
       onScroll={handleScroll}

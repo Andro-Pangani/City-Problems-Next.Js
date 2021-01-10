@@ -1,19 +1,21 @@
-import Head from 'next/head'
-import Link from 'next/link';
-import { AqiSection } from '../Csr/nextComponents/aqiSection';
-import { HeaderComponent } from '../Csr/nextComponents/header_section';
-import { MainLayout } from '../Csr/mainLayout';
+import Head from "next/head";
+import Link from "next/link";
 
-import styles from '../styles/Home.module.css'
+import React from "react";
+import MainLayoutTest from "../Csr/mainLayout";
 
-export default function Home() {
-  return (
-   <div className="appContainer">
+export default class Home extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-    <MainLayout title={'Home'}>
-    <h2> Welcome to Home Page</h2>
-   </MainLayout>
-
-   </div>
-  )
+  render() {
+    return (
+      <div className="appContainer">
+        <MainLayoutTest title={"Home"}>
+          <h2> Welcome to Home Page</h2>
+        </MainLayoutTest>
+      </div>
+    );
+  }
 }

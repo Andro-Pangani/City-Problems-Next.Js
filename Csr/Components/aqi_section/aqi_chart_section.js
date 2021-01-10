@@ -1,6 +1,4 @@
 import React from "react";
-import "./aqi_section.scss";
-import "./aqi_chart_component.scss";
 import { connect } from "react-redux";
 
 class AqiChartComponent extends React.Component {
@@ -123,7 +121,6 @@ class AqiChartComponent extends React.Component {
               // percent of svg height
               let svgY = (_y / 100) * this.state.svgHeight;
               // let svgY = _y;
-
 
               let textY = `${15}%`;
               if (index % 2 == 0) {
@@ -261,8 +258,7 @@ class AqiChartComponent extends React.Component {
             </g>
           )}
 
-          {
-          /* <rect
+          {/* <rect
             className="dangerZone"
             x={`${this.step}`}
             y={`${90}%`}

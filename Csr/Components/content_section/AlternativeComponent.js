@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { AddAlternativeComponent } from "./AddAlternativeComponent";
-import "./alternative.scss";
 import { AlternativeDataComponent } from "./AlternativeData";
 
 export function AlternativeComponent(props) {

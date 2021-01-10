@@ -2,6 +2,12 @@ const { type } = require("../types");
 
 // Click on Marker => get Single Case
 export const getDataByMarker = (payload) => {
+  if (payload) {
+    // console.log(
+    //   payload,
+    //   " ***************** get data by marker ******** REDUX MATERIALS"
+    // );
+  }
   return {
     type: type.Map.getDataByMarker,
     payload,

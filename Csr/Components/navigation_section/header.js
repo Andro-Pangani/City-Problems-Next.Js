@@ -1,5 +1,4 @@
 import React from "react";
-import "./header.scss";
 
 import {
   getUploadingSectionRequest,
@@ -12,7 +11,6 @@ import { getMobileMenuClicked } from "../../Redux/mobile/( a - r )mobileMenu";
 import { languages } from "../../language/languages";
 import { LanguagesComponent } from "./languagesComponent.tsx";
 import { navItemStyle } from "./headerJsxStyles";
-
 
 const navMobileOn = {
   position: "absolute",
@@ -32,7 +30,7 @@ class Header_ extends React.Component {
     this.state = {
       headerNav: languages.headerNavigation[props.language],
       nowActive: languages.headerNavigation.English.all,
-      language: props.language
+      language: props.language,
     };
   }
   startUploading = () => {
@@ -50,27 +48,27 @@ class Header_ extends React.Component {
     });
   };
 
-  componentDidMount(){
-   this.setState({
-    nowActive: this.state.headerNav.all,
-   })
-
+  componentDidMount() {
+    this.setState({
+      nowActive: this.state.headerNav.all,
+    });
   }
 
-  componentDidUpdate(){
-   if(this.props.language !== this.state.language){
-    
-    this.setState({
-     language: this.props.language,
-     headerNav: languages.headerNavigation[this.props.language]
-    })
-   }
+  componentDidUpdate() {
+    if (this.props.language !== this.state.language) {
+      this.setState({
+        language: this.props.language,
+        headerNav: languages.headerNavigation[this.props.language],
+      });
+    }
   }
 
   render() {
     let data = this.props.data;
     let content = {};
-    let headerNav = this.state.headerNav ? this.state.headerNav : languages.English
+    let headerNav = this.state.headerNav
+      ? this.state.headerNav
+      : languages.English;
     if (data)
       data.map((item, index) => {
         content[item.type]
@@ -162,12 +160,11 @@ class Header_ extends React.Component {
               onClick={this.startUploading}
               className="nav_menu_item nav_item_upload"
             >
-              <span>{languages.headerNavigation[this.props.language].upload}</span>
+              <span className="nav_menu-upload">
+                {languages.headerNavigation[this.props.language].upload}
+              </span>
             </li>
-            <li 
-            type={"language"}
-            className="nav_menu_item"
-            >
+            <li type={"language"} className="nav_menu_item">
               <LanguagesComponent />
             </li>
           </ul>
@@ -184,7 +181,7 @@ const stateToProps = (state) => {
     isError: state.main_data.isError,
     menuButtonClicked: state.mobile.menuButtonClicked,
     mobileTabIndex: state.mobile.menuTabIndex,
-    language: state.language
+    language: state.language,
   };
 };
 const dispatchToProps = {

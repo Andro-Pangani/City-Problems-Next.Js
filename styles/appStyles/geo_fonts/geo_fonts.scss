@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "bpg-extra-square-mtavruli";
+  src: url("./fonts/bpg_extrasquare_mtavruli_2009.eot");
+  src: url("./fonts/bpg_extrasquare_mtavruli_2009.woff2") format("woff2");
+  /* Super Modern Browsers */
+  src: url("./fonts/BPGExtraSquareMtavruli.woff") format("woff"),
+    /* Pretty Modern Browsers */
+      url("./fonts/bpg_extrasquare_mtavruli_2009.ttf") format("truetype"),
+    url("./fonts/BPGExtraSquareMtavruli.svg") format("svg");
+}
+
+@font-face {
+  font-family: "alk-sanet";
+  src: url("./fonts/alk-sanet/alk-sanet.eot");
+  src: url("./fonts/alk-sanet/alk-sanet.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("./fonts/alk-sanet/alk-sanet.woff")
+      format("woff"),
+    /* Pretty Modern Browsers */ url("./fonts/alk-sanet/alk-sanet.ttf")
+      format("truetype"),
+    url("./fonts/alk-sanet/alk-sanet.svg") format("svg");
+}
+
+@font-face {
+  font-family: "Alk Tall Mtavruli";
+  src: url("./fonts/alk-tall/alk-tall-mtavruli-webfont.eot");
+  src: url("./fonts/alk-tall/alk-tall-mtavruli-webfont.woff2") format("woff2"),
+    /* Super Modern Browsers */
+      url("./fonts/alk-tall/alk-tall-mtavruli-webfont.woff") format("woff"),
+    /* Pretty Modern Browsers */
+      url("./fonts/alk-tall/alk-tall-mtavruli-webfont.ttf") format("truetype"),
+    url("./fonts/alk-tall/alk-tall-mtavruli-webfont.svg") format("svg");
+}
+
+@font-face {
+  font-family: "alk-tall-nuskhuri";
+  src: url("./fonts/bpg-nino-elite-cond-caps-webfont.eot");
+  src: url("./fonts/alk-tall-nusxuri/alk-tall-nusxuri-webfont.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */
+      url("./fonts/alk-tall-nusxuri/alk-tall-nusxuri-webfont.woff")
+      format("woff"),
+    /* Pretty Modern Browsers */
+      url("./fonts/alk-tall-nusxuri/alk-tall-nusxuri-webfont.ttf")
+      format("truetype"),
+    url("./fonts/alk-tall-nusxuri/alk-tall-nusxuri-webfont.svg") format("svg");
+}

@@ -20,7 +20,6 @@ export const getMainData_middleware = (store) => (next) => (action) => {
         fetch(url, { method: "GET" })
           .then((response) => response.json())
           .then((data) => {
-
             store.dispatch(getMainDataSuccess(data));
 
             let main_data = store.getState().main_data;
@@ -40,13 +39,12 @@ export const getMainData_middleware = (store) => (next) => (action) => {
             console.log(
               "<<< ERROR Main Data Request",
               err,
-              "<<< ERROR @@@@@ >>>"
+              "<<< ERROR !!!! >>>"
             );
           });
       }
       break;
     case type.Scroll.getContentRequest:
-
       url = _url.main;
       // isLoadingStore = store.getState().main_data.isLoading;
 
@@ -58,7 +56,6 @@ export const getMainData_middleware = (store) => (next) => (action) => {
         fetch(url, { method: "GET" })
           .then((response) => response.json())
           .then((data) => {
-
             store.dispatch(getScrollContentSuccess(data));
             let main_data = store.getState().main_data;
             let isLoading = main_data.isLoading;

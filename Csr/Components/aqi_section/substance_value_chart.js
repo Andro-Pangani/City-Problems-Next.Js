@@ -42,13 +42,12 @@ export function SubstanceValueChart(props) {
         ref={aqiValueChart}
         className="aqi_value_minichart"
       ></div>
-      {props.aqi_level_current.aqi_level === "very_poor"
-        ?<div className='alertVeryPoor'>
-         დაბინძურების ყველაზე მაღალი მაჩვენებელი.
-         <div className="cancerZone">დამაზიანებელია ყველასათვის</div>
-         </div>
-         
-        : null}
+      {props.aqi_level_current.aqi_level === "very_poor" ? (
+        <div className="alertVeryPoor">
+          საგანგაშო! დახურეთ ფანჯრები,ნუ გახვალთ გარეთ!
+          {/* <div className="cancerZone">დამაზიანებელია ყველასათვის</div> */}
+        </div>
+      ) : null}
     </div>
   );
 }

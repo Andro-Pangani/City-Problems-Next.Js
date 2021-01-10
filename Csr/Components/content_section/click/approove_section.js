@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import "./admin_buttons.scss";
 import { connect } from "react-redux";
 import { getApproovingRequest } from "../../../Redux/AdminRoom/a - r _adminRoom";
 

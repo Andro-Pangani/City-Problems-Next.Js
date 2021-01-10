@@ -1,7 +1,5 @@
 import { mapStyle } from "./map_style";
 
-import "./map_libraries.scss";
-
 export const icon = "";
 export const createGoogleMap = (MapRef, InputSearch) => {
   var InputSearch = InputSearch.current;

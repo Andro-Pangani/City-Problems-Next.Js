@@ -5,7 +5,7 @@ export const mapStyle = [
     elementType: "geometry",
     stylers: [
       {
-        color: "#202426",
+        color: "#A3A3A3",
       },
     ],
   },
@@ -13,7 +13,7 @@ export const mapStyle = [
     elementType: "labels.text.fill",
     stylers: [
       {
-        color: "#B5B5AF",
+        color: "#FFFFF7",
       },
     ],
   },
@@ -21,7 +21,7 @@ export const mapStyle = [
     elementType: "labels.text.stroke",
     stylers: [
       {
-        color: "#212121",
+        color: "#8E846D",
       },
     ],
   },
@@ -65,7 +65,7 @@ export const mapStyle = [
     elementType: "labels.text.fill",
     stylers: [
       {
-        color: "#757575",
+        color: "#3E2813",
       },
     ],
   },
@@ -92,7 +92,7 @@ export const mapStyle = [
     elementType: "labels.text.fill",
     stylers: [
       {
-        color: "#616161",
+        color: "#A7ED81",
       },
     ],
   },
@@ -128,43 +128,20 @@ export const mapStyle = [
     elementType: "labels.text.fill",
     stylers: [
       {
-        color: "#8a8a8a",
+        color: "#5F3D1D",
       },
     ],
   },
   {
-    featureType: "road.arterial",
-    elementType: "geometry",
+    featureType: "road",
+    elementType: "labels.text.stroke",
     stylers: [
       {
-        color: "#373737",
+        color: "#EAEAEA",
       },
     ],
   },
-  {
-    featureType: "road.arterial",
-    elementType: "geometry.fill",
-    stylers: [
-      {
-        color: "#9D5B1E",
-      },
-      {
-        weight: 1,
-      },
-    ],
-  },
-  {
-   featureType: "road.arterial",
-   elementType: "geometry.stroke",
-   stylers: [
-     {
-       color: "#A67484",
-     },
-     {
-      weight: .5,
-     },
-   ],
- },
+
   {
     featureType: "road.highway",
     elementType: "geometry",
@@ -184,14 +161,14 @@ export const mapStyle = [
     ],
   },
   {
-   featureType: "road.highway",
-   elementType: "geometry.stroke",
-   stylers: [
-     {
-       color: "white",
-     },
-   ],
- },
+    featureType: "road.highway",
+    elementType: "geometry.stroke",
+    stylers: [
+      {
+        color: "white",
+      },
+    ],
+  },
   {
     featureType: "road.highway.controlled_access",
     elementType: "geometry",
@@ -202,35 +179,77 @@ export const mapStyle = [
     ],
   },
   {
-    featureType: "road.local",
-    elementType: "geometry.fill",
+    featureType: "road.arterial",
+    elementType: "geometry",
     stylers: [
       {
-        color: "#8273A0",
-      },
-      {
-        weight: 1,
+        color: "#373737",
       },
     ],
   },
   {
-   featureType: "road.local",
-   elementType: "geometry.stroke",
-   stylers: [
-     {
-       color: "#504191",
-     },
-     {
-       weight: .2,
-     },
-   ],
- },
+    featureType: "road.arterial",
+    elementType: "geometry.fill",
+    stylers: [
+      {
+        color: "#DECFAB",
+      },
+      {
+        weight: 3,
+      },
+    ],
+  },
+  // {
+  //   featureType: "road.arterial",
+  //   elementType: "geometry.stroke",
+  //   stylers: [
+  //     {
+  //       color: "#A67484",
+  //     },
+  //     {
+  //       weight: 0.5,
+  //     },
+  //   ],
+  // },
+  {
+    featureType: "road.local",
+    elementType: "geometry.fill",
+    stylers: [
+      {
+        color: "#D0D0D0",
+      },
+      {
+        weight: 1.1,
+      },
+    ],
+  },
+  {
+    featureType: "road.local",
+    elementType: "geometry.stroke",
+    stylers: [
+      {
+        color: "#949A59",
+      },
+      {
+        weight: 0.2,
+      },
+    ],
+  },
   {
     featureType: "road.local",
     elementType: "labels.text.fill",
     stylers: [
       {
-        color: "#616161",
+        color: "#C5C5C5",
+      },
+    ],
+  },
+  {
+    featureType: "road.local",
+    elementType: "labels.text.stroke",
+    stylers: [
+      {
+        color: "#747474",
       },
     ],
   },
@@ -239,7 +258,16 @@ export const mapStyle = [
     elementType: "labels.text.fill",
     stylers: [
       {
-        color: "#B5B5B5",
+        color: "#FFFFFF",
+      },
+    ],
+  },
+  {
+    featureType: "transit",
+    elementType: "labels.text.stroke",
+    stylers: [
+      {
+        color: "#3D382B",
       },
     ],
   },
@@ -258,25 +286,23 @@ export const mapStyle = [
     stylers: [
       {
         // color: "#F2F2F2",
-        color: "#5455B2",
-
+        color: "#65DEDC",
       },
-      
     ],
   },
   {
-   featureType: "water",
-   elementType: "geometry.stroke",
-   stylers: [
-     {
-       // color: "#F2F2F2",
-       color: "#9E2AB2",
-     },
-     {
-      weight: 3,
-    },
-   ],
- },
+    featureType: "water",
+    elementType: "geometry.stroke",
+    stylers: [
+      {
+        // color: "#F2F2F2",
+        color: "#9E2AB2",
+      },
+      {
+        weight: 3,
+      },
+    ],
+  },
   {
     featureType: "water",
     elementType: "labels.text.fill",
@@ -290,51 +316,47 @@ export const mapStyle = [
 
 // export const mapStyle = []
 export const aqiMapMarker = {
-
- good: {
-  color: 'cyan',
-  recomendations: `ჯანდაცვით რეკომენდაციებს არ საჭიროებს`
- },
- fair: {
-  color: 'rgb(52 168 83)',
-  recomendations: `განსაკუთრებით მგრძნობიარე ადამიანებმა 
+  good: {
+    color: "cyan",
+    recomendations: `ჯანდაცვით რეკომენდაციებს არ საჭიროებს`,
+  },
+  fair: {
+    color: "rgb(52 168 83)",
+    recomendations: `განსაკუთრებით მგრძნობიარე ადამიანებმა 
   უნდა შეამცირონ გახანგრძლივებული ან დატვირთული გარე 
-  ფიზიკური აქტივობა` 
- },
- moderate: {
-  color: 'rgb(206 155 26)',
-  recomendations: `შემდეგმა ჯგუფებმა უნდა შეამცირონ გახანგრძლივებული ან დატვირთული გარე ფიზიკური აქტივობა:
+  ფიზიკური აქტივობა`,
+  },
+  moderate: {
+    color: "rgb(206 155 26)",
+    recomendations: `შემდეგმა ჯგუფებმა უნდა შეამცირონ გახანგრძლივებული ან დატვირთული გარე ფიზიკური აქტივობა:
   გულის ან ფილტვის დაავადებების მქონე პირები
-  ბავშვები და ხანდაზმულები`
- },
- poor: {
-  color: '#d21d1d',
-  recomendations: `ყველამ შეიძლება განიცადოს ზემოქმედება ჯანმრთელობაზე; ხოლო, სენსიტიური ჯგუფების წევრები შესაძლებელია განიცდიდნენ უფრო სერიოზულ ზემოქმედებას, ვიდრე მოსახლეობა ზოგადად`
- },
- very_poor: {
-  color: '#a70000',
-  recomendations: `ჰაერის ხარისხი საგანგაშოა ჯანმრთელობისათვის; ყველამ შეიძლება განიცადოს სერიოზული ზეგავლენა ჯანრმთელობაზე.`
- },
- station_off:{
-  color: '#949494',
-  recomendations: 'სადგური გათიშულია. იყავით ფრთხილად'
- }
-}
+  ბავშვები და ხანდაზმულები`,
+  },
+  poor: {
+    color: "#d21d1d",
+    recomendations: `ყველამ შეიძლება განიცადოს ზემოქმედება ჯანმრთელობაზე; ხოლო, სენსიტიური ჯგუფების წევრები შესაძლებელია განიცდიდნენ უფრო სერიოზულ ზემოქმედებას, ვიდრე მოსახლეობა ზოგადად`,
+  },
+  very_poor: {
+    color: "#a70000",
+    recomendations: `ჰაერის ხარისხი საგანგაშოა ჯანმრთელობისათვის; ყველამ შეიძლება განიცადოს სერიოზული ზეგავლენა ჯანრმთელობაზე.`,
+  },
+  station_off: {
+    color: "#949494",
+    recomendations: "სადგური გათიშულია. იყავით ფრთხილად",
+  },
+};
 
 // Takes  -- --  *StationCoors from  -> aqi:data:data:stationCoords ->
 //  {
-//    -address: .. -, -coords:{lat:.., lng:..} -, 
+//    -address: .. -, -coords:{lat:.., lng:..} -,
 //    -props: ..?undefined -,
 //    -station_id: .. -, -substances: [..] -
 // }
 
-
 export const aqiInfoWindow = (data, lang) => {
+  console.log(lang, " @@@@@@@@@@@@ lang from mapStyles");
 
- console.log(lang, ' @@@@@@@@@@@@ lang from mapStyles');
-
- return (
- `<div style="color: ${data.props.color}" 
+  return `<div style="color: ${data.props.color}" 
   class="infoWindowContainer"> 
 
    <h1 class="aqiInfoAddress"
@@ -353,10 +375,13 @@ export const aqiInfoWindow = (data, lang) => {
   </h2>
 
    <div class="aqiInfoRecomendations">
-    ${languages.aqiSection.recomendations[lang][data.props.aqi_level].recomendations}
+    ${
+      languages.aqiSection.recomendations[lang][data.props.aqi_level]
+        .recomendations
+    }
    </div>
 
   </div>
 
- </div>`)
-}
+ </div>`;
+};

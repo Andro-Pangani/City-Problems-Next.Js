@@ -2,13 +2,14 @@ export const type = {
   getMainDataRequest: "GET_MAIN_DATA_REQUEST",
   getMainDataSuccess: "GET_MAIN_DATA_SUCCESS",
   getMainDataFailure: "GET_MAIN_DATA_FAILURE",
+  getLastSnapshotRefresh: "GET_LAST_SNAPSHOT_REFRESH",
   getAdminRequest: "GET_ADMIN_REQUEST",
   getAdminSuccess: "GET_ADMIN_SUCCESS",
   getAdminReject: "GET_ADMIN_REJECT",
   Languages: {
-   setLanguage_En: 'SET_LANGUAGE_EN',
-   setLanguage_Ge: 'SET_LANGUAGE_GE',
-   setLanguage_Ru: 'SET_LANGUAGE_RU'
+    setLanguage_En: "SET_LANGUAGE_EN",
+    setLanguage_Ge: "SET_LANGUAGE_GE",
+    setLanguage_Ru: "SET_LANGUAGE_RU",
   },
   Scroll: {
     getContentRequest: "GET_SCROLL_CONTENT_REQUEST",
@@ -26,7 +27,7 @@ export const type = {
     getDataByMarker: "GET_DATA_BY_MARKER",
     setMapReferenceToState: "SET_MAP_REFERENCE_TO_STATE",
     getMapSetCenter: "GET_MAP_SET_CENTER",
-    setAqiMarkersToStore: 'SET_AQI_MARKERS_TO_STORE'
+    setAqiMarkersToStore: "SET_AQI_MARKERS_TO_STORE",
   },
   Alternative: {
     single: {
@@ -34,7 +35,7 @@ export const type = {
       delete: "ALTERNATIVE_SINGLE_DELETE",
     },
   },
-  Upload: { 
+  Upload: {
     getUploadingSectionRequest: "GET_UPLOADING_SECTION_REQUEST",
     get_Uploading_Request: "GET_UPLOADING_REQUEST",
     get_Uploading_Success: "GET_UPLOADING_SUCCESS",

@@ -1,0 +1,156 @@
+@media only screen and (max-width: 1400px) {
+  html {
+    font-size: 12px;
+  }
+
+  .app_container {
+    padding-top: 1rem;
+  }
+
+  .substance_block li {
+    margin-top: 0.1rem;
+  }
+
+  .chart_item {
+    height: 10vh;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .app_container {
+    margin: 0rem auto;
+  }
+
+  .App {
+    padding: 0;
+  }
+  .grid_item_horizontal {
+    display: none;
+  }
+  .header_section {
+    display: none;
+    height: 100%;
+    background: #212121;
+  }
+
+  .nav_menu {
+    flex-direction: column;
+    .nav_menu_item {
+      margin-top: 1rem;
+      font-size: 3rem;
+      &:first-child {
+        padding: 0;
+      }
+    }
+
+    span {
+      font-size: 3.5rem !important;
+    }
+  }
+
+  .language_list {
+    position: relative;
+    transform: translate(0);
+
+    .languages_list_item {
+      display: inline-block;
+    }
+  }
+
+  .mobileMenu {
+    display: block;
+
+    .mAqi {
+      color: rgb(204, 204, 204);
+      font-size: 2rem;
+
+      sub {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  #o2cloud {
+    fill: white;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  #mapMobileMenu {
+    fill: white;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .main_title {
+    display: none;
+  }
+  .content_section {
+    max-height: 90vh !important;
+  }
+  .body_section_list {
+    display: flex;
+    height: 89vh;
+    max-height: 100%;
+    padding: 0rem;
+    margin-top: 0.4rem;
+  }
+
+  .content_item,
+  .aqi_item,
+  .map_item {
+    min-width: 100%;
+    height: 90vh;
+  }
+  .map_item {
+    margin: 0;
+  }
+  .currentLocationButton {
+    font-size: 2.5rem;
+    top: 98%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    box-shadow: 0 0 32px 5px black;
+  }
+
+  // .aqi_section {
+  //   height: 100%;
+  //   margin: 0;
+  // }
+  // .aqi_item {
+  //   margin: 0;
+  // }
+  .aqi_chart_section {
+    height: 80vh;
+  }
+
+  .main_image_tag {
+    // max-height: 100vh !important;
+  }
+
+  .aqi_station_address {
+    font-family: "alk-sanet", monospace !important;
+  }
+
+  .no_data_section {
+    background: #292929;
+    box-shadow: inset -10px 0px 4px 37px #d0d0d0;
+  }
+
+  .no_data_text {
+    font-size: 2rem;
+    line-height: 0.8;
+    padding: 2rem 0;
+    color: #797979;
+  }
+
+  .footer_section {
+    display: none;
+  }
+  .reload_item {
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    transform: translate(-100%, -100%);
+  }
+}

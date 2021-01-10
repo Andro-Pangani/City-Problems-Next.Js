@@ -1,8 +1,8 @@
 import React, { useState, useEffect, Fragment } from "react";
-import "./aqi_section.scss";
 
 import { connect } from "react-redux";
 import { setAqiCityDataRequest } from "../../Redux/aqi/( a - r )getAqi";
+
 import CityAqiData from "./cityAqiData";
 import { languages } from "../../language/languages";
 import { aqiSectionTitleStyle } from "./jsxStyles";
@@ -49,7 +49,7 @@ function AqiSection(props) {
   let [stateId, setStateId] = useState(1);
   const [active, setActive] = useState("Tbilisi");
   const aqiContentRef = React.createRef();
-  
+
   function getCity(e) {
     console.log(e);
   }
@@ -73,9 +73,12 @@ function AqiSection(props) {
 
   return (
     <div className="aqi_section">
-      <div className="aqi_section_title"
-      style={aqiSectionTitleStyle(props.language)}
-      >{languages.aqiSection.headerTitle[props.language]}</div>
+      <div
+        className="aqi_section_title"
+        style={aqiSectionTitleStyle(props.language)}
+      >
+        {languages.aqiSection.headerTitle[props.language]}
+      </div>
 
       <ul className="aqi_nav_menu">
         <AqiMenuItemConnected
@@ -118,7 +121,7 @@ function AqiSection(props) {
 const stateToProps = (state) => {
   return {
     aqiData: state.aqi.data,
-    language: state.language
+    language: state.language,
   };
 };
 
