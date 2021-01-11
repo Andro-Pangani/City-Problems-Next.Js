@@ -123,7 +123,7 @@ export class Case extends React.Component {
             id={this.props.item.id}
           />
           <div className="case_see-more">
-            <Link href={`/about?docId=${this.props.item.id}`}>
+            <Link href={"/about?docId=" + this.props.item.id}>
               <a>More</a>
             </Link>
           </div>
