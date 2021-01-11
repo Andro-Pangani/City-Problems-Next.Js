@@ -20,6 +20,8 @@ class MyApp extends App {
     console.log("<<<<<<<<<<<<<<<>>>>>>> Component _app.js Mounted");
   }
 
+
+
   render() {
     //Information that was returned  from 'getInitialProps' are stored in the props i.e. pageProps
     const { Component, pageProps } = this.props;

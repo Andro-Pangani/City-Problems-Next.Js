@@ -19,7 +19,7 @@ export const getAqiMiddleware = (store) => (next) => (action) => {
            console.log('!!!!!!!!AqiIs Empty');
             store.dispatch(getAqiFailure([]));
           } else {
-           console.log('!!!!!!!!AqiData ',data);
+           // console.log('!!!!!!!!AqiData ',data);
 
             let aqidata = {};
             let aqiStationProps = [];

@@ -7,6 +7,8 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 const cookieParser = require("cookie-parser");
 
+console.log(process.env.NODE_ENV, " ###### NODE ENV");
+
 const bodyParser = require("body-parser");
 
 // COOKIE SECURITY

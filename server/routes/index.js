@@ -6,6 +6,8 @@ const alternativeTools = require("../functions/alternative-tools");
 const content_uploading_tools = require("../functions/content_uploading-tools");
 
 router.route("/main").get(controllers.main);
+router.route("/getSingleCase").get(controllers.getSingleCase);
+
 router.route("/delete").post(controllers.delete_case);
 router.route("/aqi").get(controllers.aqi);
 

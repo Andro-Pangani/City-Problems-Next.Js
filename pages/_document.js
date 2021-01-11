@@ -7,6 +7,8 @@ class MyDocument extends Document {
   }
 
   fbSdkLoad() {
+
+   
     window.fbAsyncInit = function () {
       FB.init({
         appId: "515172929069901",

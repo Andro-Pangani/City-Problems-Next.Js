@@ -1,17 +1,21 @@
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 // import MainLayoutTest from "../../Csr/mainLayout";
 // import styles from "../styles/main.module.css";
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import { _url } from "../../Csr/_urls";
 
-export default function AboutPage() {
+export default function AboutPage({ content }) {
   const [mounted, setMounted] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (!mounted) {
       setMounted(true);
       loadFbSdk();
     }
+
+    console.log(router.query.docId, " ############ Router");
   });
 
   const clickHandler = () => {
@@ -42,6 +46,8 @@ export default function AboutPage() {
     })(document, "script", "facebook-jssdk");
   };
 
+  const { address, type, description, Url, upload_date } = content.data;
+
   return (
     <>
       <Head>
@@ -55,16 +61,47 @@ export default function AboutPage() {
         <meta property="og:description" content="Your description" />
         <meta
           property="og:image"
-          content="https://www.your-domain.com/path/image.jpg"
+          content="https://storage.googleapis.com/deligation-40179.appspot.com/IMG_20201013_195931.jpg"
         />
       </Head>
-      <h1>About Page</h1>
-
-      <button onClick={clickHandler}> to Home</button>
-      <div
-        className="fb-share-button"
-        data-href="https://hiddenwood.herokuapp.com"
-      ></div>
+      <div className="single_case_container">
+        <div className="single_case-type">{type.toUpperCase()}</div>
+        <div className="single_case-address">{address}</div>
+        <div className="single_case-upload_date">{upload_date}</div>
+        <div className="single_case_content">
+          {content.data.Url.map((item, index) => {
+            return item.type === "image" ? (
+              <img key={index} className="single_case-image" src={item.link} />
+            ) : item.type === "video" ? (
+              <video
+                key={index}
+                className="single_case-video"
+                src={item.link}
+              />
+            ) : null;
+          })}
+        </div>
+        <button onClick={clickHandler}> to Home</button>
+        <div
+          className="fb-share-button"
+          data-href="https://hiddenwood.herokuapp.com"
+        ></div>
+      </div>
     </>
   );
 }
+
+AboutPage.getInitialProps = async (ctx) => {
+  // let content = null;
+  const response = await fetch(
+    `${_url.getSingleCase}?docId=${ctx.query.docId}`
+  );
+
+  const data = await response.json();
+
+  console.log(data, "###### data from initialProps");
+
+  return {
+    content: data,
+  };
+};

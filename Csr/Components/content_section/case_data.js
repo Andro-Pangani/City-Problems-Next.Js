@@ -49,13 +49,7 @@ export class CaseData extends React.Component {
   };
 
   componentDidUpdate(prevProps) {
-    // console.log("* CHILD DID UPDATE * ");
-    // ITEM IS NEW
-    // : RESET COMPONENT STATE
-    // : UPDATE PARRENT INDEX [1]
-    // ELSE
-    // CHANGE INDEX
-    // AND UPDATE PARRENT WITH CURRENT INDEX
+
 
     //IF DATA IS NEW
     if (prevProps.id !== this.props.id) {
