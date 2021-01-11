@@ -47,6 +47,9 @@ export default function AboutPage({ content }) {
   };
 
   const { address, type, description, Url, upload_date } = content.data;
+  const docId = router.query.docId;
+
+  console.log(docId, " ####### docId form about");
 
   return (
     <>
@@ -54,7 +57,7 @@ export default function AboutPage({ content }) {
         <title>About Page</title>
         <meta
           property="og:url"
-          content="https://www.your-domain.com/your-page.html"
+          content={`https://powerful-thicket-90466.herokuapp.com/about?docId=${docId}`}
         />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Your Website Title" />
@@ -84,7 +87,7 @@ export default function AboutPage({ content }) {
         <button onClick={clickHandler}> to Home</button>
         <div
           className="fb-share-button"
-          data-href="https://powerful-thicket-90466.herokuapp.com/about"
+          data-href={`https://powerful-thicket-90466.herokuapp.com/about?docId=${docId}`}
         ></div>
       </div>
     </>
