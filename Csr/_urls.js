@@ -24,7 +24,7 @@ const domain = "powerful-thicket-90466.herokuapp.com";
 
 const _url_global = {
   main: `https://${domain}/main`,
-  getSingle: `https://${domain}/getSingleCase`,
+  getSingleCase: `https://${domain}/getSingleCase`,
   delete: `https://${domain}/delete`,
   admin: `https://${domain}/admin`,
   approove: `https://${domain}/approove`,
