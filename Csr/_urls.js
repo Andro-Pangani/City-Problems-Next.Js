@@ -47,6 +47,7 @@ console.log(process.env.NODE_ENV, "############################## node env");
 // export const _url = dev ? _url_global : _url_local;
 
 export const _url = _url_global;
+// export const _url = _url_local;
 
 // export const _url = {
 //   main: "https://hiddenwood.herokuapp.com/main",

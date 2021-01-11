@@ -84,7 +84,7 @@ export default function AboutPage({ content }) {
         <button onClick={clickHandler}> to Home</button>
         <div
           className="fb-share-button"
-          data-href="https://hiddenwood.herokuapp.com"
+          data-href="https://powerful-thicket-90466.herokuapp.com/about"
         ></div>
       </div>
     </>
@@ -94,7 +94,7 @@ export default function AboutPage({ content }) {
 AboutPage.getInitialProps = async (ctx) => {
   // let content = null;
   const response = await fetch(
-    `${_url.getSingleCase}?docId=${ctx.query.docId}`
+    _url.getSingleCase + "?docId=" + ctx.query.docId
   );
 
   const data = await response.json();
