@@ -58,7 +58,7 @@ export default function AboutPage({ content }) {
   const { address, type, description, Url, upload_date } = content.data;
   const docId = router.query.docId;
   const link = Url[0].link;
-  // console.log(docId, " ####### docId form about");
+  console.log(link, " ####### Link from about");
 
   return (
     <>
@@ -66,12 +66,12 @@ export default function AboutPage({ content }) {
         <title>About Page</title>
         <meta
           property="og:url"
-          content={`https://powerful-thicket-90466.herokuapp.com?docId=${docId}`}
+          content={`https://powerful-thicket-90466.herokuapp.com/about?docId=${docId}`}
         />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={type} />
+        <meta property="og:title" content={content.type} />
         <meta property="og:description" content="Your description" />
-        <meta property="og:image" content={link} />
+        <meta property="og:image" content={content.data.Url[0].link} />
       </Head>
       <div
         className="single_case_container"
@@ -83,7 +83,7 @@ export default function AboutPage({ content }) {
         <div className="single_case-address">{address}</div>
         <div className="single_case-upload_date">{upload_date}</div>
         <div className="single_case_content">
-          {content.data.Url.map((item, index) => {
+          {Url.map((item, index) => {
             return (
               <SingleCaseItem
                 getMetaLink={getMetaLink}
