@@ -57,7 +57,7 @@ export default function AboutPage({ content }) {
 
   const { address, type, description, Url, upload_date } = content.data;
   const docId = router.query.docId;
-
+  const link = Url[0].link;
   // console.log(docId, " ####### docId form about");
 
   return (
@@ -69,9 +69,9 @@ export default function AboutPage({ content }) {
           content={`https://powerful-thicket-90466.herokuapp.com?docId=${docId}`}
         />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Your Website Title" />
+        <meta property="og:title" content={type} />
         <meta property="og:description" content="Your description" />
-        <meta property="og:image" content={metaLink} />
+        <meta property="og:image" content={link} />
       </Head>
       <div
         className="single_case_container"
