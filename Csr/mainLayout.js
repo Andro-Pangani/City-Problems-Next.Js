@@ -81,6 +81,7 @@ export class MainLayoutTest extends React.Component {
       isLoading: this.props.isLoading,
       lastSnapshot: this.props.lastSnapshot,
       fromScroll: null,
+      docId: this.props.router.query.docId,
     });
 
     // AQI REQUEST
@@ -88,7 +89,10 @@ export class MainLayoutTest extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log("********************* COMPONENT DID UPDATE APP.JS");
+    console.log(
+      this.props.router,
+      "********************* COMPONENT DID UPDATE APP.JS"
+    );
 
     if (this.props.mobileMode) {
       this.bodyTranslateValue =

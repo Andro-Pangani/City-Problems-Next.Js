@@ -23,7 +23,7 @@ export const SingleCaseItem = ({ item, link, getMetaLink, type, docId }) => {
               console.log("Mouse down");
             }}
             data-size="large"
-            data-href={`https://powerful-thicket-90466.herokuapp.com/about?docId=${docId}`}
+            data-href={`https://powerful-thicket-90466.herokuapp.com?docId=${docId}`}
           ></div>
         </div>
       ) : null}

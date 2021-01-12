@@ -12,10 +12,12 @@ export const getMainData_middleware = (store) => (next) => (action) => {
     case type.getMainDataRequest:
       // Checking for Loading state >
       let isLoadingStore = store.getState().main_data.isLoading;
+
       // setup url with query parameters
       if (action.payload) {
         url = `${_url.main}?lastSnapshot=${action.payload.lastSnapshot}&isLoading=${action.payload.isLoading}`;
       }
+
       if (isLoadingStore == false) {
         fetch(url, { method: "GET" })
           .then((response) => response.json())
@@ -26,13 +28,50 @@ export const getMainData_middleware = (store) => (next) => (action) => {
             let isLoading = main_data.isLoading;
             let isError = main_data.isError;
 
-            store.dispatch(
-              setMaterialDataRequest({
-                data: main_data.content,
-                isLoading,
-                isError,
-              })
-            );
+            // SETUP - SINGLE CASE FROM FACEBOOK
+
+            let docId = action.payload.docId;
+
+            if (docId) {
+              console.log("######### ACTION PAYLOAD DOC ID ### ", docId);
+
+              // FIND DOCUMENT WITH CURRENT DOC ID
+              let single_document = null;
+              main_data.content.map((item) => {
+                if (docId === item.id) {
+                  single_document = item;
+                }
+              });
+
+              if (single_document) {
+                store.dispatch(
+                  setMaterialDataRequest({
+                    data: [single_document],
+                    isLoading,
+                    isError,
+                  })
+                );
+              } else {
+                store.dispatch(
+                  setMaterialDataRequest({
+                    data: null,
+                    isLoading,
+                    isError: true,
+                  })
+                );
+              }
+
+              console.log(" ############ SINGLE DOCUMENT ", single_document);
+            } else {
+              // SETS VISIBLE CONTENT
+              store.dispatch(
+                setMaterialDataRequest({
+                  data: main_data.content,
+                  isLoading,
+                  isError,
+                })
+              );
+            }
           })
 
           .catch((err) => {

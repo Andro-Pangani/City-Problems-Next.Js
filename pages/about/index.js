@@ -66,7 +66,7 @@ export default function AboutPage({ content }) {
         <title>About Page</title>
         <meta
           property="og:url"
-          content={`https://powerful-thicket-90466.herokuapp.com/about?docId=${docId}`}
+          content={`https://powerful-thicket-90466.herokuapp.com?docId=${docId}`}
         />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Your Website Title" />

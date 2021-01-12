@@ -1,21 +1,24 @@
 import Head from "next/head";
 import Link from "next/link";
+import Router, { useRouter } from "next/router";
 
-import React from "react";
+import React, { useEffect } from "react";
 import MainLayoutTest from "../Csr/mainLayout";
 
-export default class Home extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+export default function Home() {
+  const router = useRouter();
+  const query = router.query;
+  useEffect(() => {
+    if (query.docId) {
+      router.push("/");
+    }
+  });
 
-  render() {
-    return (
-      <div className="appContainer">
-        <MainLayoutTest title={"Home"}>
-          <h2> Welcome to Home Page</h2>
-        </MainLayoutTest>
-      </div>
-    );
-  }
+  return (
+    <div className="appContainer">
+      <MainLayoutTest router={router} title={"Home"}>
+        <h2> Welcome to Home Page</h2>
+      </MainLayoutTest>
+    </div>
+  );
 }
