@@ -4,6 +4,12 @@ import { getMainDataSuccess } from "../( a-r )getMainData";
 import { setMaterialDataRequest } from "../Materials/( a - r )materials";
 import { getScrollContentSuccess } from "../scollContent/getScrollContent";
 
+// : 3 TYPES OF REQUEST
+// : 1. MAIN REQUEST. WITHOUT ANY PARAMETERS
+// : 2. REQUEST FROM FACEBOOK WITH DOC ID
+// : 3. REQUEST FROM SCROLL WITH LAST SNAPSHOT ID
+//
+
 // request url *
 let url = _url.main;
 
@@ -15,8 +21,13 @@ export const getMainData_middleware = (store) => (next) => (action) => {
 
       // setup url with query parameters
       if (action.payload) {
-        url = `${_url.main}?lastSnapshot=${action.payload.lastSnapshot}&isLoading=${action.payload.isLoading}`;
+        url = `${_url.main}?lastSnapshot=${action.payload.lastSnapshot}&isLoading=${action.payload.isLoading}&length=${action.payload.length}&empty=${action.payload.empty}`;
       }
+
+      console.log(
+        "|||||||||||||||||||||| GET MAIN DATA REQUEST MIDDLEWARE ||||||||||||||  ",
+        action.payload.length
+      );
 
       if (isLoadingStore == false) {
         fetch(url, { method: "GET" })
@@ -52,16 +63,21 @@ export const getMainData_middleware = (store) => (next) => (action) => {
                   })
                 );
               } else {
-                store.dispatch(
-                  setMaterialDataRequest({
-                    data: null,
-                    isLoading,
-                    isError: true,
-                  })
-                );
+                // store.dispatch(
+                //   setMaterialDataRequest({
+                //     data: null,
+                //     isLoading,
+                //     isError: true,
+                //   })
+                // );
               }
 
-              console.log(" ############ SINGLE DOCUMENT ", single_document);
+              console.log(
+                " ############ SINGLE DOCUMENT ######################",
+                single_document,
+                " --- > ",
+                main_data.content
+              );
             } else {
               // SETS VISIBLE CONTENT
               store.dispatch(
@@ -88,7 +104,7 @@ export const getMainData_middleware = (store) => (next) => (action) => {
       // isLoadingStore = store.getState().main_data.isLoading;
 
       if (action.payload) {
-        url = `${_url.main}?lastSnapshot=${action.payload.lastSnapshot}&isLoading=${action.payload.isLoading}`;
+        url = `${_url.main}?lastSnapshot=${action.payload.lastSnapshot}&isLoading=${action.payload.isLoading}&length=${action.payload.length}&docId=${action.payload.docId}`;
       }
 
       if (store.getState().main_data.isLoading == false) {

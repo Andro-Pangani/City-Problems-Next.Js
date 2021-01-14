@@ -47,6 +47,7 @@ function Content(props) {
               lastSnapshot: props.lastSnapshot,
               isLoading: props.isLoading,
               fromScroll: true,
+              length: props.length,
             })
           );
 
@@ -75,10 +76,18 @@ function Content(props) {
         <div>is error !</div>
       ) : data ? (
         data.map((item, index) => {
-          return <Case centerMap={centerMap} key={index} item={item} />;
+          return (
+            <Case
+              lastSnapshot={props.lastSnapshot}
+              length={props.length}
+              centerMap={centerMap}
+              key={index}
+              item={item}
+            />
+          );
         })
       ) : (
-        <div>no data</div>
+        <div className="content_section-no-data">no data</div>
       )}
     </section>
   );
@@ -95,6 +104,7 @@ const stateToProps = (state) => {
     isError: state.main_data.isError,
     data: state.material_data.data,
     lastSnapshot: state.main_data.lastSnapshot,
+    length: state.main_data.length,
   };
 };
 

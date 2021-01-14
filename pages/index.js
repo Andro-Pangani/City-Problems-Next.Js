@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <div className="appContainer">
-      <MainLayoutTest router={router} title={"Home"}>
+      <MainLayoutTest query={query} title={"Home"}>
         <h2> Welcome to Home Page</h2>
       </MainLayoutTest>
     </div>

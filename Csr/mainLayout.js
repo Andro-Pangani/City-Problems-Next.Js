@@ -73,26 +73,68 @@ export class MainLayoutTest extends React.Component {
 
     //  CONTENT ITEM WIDTH -                     --------            -       -----
     this.contentItemWidth = this.contentItemRef.current.getBoundingClientRect().width;
+    console.log(
+      "####### DID MOUNT MAIN LAYOUT QUERIES",
+      this.props.query,
+      " last Snapshot ",
+      this.props.lastSnapshot
+    );
 
-    console.log("####### Class Component Main Layout ;)");
+    let query = this.props.query ?? null;
+
+    let { singleCase, docId, empty, length, lastSnapshot } = this.props.query;
+
+    length = parseInt(length);
+
+    if (singleCase === "true") {
+      if (empty == "true") {
+        console.log("4444444444444444 EMPTY STATE ");
+
+        this.props.getMainDataRequest({
+          isLoading: this.props.isLoading,
+          lastSnapshot: lastSnapshot,
+          fromScroll: null,
+          docId: docId,
+          length: length,
+          empty: true,
+        });
+      }
+      let singleCase = null;
+      let material_data = this.props.material_data.data;
+
+      if (material_data) {
+        material_data.map((item) => {
+          if (item.id === docId) {
+            singleCase = item;
+          }
+        });
+
+        this.props.setMaterialDataRequest({
+          data: [singleCase],
+          isError: this.props.material_data.isError,
+          isLoading: this.props.material_data.isLoading,
+        });
+      }
+
+      console.log("333333333333333333333 SINGLE CASE", singleCase);
+    } else {
+      this.props.getMainDataRequest({
+        isLoading: this.props.isLoading,
+        lastSnapshot: this.props.lastSnapshot,
+        fromScroll: null,
+        docId: docId,
+        length: this.props.length,
+      });
+    }
 
     // CITY MATERIALS MAIN REQUEST
-    this.props.getMainDataRequest({
-      isLoading: this.props.isLoading,
-      lastSnapshot: this.props.lastSnapshot,
-      fromScroll: null,
-      docId: this.props.router.query.docId,
-    });
 
     // AQI REQUEST
     this.props.getAqiRequest();
   }
 
   componentDidUpdate() {
-    console.log(
-      this.props.router,
-      "********************* COMPONENT DID UPDATE APP.JS"
-    );
+    console.log("********************* COMPONENT DID UPDATE APP.JS");
 
     if (this.props.mobileMode) {
       this.bodyTranslateValue =
@@ -137,7 +179,7 @@ export class MainLayoutTest extends React.Component {
     console.log(
       "|||||||||||||||||||||| MAIN LAYOUT UNMOUNTED ||||||||||||||||||||"
     );
-    this.props.lastSnapshotRefresh(null);
+    // this.props.lastSnapshotRefresh(null);
   }
 
   bodyTranslateValue = 0;
@@ -215,11 +257,13 @@ const stateToProps = (state) => {
     isLoading: state.main_data.isLoading,
     isError: state.main_data.isError,
     data: state.main_data.content,
+    material_data: state.material_data,
     mobileMode: state.mobile.mobileMode,
     mobileTabIndex: state.mobile.menuTabIndex,
     mobileNavItemClicked: state.mobile.navItemClicked,
     mobileShowOnMapClicked: state.mobile.showOnMapClicked,
     mobileUploadAddressFromMap: state.mobile.uploadAddressFromMap,
+    length: state.main_data.length,
   };
 };
 

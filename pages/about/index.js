@@ -5,23 +5,34 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { _url } from "../../Csr/_urls";
 import { SingleCaseItem } from "../../Csr/Components/singleCaseContent/singleCaseItem";
+import { MainLayoutTest } from "../../Csr/mainLayout";
+import { useSelector } from "react-redux";
 
 export default function AboutPage({ content }) {
   const [mounted, setMounted] = useState(false);
   const [metaLink, setMetaLink] = useState(content.data.Url[0].link);
   const router = useRouter();
+  const storeData = useSelector((state) => state.material_data.data);
 
   useEffect(() => {
     if (!mounted) {
       setMounted(true);
       loadFbSdk();
     }
+    if (!storeData) {
+      console.log("STORE IS EMPTY BABE FROM ABOUT INDEX", storeData);
+    } else {
+      console.log("STORE FROM ABOUT INDEX", storeData);
+    }
 
     // console.log(router.query.docId, " ############ Router");
   });
 
   const clickHandler = () => {
-    Router.push("/");
+    let empty = storeData ? false : true;
+    Router.push(
+      `/?docId=${docId}&singleCase=${true}&length=${length}&empty=${empty}&lastSnapshot=${lastSnapshot}`
+    );
   };
 
   const getMetaLink = (link) => {
@@ -56,9 +67,9 @@ export default function AboutPage({ content }) {
   };
 
   const { address, type, description, Url, upload_date } = content.data;
-  const docId = router.query.docId;
+  const { docId, lastSnapshot, length } = router.query;
+  const { query } = router;
   const link = Url[0].link;
-  console.log(link, " ####### Link from about");
 
   return (
     <>
@@ -66,7 +77,7 @@ export default function AboutPage({ content }) {
         <title>About Page</title>
         <meta
           property="og:url"
-          content={`https://powerful-thicket-90466.herokuapp.com/about?docId=${docId}`}
+          content={`https://powerful-thicket-90466.herokuapp.com/about?docId=${docId}&lastSnapshot=${lastSnapshot}`}
         />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={content.type} />
@@ -79,9 +90,11 @@ export default function AboutPage({ content }) {
           console.log("Mouse down on container");
         }}
       >
-        <div className="single_case-type">{type.toUpperCase()}</div>
-        <div className="single_case-address">{address}</div>
-        <div className="single_case-upload_date">{upload_date}</div>
+        <header className="single_case_header">
+          <div className="single_case-type">{type.toUpperCase()}</div>
+          <div className="single_case-address">{address}</div>
+          <div className="single_case-upload_date">{upload_date}</div>
+        </header>
         <div className="single_case_content">
           {Url.map((item, index) => {
             return (
@@ -96,6 +109,15 @@ export default function AboutPage({ content }) {
             );
           })}
         </div>
+        {/* <MainLayoutTest query={query} /> */}
+        <div
+          className="fb-share-button"
+          onMouseEnter={() => {
+            console.log("Mouse down");
+          }}
+          data-size="large"
+          data-href={`https://powerful-thicket-90466.herokuapp.com/about?docId=${docId}&lastSnapshot=${lastSnapshot}`}
+        ></div>
         <button onClick={clickHandler}> to Home</button>
       </div>
     </>

@@ -51,8 +51,6 @@ export class Case extends React.Component {
     let _prevItemId = prevProps.item.id;
     let _currentItemId = this.props.item.id;
 
-    console.log("- PARRENT DID UPDATE - ");
-
     //IF DATA IS NEW
     // RESETTING INDEX TO 1
     if (_prevItemId !== _currentItemId) {
@@ -123,7 +121,16 @@ export class Case extends React.Component {
             id={this.props.item.id}
           />
           <div className="case_see-more">
-            <Link href={"/about?docId=" + this.props.item.id}>
+            <Link
+              href={
+                "/about?docId=" +
+                this.props.item.id +
+                "&lastSnapshot=" +
+                this.props.lastSnapshot +
+                "&length=" +
+                this.props.length
+              }
+            >
               <a>More</a>
             </Link>
             {/* <Link href={"/about"}>

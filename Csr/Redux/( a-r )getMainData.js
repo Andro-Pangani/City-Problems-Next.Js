@@ -19,9 +19,12 @@ const main_content = {
   content: [],
   fromScroll: null,
   lastSnapshot: null,
+  prevSnapshot: null,
   isLoading: false,
   isError: false,
   scrollIsLoading: false,
+  length: 0,
+  docId: null,
 };
 
 export const getMainDataReducer = (state = main_content, action) => {
@@ -30,11 +33,15 @@ export const getMainDataReducer = (state = main_content, action) => {
       return { ...state, isLoading: true };
 
     case type.getMainDataSuccess:
+      console.log("||||||||||| GET MAIN DATA SUCCESS |", action.payload);
       return {
         ...state,
-        content: action.payload.content,
+        content: [...state.content, ...action.payload.content],
         lastSnapshot: action.payload.lastSnapshot,
+        prevSnapshot: action.payload.prevSnapshot,
         isLoading: false,
+        length: action.payload.length,
+        docId: action.payload.docId,
       };
 
     case type.getLastSnapshotRefresh:
@@ -48,8 +55,10 @@ export const getMainDataReducer = (state = main_content, action) => {
         ...state,
         content: [...state.content, ...action.payload.content],
         lastSnapshot: action.payload.lastSnapshot,
-
+        prevSnapshot: action.payload.prevSnapshot,
+        docId: action.payload.docId,
         fromScroll: null,
+        length: action.payload.length,
       };
     case type.getMainDataFailure:
       return { ...state, isError: action.payload };
