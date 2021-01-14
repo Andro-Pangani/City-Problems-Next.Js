@@ -75,7 +75,7 @@ export default function AboutPage({ content }) {
         <title>About Page</title>
         <meta
           property="og:url"
-          content={`https://powerful-thicket-90466.herokuapp.com/about?docId=${docId}&lastSnapshot=${lastSnapshot}&length=${length}&empty=${empty}`}
+          content={`https://powerful-thicket-90466.herokuapp.com/about?docId=${docId}&lastSnapshot=${lastSnapshot}&length=${length}`}
         />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={content.type} />
@@ -114,7 +114,7 @@ export default function AboutPage({ content }) {
             console.log("Mouse down");
           }}
           data-size="large"
-          data-href={`https://powerful-thicket-90466.herokuapp.com/about?docId=${docId}&lastSnapshot=${lastSnapshot}&length=${length}&empty=${empty}`}
+          data-href={`https://powerful-thicket-90466.herokuapp.com/about?docId=${docId}&lastSnapshot=${lastSnapshot}&length=${length}`}
         ></div>
         <button onClick={clickHandler}> to Home</button>
       </div>
