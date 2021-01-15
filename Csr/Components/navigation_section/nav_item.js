@@ -62,9 +62,9 @@ export function NavItem(props) {
       onClick={handleClick}
       style={navItemStyle(active, props.lang)}
     >
-      {props.type}
+      <span className="nav_item-type">{props.type}</span>
       {props.data ? (
-        <div className="item_count">{props.data.length}</div>
+        <span className="item_count">{props.data.length}</span>
       ) : null}
     </span>
   );

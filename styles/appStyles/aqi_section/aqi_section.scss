@@ -102,7 +102,7 @@ $borderColor: #3a3a3a;
 
 .no_data_section {
   text-align: center;
-  background: #151515;
+  background: #2e2e44;
   border-radius: 3px;
   display: flex;
   padding: 0.5rem;
@@ -129,9 +129,9 @@ $borderColor: #3a3a3a;
 .no_data_text {
   font-family: "alk-sanet", sans-serif;
   color: #484848;
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   width: 80%;
-  background: linear-gradient(#5d4c4c, #282f1a, #673716);
+  background: linear-gradient(#bda57c, #80343e, #7b7a79);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1.5rem;

@@ -1,6 +1,6 @@
 export const navItemStyle = (active, lang) => ({
   fontSize:
-    lang === "Georgian" ? "1.8rem" : lang === "Russian" ? "1.1rem" : "1.5rem",
+    lang === "Georgian" ? "2rem" : lang === "Russian" ? "1.1rem" : "1.5rem",
   fontFamily: lang === "English" ? "alk-sanet" : null,
   ...(active ? { ...activeStyle } : null),
 });

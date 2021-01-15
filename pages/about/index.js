@@ -68,18 +68,18 @@ export default function AboutPage({ content }) {
 
   const { address, type, description, Url, upload_date } = content.data;
   const { docId, lastSnapshot, length } = router.query;
-
+  console.log("######### CONTENT TYPE FROM ABOUT PAGE", content);
   return (
     <>
       <Head>
-        <title>About Page</title>
+        <title>{content.data.type.toUpperCase()}</title>
         <meta
           property="og:url"
           content={`https://powerful-thicket-90466.herokuapp.com/about?docId=${docId}&lastSnapshot=${lastSnapshot}&length=${length}`}
         />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={content.type} />
-        <meta property="og:description" content="Your description" />
+        <meta property="og:title" content={content.data.type.toUpperCase()} />
+        <meta property="og:description" content={content.data.address} />
         <meta property="og:image" content={content.data.Url[0].link} />
       </Head>
       <div
