@@ -14,7 +14,7 @@ export const SingleCaseItem = ({ item, link, getMetaLink, type, docId }) => {
           {type === "image" ? (
             <img className="single_case-image" src={item.link} />
           ) : type === "video" ? (
-            <video className="single_case-video" src={item.link} />
+            <video className="single_case-video" src={item.link} controls />
           ) : null}
         </div>
       ) : null}

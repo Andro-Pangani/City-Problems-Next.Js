@@ -5,7 +5,7 @@ export const mapStyle = [
     elementType: "geometry",
     stylers: [
       {
-        color: "#202426",
+        color: "#1C1C1C",
       },
     ],
   },
@@ -83,7 +83,7 @@ export const mapStyle = [
     elementType: "geometry.fill",
     stylers: [
       {
-        color: "#9DA65D",
+        color: "#ADB342",
       },
     ],
   },
@@ -110,10 +110,11 @@ export const mapStyle = [
     elementType: "geometry.fill",
     stylers: [
       {
-        color: "#83B28B",
+        color: "#65B34B",
       },
     ],
   },
+
   {
     featureType: "road",
     elementType: "geometry.fill",
@@ -146,10 +147,10 @@ export const mapStyle = [
     elementType: "geometry.fill",
     stylers: [
       {
-        color: "#9D5B1E",
+        color: "#88604D",
       },
       {
-        weight: 1,
+        weight: 1.5,
       },
     ],
   },
@@ -206,10 +207,10 @@ export const mapStyle = [
     elementType: "geometry.fill",
     stylers: [
       {
-        color: "#8273A0",
+        color: "#715040",
       },
       {
-        weight: 1,
+        weight: 0.8,
       },
     ],
   },

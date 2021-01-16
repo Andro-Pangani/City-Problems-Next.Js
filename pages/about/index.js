@@ -107,16 +107,17 @@ export default function AboutPage({ content }) {
             );
           })}
         </div>
-        {/* <MainLayoutTest query={query} /> */}
         <div
           className="fb-share-button"
           onMouseEnter={() => {
             console.log("Mouse down");
           }}
-          data-size="large"
+          data-layout="button"
+          data-size="small"
           data-href={`https://powerful-thicket-90466.herokuapp.com/about?docId=${docId}&lastSnapshot=${lastSnapshot}&length=${length}`}
         ></div>
         <button onClick={clickHandler}> to Home</button>
+        {/* <MainLayoutTest query={query} /> */}
       </div>
     </>
   );

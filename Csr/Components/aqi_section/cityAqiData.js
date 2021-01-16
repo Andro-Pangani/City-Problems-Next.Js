@@ -50,7 +50,7 @@ function SubstanceBlock(props) {
       }
     >
       <li className="substance_name">
-        <span className="aqi_name_text">{props.substanceName}:</span>
+        <span className="aqi_name_text">{props.substanceName}</span>
       </li>
       <li ref={props.valueFieldRef} className="substance_value">
         {props.data1hour.length !== 0 && props.data1hour ? (
@@ -65,10 +65,11 @@ function SubstanceBlock(props) {
           <div className="_no_data_sign"></div>
         )}
       </li>
-      <li
-        style={{ width: "50", height: "50" }}
-        className="substance_level_dangerous"
-      ></li>
+      <li className="substance_level_share">
+        {props.data1hour.length !== 0 && props.data1hour
+          ? props.aqi_level_current.aqi_level
+          : "no data"}
+      </li>
     </ul>
   );
 }

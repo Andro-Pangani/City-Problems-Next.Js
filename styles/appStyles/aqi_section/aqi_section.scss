@@ -100,46 +100,6 @@ $borderColor: #3a3a3a;
   }
 }
 
-.no_data_section {
-  text-align: center;
-  background: #2e2e44;
-  border-radius: 3px;
-  display: flex;
-  padding: 0.5rem;
-  flex-direction: column;
-  align-items: center;
-  font-size: 0.7rem;
-  // box-shadow: inset -10px 3px 4px 12px #656565;
-  &::first-child {
-    border-top: 1px solid gray;
-  }
-  // padding-left: 10px;
-}
-
-.no_data_address {
-  margin-bottom: 0.5rem;
-  font-size: 1.8rem;
-  color: #969191;
-  background: #3a3a3a;
-  letter-spacing: 0.2rem;
-  border-radius: 1px;
-  font-family: "ALK Tall Mtavruli", sans-serif;
-}
-
-.no_data_text {
-  font-family: "alk-sanet", sans-serif;
-  color: #484848;
-  font-size: 1.4rem;
-  width: 80%;
-  background: linear-gradient(#bda57c, #80343e, #7b7a79);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1.5rem;
-  letter-spacing: 0.2rem;
-  padding: 2px;
-  padding-left: 5px;
-}
-
 .aqi_data_container {
   margin-top: 30px;
   padding: 5px;
