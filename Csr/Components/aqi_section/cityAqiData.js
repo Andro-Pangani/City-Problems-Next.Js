@@ -7,6 +7,7 @@ import { aqiStationAddressStyle } from "./jsxStyles";
 import { LocationPin } from "./locatioPin";
 import { languages } from "../../language/languages";
 import { setMobileTabIndex } from "../content_section/reduxThunk/mobile/( a - r ) mobileMenu";
+import Link from "next/link";
 
 const fingerSvg = () => {
   return (
@@ -176,6 +177,9 @@ function AqiStation(props) {
           </div>
         )}
       </div>
+      <Link href={`/aqiShare`}>
+        <a>More</a>
+      </Link>
     </div>
   );
 }
