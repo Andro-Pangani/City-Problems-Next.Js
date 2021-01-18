@@ -54,7 +54,7 @@ export default function AboutPage({ content }) {
       fjs.parentNode.insertBefore(js, fjs);
     })(document, "script", "facebook-jssdk");
   };
-
+  const aqiImageName = "ge_marjanishvili_very-poor.png";
   const { docId, lastSnapshot, length } = router.query;
   return (
     <>
@@ -69,7 +69,7 @@ export default function AboutPage({ content }) {
         <meta property="og:description" content="Marjanishvili Ave" />
         <meta
           property="og:image"
-          content={`https://powerful-thicket-90466.herokuapp.com/aqi/ge/tbilisi/marjanishvili_ave-veryPoor.png`}
+          content={`https://powerful-thicket-90466.herokuapp.com/aqi/ge/tbilisi/${aqiImageName}`}
         />
       </Head>
       <div
@@ -84,7 +84,7 @@ export default function AboutPage({ content }) {
           <div className="single_case-upload_date">{upload_date}</div> */}
         </header>
         <div className="single_case_content">
-          <img src={`/aqi/ge/tbilisi/marjanishvili_ave-veryPoor.png`} />
+          <img src={`/aqi/ge/tbilisi/${aqiImageName}`} />
         </div>
         <div
           className="fb-share-button"
