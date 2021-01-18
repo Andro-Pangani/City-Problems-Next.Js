@@ -54,7 +54,7 @@ export default function AboutPage({ content }) {
       fjs.parentNode.insertBefore(js, fjs);
     })(document, "script", "facebook-jssdk");
   };
-  const aqiImageName = "ge_marjanishvili_very-poor.png";
+  const aqiImageName = "ge_marjanishvili_veryPoor.png";
   const { docId, lastSnapshot, length } = router.query;
   return (
     <>
