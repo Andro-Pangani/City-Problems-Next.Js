@@ -4,6 +4,7 @@ import { ShowOnMapComponent } from "./click/show_on_map";
 import DeleteSection from "./click/delete_section";
 import ApprooveSection from "./click/approove_section";
 import { AlternativeComponent } from "./AlternativeComponent";
+import { AlternativeButton } from "./alternative_button";
 import Link from "next/link";
 
 export class Case extends React.Component {
@@ -17,6 +18,7 @@ export class Case extends React.Component {
       filesQuantity: props.item.Url.length,
       currentFileIndex: 1,
       reset: false,
+      altButtonClicked: false,
     };
   }
 
@@ -39,6 +41,8 @@ export class Case extends React.Component {
   };
 
   componentDidMount() {
+    console.log("22222222 Case Parrent updated", this.state.altButtonClicked);
+
     let size = this.caseContainerRef.current.getBoundingClientRect();
     let width = size.width;
 
@@ -60,6 +64,17 @@ export class Case extends React.Component {
       });
     }
   }
+
+  alternativeClickHandler = (state) => {
+    this.setState({
+      altButtonClicked: state,
+    });
+    console.log(state, "Handler alt button state container");
+  };
+
+  funcDelivery = (func) => {
+    return func;
+  };
 
   render() {
     let item = this.props.item;
@@ -141,7 +156,15 @@ export class Case extends React.Component {
         <div className="case_footer">
           <div className="case_description">{desc}</div>
         </div>
-        <AlternativeComponent item={item} />
+        <AlternativeButton
+          clickedStatus={this.alternativeClickHandler}
+          clickedState={this.state.altButtonClicked}
+        />
+        <AlternativeComponent
+          item={item}
+          clickedStatus={this.alternativeClickHandler}
+          clickedState={this.state.altButtonClicked}
+        />
       </div>
     );
   }

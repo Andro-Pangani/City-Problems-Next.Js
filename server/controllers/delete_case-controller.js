@@ -29,8 +29,6 @@ exports.delete_case = async (req, res, next) => {
   var docId = "nothing";
   var links = [];
 
-  console.log("- REQUEST.BODY FROM DELETION CONTROLLER", req.body);
-
   // SETS FIREBASE DOC ID*
   // IF EXISTS
   for (var item in props) {
@@ -50,16 +48,14 @@ exports.delete_case = async (req, res, next) => {
   links.forEach((item) => {
     var file = bucket.file(item);
     if (file) {
-      console.log("@############## file ", file);
       file
         .delete()
         .then(() => {
-          console.log(item, " deleted");
+          // console.log(item, " deleted");
         })
         .catch((err) => {
           console.log(
             " -**********  Error HANDLER ******* - ",
-
             "######### From Files Deletion"
           );
         });
@@ -70,8 +66,6 @@ exports.delete_case = async (req, res, next) => {
       });
     }
   });
-
-  console.log("after Files deletion", req.body, docId, " => ");
 
   // DELETES FROM FIREBASE
   db.collection("problems")

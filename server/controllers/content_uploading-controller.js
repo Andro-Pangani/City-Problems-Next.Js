@@ -13,7 +13,6 @@ const { Storage } = require("@google-cloud/storage");
 
 var mail = require("../keys/keys").mail;
 var privateKey = require("../keys/keys").privateKey;
-const { REFUSED } = require("dns");
 
 // PUBLIC SERVER KEY SETUP * * DONT DELETE
 const gcstorage = new Storage({
@@ -30,27 +29,12 @@ var bucket = gcstorage.bucket(bucketName);
 
 // - setting Current working directory path into _url variable
 const _url = path.join(process.cwd(), "/uploads/");
-
 // - google cloud storage bucket
 function getPublicUrl(filename) {
   return `https://storage.googleapis.com/deligation-40179.appspot.com/${filename}`;
 }
 
-// - function returns path to current file
-function tempDest(filename) {
-  return path.join(_url, filename);
-}
-
 // function UploadToGCS();
-
-try {
-  if (!fs.existsSync(_url)) {
-    fs.mkdirSync(_url);
-  }
-  console.log("FOLDER EXIST");
-} catch (err) {
-  console.error(err);
-}
 
 // - functione return current date with offset
 function currentTime() {
@@ -83,9 +67,36 @@ function currentTime() {
   return uploadDate;
 }
 
+// - function returns path to current file
+function tempDest(file_mimetype, filename) {
+  console.log("############## mimetype", file_mimetype);
+  switch (file_mimetype) {
+    case "image/jpeg":
+    case "image/png":
+    case "image/jpg":
+      return path.join(`${_url}images/`, filename);
+    case "video/mp4":
+      return path.join(`${_url}videos/`, filename);
+    default:
+      break;
+  }
+}
+
+try {
+  if (!fs.existsSync(_url)) {
+    fs.mkdirSync(_url);
+  }
+  console.log("FOLDER EXIST");
+} catch (err) {
+  console.error(err, "#### error from checking if folders exist");
+}
+
 exports.content_uploading = async (req, res, next) => {
-  console.log("user from upload --> -> ->", req.body, " <- <- <-");
-  console.log(req.files, " --- uploaded files");
+  console.log("user from upload --> -> ->", req.files, " <- <- <-");
+  // console.log(
+  //   req.files,
+  //   " ---####### req.files FROM CONTENT UPLOADING #############"
+  // );
   var files = req.files;
 
   var link = 0;
@@ -98,28 +109,40 @@ exports.content_uploading = async (req, res, next) => {
     return;
   }
 
-  
-
   // ==========*========= SET UP EACH FILE =========*==========
   files
     ? files.forEach((file) => {
         // - getting each file path
-        const tempLink = tempDest(file.originalname);
+        const tempLink = tempDest(file.mimetype, file.originalname);
         // - writing with stream to bucket
         var gcsfile = bucket.file(file.originalname);
 
-        fs.createReadStream(tempLink).pipe(
+        console.log("############ TEMP LINK FROM", tempLink, "-> file", file);
+        let stream = fs.createReadStream(tempLink).pipe(
           gcsfile
             .createWriteStream({
+              resumable: false,
               metadata: {
                 contentType: file.mimetype,
               },
             })
             .on("finish", () => {
               // - deleting after file was uploaded
+              console.log("############### GCS UPLOADING FINISHED ");
               fs.unlinkSync(tempLink);
             })
+            .on("error", (error) => {
+              console.log("############# ERROR FROM G_C_STORAGE ", error);
+            })
         );
+        stream.on("error", (err) => {
+          console.log(
+            "###??????????????????????????? Error from stream ",
+            err,
+            "temp Link => ",
+            tempLink
+          );
+        });
         // ========*======== GET FILE URL WITH FUNCTION =========*==========
         file.storageUrl = getPublicUrl(file.originalname);
         var urlObj = {};
@@ -258,7 +281,7 @@ exports.content_uploading = async (req, res, next) => {
           },
         })
         .then((result) => {
-          console.log(result, " id > ", result.id, " Result After Uploading ");
+          console.log(" id > ", result.id, " Result After Uploading ");
 
           let lastSnapshot = undefined;
           db.collection("problems")

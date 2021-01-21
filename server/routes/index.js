@@ -18,6 +18,7 @@ router
   .post(
     content_uploading_tools.multerMiddleware,
     content_uploading_tools.minimize,
+    content_uploading_tools.minimizeVideo,
     controllers.content_uploading
   );
 

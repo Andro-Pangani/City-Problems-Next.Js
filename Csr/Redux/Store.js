@@ -16,7 +16,7 @@ import {
 import { mapTempAddressListReducer } from "./Map/indexMap";
 import { type } from "./types";
 import {
- aqiMarkersOnMapReducer,
+  aqiMarkersOnMapReducer,
   getMapReferenceReducer,
   setMapReferenceToState,
   setMarkersToStoreReducer,
@@ -40,6 +40,7 @@ import { MobileMenuReducer } from "../Components/content_section/reduxThunk/mobi
 import { getDeletionReducer } from "./AdminRoom/a - r _adminRoom";
 import { setLanguagesReducer } from "./languages/( a - r ) languages";
 import { addAqiMarkersMiddleware } from "./middlewares/add_aqi_markers_middleware";
+import { alternativeButtonReducer } from "./( a - r ) alternativeButton";
 // ooo sorry for this andro 'll fix later
 const getMapRefMiddleware = (store) => (next) => (action) => {
   if (action.type === type.Map.getMapReferenceRequest) {
@@ -79,9 +80,10 @@ export const store = createStore(
     map: combineReducers({
       mapRef: getMapReferenceReducer,
       markers: setMarkersToStoreReducer,
-      aqiMarkers: aqiMarkersOnMapReducer
+      aqiMarkers: aqiMarkersOnMapReducer,
     }),
-    language: setLanguagesReducer
+    language: setLanguagesReducer,
+    alternativeButtonState: alternativeButtonReducer,
   }),
   compose(
     applyMiddleware(uploadingMiddleware),

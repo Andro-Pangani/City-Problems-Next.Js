@@ -9,6 +9,6 @@ export const activeStyle = {
   // background: "rgb(66 66 66)",
   color: "#cacaca",
   fontSize: "2.5rem",
-  border: "1px solid #686309",
+  border: "1px solid rgb(72 72 67)",
   // borderRight: "none",
 };

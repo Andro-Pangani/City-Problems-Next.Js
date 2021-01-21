@@ -30,6 +30,7 @@ export const type = {
     setAqiMarkersToStore: "SET_AQI_MARKERS_TO_STORE",
   },
   Alternative: {
+    buttonClick: "ALTERNATIVE_BUTTON_CLICK",
     single: {
       approove: "ALTERNATIVE_SINGLE_APPROOVE",
       delete: "ALTERNATIVE_SINGLE_DELETE",
