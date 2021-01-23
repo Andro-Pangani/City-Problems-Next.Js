@@ -8,8 +8,23 @@
   text-align: center;
 }
 
+.single_case {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
 .single_case_header {
-  color: wheat;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #2f2e2e;
+  color: gainsboro;
+  margin-bottom: 10px;
+  margin-top: 1rem;
+  padding: 5px;
 }
 
 .single_case_content {
@@ -18,6 +33,8 @@
   margin: 0 auto;
   overflow: hidden;
   overflow-y: auto;
+  border-radius: 5px;
+  border: 1px solid #151515;
 }
 
 .single_case_item {
@@ -25,6 +42,7 @@
   justify-content: center;
   width: 90vw;
   height: 100%;
+  margin-bottom: 1rem;
 }
 
 .single_case {
@@ -33,12 +51,32 @@
   }
 
   &-address {
-    font-size: 1.2rem;
+    display: flex;
+    align-items: baseline;
+    font-size: 1.8rem;
+    color: #bbbbbb;
+
+    &_title {
+      margin-right: 0.5rem;
+    }
+    &_text {
+      font-size: 1.2rem;
+    }
   }
 }
 
 .single_case-image,
 .single_case-video {
+  // width: 100%;
   max-width: 100%;
   max-height: 100%;
+}
+
+.single_case_footer {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding: 1rem;
+  border: 1px solid #151515;
+  border-top: none;
 }

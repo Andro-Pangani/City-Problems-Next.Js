@@ -164,7 +164,7 @@ class Header_ extends React.Component {
                 {languages.headerNavigation[this.props.language].upload}
               </span>
             </li>
-            <li type={"language"} className="nav_menu_item">
+            <li type={"language"} className="nav_menu_item menu_lang">
               <LanguagesComponent />
             </li>
           </ul>

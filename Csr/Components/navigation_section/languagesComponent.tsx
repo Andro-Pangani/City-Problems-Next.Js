@@ -49,7 +49,7 @@ export function LanguagesComponent(props){
    </div>
    <ul className="languages_list"
    style={{
-    display: langList ? 'block' : 'none'
+    display: langList ? 'flex' : 'none'
    }}
    >
    {

@@ -88,35 +88,47 @@ export default function AboutPage({ content }) {
           console.log("Mouse down on container");
         }}
       >
-        <header className="single_case_header">
-          <div className="single_case-type">{type.toUpperCase()}</div>
-          <div className="single_case-address">{address}</div>
-          <div className="single_case-upload_date">{upload_date}</div>
-        </header>
-        <div className="single_case_content">
-          {Url.map((item, index) => {
-            return (
-              <SingleCaseItem
-                getMetaLink={getMetaLink}
-                key={index}
-                link={item.link}
-                item={item}
-                type={item.type}
-                docId={docId}
-              />
-            );
-          })}
+        <div className="single_case">
+          <header className="single_case_header">
+            <div className="single_case-type">{type.toUpperCase()}</div>
+            <div className="single_case-address">
+              <div className="single_case-address_title">Location: </div>
+              <div className="single_case-address_text">
+                {address ? address : "-"}
+              </div>
+            </div>
+            <div className="single_case-upload_date">
+              <div className="single_case-upload_date_title">Uploaded:</div>
+              <div>{upload_date ? upload_date : " - "}</div>
+            </div>
+          </header>
+          <div className="single_case_content">
+            {Url.map((item, index) => {
+              return (
+                <SingleCaseItem
+                  getMetaLink={getMetaLink}
+                  key={index}
+                  link={item.link}
+                  item={item}
+                  type={item.type}
+                  docId={docId}
+                />
+              );
+            })}
+          </div>
+          <footer className="single_case_footer">
+            <div
+              className="fb-share-button"
+              onMouseEnter={() => {
+                console.log("Mouse down");
+              }}
+              data-layout="button"
+              data-size="small"
+              data-href={`https://powerful-thicket-90466.herokuapp.com/about?docId=${docId}&lastSnapshot=${lastSnapshot}&length=${length}`}
+            ></div>
+            <button onClick={clickHandler}>{`< back`}</button>
+          </footer>
         </div>
-        <div
-          className="fb-share-button"
-          onMouseEnter={() => {
-            console.log("Mouse down");
-          }}
-          data-layout="button"
-          data-size="small"
-          data-href={`https://powerful-thicket-90466.herokuapp.com/about?docId=${docId}&lastSnapshot=${lastSnapshot}&length=${length}`}
-        ></div>
-        <button onClick={clickHandler}> to Home</button>
         {/* <MainLayoutTest query={query} /> */}
       </div>
     </>

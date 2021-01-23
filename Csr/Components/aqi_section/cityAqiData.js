@@ -177,9 +177,11 @@ function AqiStation(props) {
           </div>
         )}
       </div>
-      <Link href={`/aqiShare`}>
-        <a>More</a>
-      </Link>
+      <div className="aqi_station_more">
+        <Link href={`/aqiShare`}>
+          <a className="aqi_station_more-text">More</a>
+        </Link>
+      </div>
     </div>
   );
 }
@@ -221,25 +223,46 @@ function CityAqiData(props) {
       </div>
     );
   } else if (isLoaded) {
-    return props.aqiData.cityData
+    let sortedStations = [];
+    let stationWithData = [];
+    let stationEmpty = [];
+
+    props.aqiData.cityData
       ? props.aqiData.cityData.length > 0
         ? props.aqiData.cityData.map((item, index) => {
-            return (
-              <AqiStationConnected
-                key={index}
-                address={item.address}
-                empty={item.empty}
-                data={item}
-                // marker={station_marker}
-              />
-            );
+            if (item.empty) {
+              stationEmpty.push(item);
+            } else {
+              stationWithData.push(item);
+            }
           })
         : null
       : null;
+    sortedStations = [...stationWithData, ...stationEmpty];
+    return sortedStations.length != 0 ? (
+      sortedStations.map((item, index) => {
+        return (
+          <AqiStationConnected
+            key={index}
+            address={item.address}
+            empty={item.empty}
+            data={item}
+          />
+        );
+      })
+    ) : (
+      <div className="no_aqi_data_container">
+        <div className="no_aqi_data-text">
+          არ არის ჰაერის ხარისხის მონაცემები
+        </div>
+      </div>
+    );
   } else if (isError) {
     return (
       <div className="no_aqi_data_container">
-        არ არის ჰაერის ხარისხის მონაცემები
+        <div className="no_aqi_data-text">
+          არ არის ჰაერის ხარისხის მონაცემები
+        </div>
       </div>
     );
   } else return <div>no data</div>;

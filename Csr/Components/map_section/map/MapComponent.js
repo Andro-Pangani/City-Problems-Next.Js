@@ -12,6 +12,7 @@ import {
 
 import {
   getMapReferenceRequest,
+  removeCaseMarkersFromStore,
   setAqiMarkersToStore,
   setMarkersToStoreRequest,
 } from "../../../Redux/Map/A_R_getMapReference";
@@ -84,6 +85,8 @@ class MapComponent extends React.Component {
   }
 
   componentWillUnmount() {
+    this.props.removeCaseMarkersFromStore();
+
     let scripts = window.document.getElementsByTagName("script");
     this.mapOthers = window.document.body.getElementsByClassName(
       "pac-container"
@@ -102,12 +105,27 @@ class MapComponent extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.addresses !== this.state.addresses) {
-      this.AddMarkers(this.props.addresses);
-      this.setState({
-        addresses: this.props.addresses,
-      });
-    }
+    this.AddMarkers(this.props.addresses);
+
+    // if (this.props.addresses !== this.state.addresses) {
+    //   console.log(
+    //     "############# markers ADDED ######### ",
+    //     this.props.addresses,
+    //     " state>",
+    //     this.state.addresses
+    //   );
+    //   this.AddMarkers(this.props.addresses);
+    //   this.setState({
+    //     addresses: this.props.addresses,
+    //   });
+    // } else {
+    //   console.log(
+    //     "############# markers NOT ADDED ######### map state addresses ",
+    //     this.state.addresses,
+    //     " props addresses ",
+    //     this.props.addresses
+    //   );
+    // }
 
     if (this.props.stationCoords !== this.state.stationCoords) {
       this.AddAqiMarkers(this.props.stationCoords);
@@ -143,6 +161,7 @@ class MapComponent extends React.Component {
   // -->  -->  -->  Add Markers  <--   <--   <--
   markers = [];
   updated = 0;
+
   AddMarkers(addresses) {
     if (addresses) {
       if (addresses.length) {
@@ -405,6 +424,7 @@ const mapDispatchtoProps = {
   setMobileTabIndex,
   setMobileNavItemClicked,
   setAqiMarkersToStore,
+  removeCaseMarkersFromStore,
 };
 export const ConnectedMapComponent = connect(
   stateToProps,

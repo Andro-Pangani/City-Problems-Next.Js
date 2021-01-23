@@ -5,6 +5,11 @@ export const getMainDataRequest = (payload) => ({
   payload,
 });
 
+export const getMainDataRequestPush = (payload) => ({
+  type: type.getMainDataRequestPush,
+  payload,
+});
+
 export const getMainDataSuccess = (payload) => ({
   type: type.getMainDataSuccess,
   payload,
@@ -33,7 +38,6 @@ export const getMainDataReducer = (state = main_content, action) => {
       return { ...state, isLoading: true };
 
     case type.getMainDataSuccess:
-      console.log("||||||||||| GET MAIN DATA SUCCESS |", action.payload);
       return {
         ...state,
         content: [...state.content, ...action.payload.content],
@@ -44,6 +48,16 @@ export const getMainDataReducer = (state = main_content, action) => {
         docId: action.payload.docId,
       };
 
+    case type.getMainDataRequestPush:
+      return {
+        ...state,
+        content: action.payload.content,
+        lastSnapshot: action.payload.lastSnapshot,
+        prevSnapshot: action.payload.prevSnapshot,
+        isLoading: false,
+        length: action.payload.length,
+        docId: action.payload.docId,
+      };
     case type.getLastSnapshotRefresh:
       return {
         ...state,

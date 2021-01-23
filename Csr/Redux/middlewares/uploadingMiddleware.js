@@ -2,23 +2,25 @@ import { type } from "../types";
 import { _url } from "../../_urls";
 
 import { mapTempAddressListClear } from "../Map/A_R_mapTempAddressList";
-import { getMainDataSuccess } from "../../Redux/( a-r )getMainData";
 import {
- getUploadingFailure,
+  getMainDataRequestPush,
+  getMainDataSuccess,
+} from "../../Redux/( a-r )getMainData";
+import {
+  getUploadingFailure,
   getUploadingSuccess,
   stopUploadingProcess,
 } from "../Upload/( a - r )upload";
-
+import { setMaterialDataRequest } from "../Materials/( a - r )materials";
 export const uploadingMiddleware = (store) => (next) => (action) => {
   if (action.type === type.Upload.get_Uploading_Request) {
-    console.log(action.payload, " from uploading Middleware => ");
     let payload = action.payload;
     let files = payload.files;
 
     let formData = undefined;
     if (files[0]) {
       formData = new FormData();
-      console.log(files, files.length, " < < < <  files ");
+      // console.log(files, files.length, " < < < <  files ");
 
       for (let i = 0; i < files.length; i++) {
         let fileName = files[i].name;
@@ -62,13 +64,17 @@ export const uploadingMiddleware = (store) => (next) => (action) => {
         (async () => {
           await setTimeout(() => {
             store.dispatch(stopUploadingProcess());
-            let { isLoading, lastSnapshot } = store.getState().main_data;
-            console.log(result.content, " #### << result content ");
+            let {
+              content,
+              isLoading,
+              lastSnapshot,
+              isError,
+            } = store.getState().main_data;
             store.dispatch(
-              getMainDataSuccess({
-                content: result.content,
+              getMainDataRequestPush({
+                content: [...result.content, ...content],
                 isLoading: isLoading,
-                lastSnapshot: result.lastSnapshot,
+                lastSnapshot: payload.lastSnapshot,
                 fromScroll: null,
               })
             );
@@ -77,16 +83,15 @@ export const uploadingMiddleware = (store) => (next) => (action) => {
 
         // clear temp address list
       } catch (error) {
-       // hiding uploading ... window
-       // opening error Window
-       store.dispatch(stopUploadingProcess());
-       store.dispatch(getUploadingFailure(true));
+        // hiding uploading ... window
+        // opening error Window
+        store.dispatch(stopUploadingProcess());
+        store.dispatch(getUploadingFailure(true));
 
-       setTimeout(() => {
-        // hide error window after 2 secs
-       store.dispatch(getUploadingFailure(false));
-
-       }, 2000)
+        setTimeout(() => {
+          // hide error window after 2 secs
+          store.dispatch(getUploadingFailure(false));
+        }, 2000);
 
         console.error(" Error from Uploading Middleware - ", error);
       }

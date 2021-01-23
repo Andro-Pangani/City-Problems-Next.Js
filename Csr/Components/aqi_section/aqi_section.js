@@ -8,9 +8,7 @@ import { languages } from "../../language/languages";
 import { aqiSectionTitleStyle } from "./jsxStyles";
 
 let activeStyle = {
-  border: ".1rem solid transparent",
-  color: "rgb(162 121 86)",
-  background: "rgb(62 62 62)",
+  border: ".1rem solid #3a3737",
 };
 
 function AqiMenuItem(props) {
@@ -32,12 +30,20 @@ function AqiMenuItem(props) {
   });
 
   return (
-    <li onClick={handleClick} className="aqi_nav_item">
+    <div onClick={handleClick} className="aqi_nav_item">
       <span className="aqi_city_sign"></span>
       <span className="aqi_nav_item-text" style={active ? activeStyle : null}>
-        {props.city}
+        {props.city === "Tbilisi"
+          ? "თბილისი"
+          : props.city === "Rustavi"
+          ? "რუსთავი"
+          : props.city === "Kutaisi"
+          ? "ქუთაისი"
+          : props.city === "Batumi"
+          ? "ბათუმი"
+          : "no city"}
       </span>
-    </li>
+    </div>
   );
 }
 
@@ -73,44 +79,51 @@ function AqiSection(props) {
 
   return (
     <div className="aqi_section">
-      <div
-        className="aqi_section_title"
-        style={aqiSectionTitleStyle(props.language)}
-      >
-        {languages.aqiSection.headerTitle[props.language]}
-      </div>
+      <header className="aqi_section_header">
+        <div
+          className="aqi_section_title"
+          style={aqiSectionTitleStyle(props.language)}
+        >
+          <div className="aqi_section_title-text">
+            {languages.aqiSection.headerTitle[props.language]}
+          </div>
+        </div>
 
-      <ul className="aqi_nav_menu">
-        <AqiMenuItemConnected
-          handleActive={handleActive}
-          activeCity={active}
-          stateId={stateId}
-          city={`Tbilisi`}
-          id={1}
-        />
-        <AqiMenuItemConnected
-          handleActive={handleActive}
-          activeCity={active}
-          stateId={stateId}
-          city={`Rustavi`}
-          id={2}
-        />
-        <AqiMenuItemConnected
-          handleActive={handleActive}
-          activeCity={active}
-          stateId={stateId}
-          city={"Kutaisi"}
-          id={3}
-        />
-        <AqiMenuItemConnected
-          handleActive={handleActive}
-          activeCity={active}
-          stateId={stateId}
-          city={"Batumi"}
-          id={4}
-        />
-      </ul>
-
+        <ul className="aqi_nav_menu">
+          <li className="aqi_nav_menu-top">
+            <AqiMenuItemConnected
+              handleActive={handleActive}
+              activeCity={active}
+              stateId={stateId}
+              city={`Tbilisi`}
+              id={1}
+            />
+            <AqiMenuItemConnected
+              handleActive={handleActive}
+              activeCity={active}
+              stateId={stateId}
+              city={`Rustavi`}
+              id={2}
+            />
+          </li>
+          <li className="aqi_nav_menu-bottom">
+            <AqiMenuItemConnected
+              handleActive={handleActive}
+              activeCity={active}
+              stateId={stateId}
+              city={"Kutaisi"}
+              id={3}
+            />
+            <AqiMenuItemConnected
+              handleActive={handleActive}
+              activeCity={active}
+              stateId={stateId}
+              city={"Batumi"}
+              id={4}
+            />
+          </li>
+        </ul>
+      </header>
       <div ref={aqiContentRef} onScroll={scrollHandler} className="aqi_content">
         <CityAqiData />
       </div>

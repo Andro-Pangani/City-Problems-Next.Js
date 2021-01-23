@@ -7,17 +7,18 @@ export const getUploadingRequest = (payload) => ({
 });
 
 export const getUploadingFailure = (payload) => ({
- type: type.Upload.get_Uploading_Failure,
- payload
-})
+  type: type.Upload.get_Uploading_Failure,
+  payload,
+});
 
 export const getUploadingFailureReducer = (state = false, action) => {
- switch(action.type){
-  case type.Upload.get_Uploading_Failure:
-  return action.payload;
-  default: return state;
- }
-}
+  switch (action.type) {
+    case type.Upload.get_Uploading_Failure:
+      return action.payload;
+    default:
+      return state;
+  }
+};
 
 //  Uploading Section _
 export const getUploadingSectionRequest = (payload) => ({
@@ -32,8 +33,7 @@ export const getUploadingSectionRequestReducer = (state = false, action) => {
     return state;
   }
 };
-//  -  -  -  
-
+//  -  -  -
 
 export const startUploadingProcess = (payload) => {
   return {
@@ -71,8 +71,6 @@ export const addNewAddressReducer = (state = newItemState, action) => {
       return state;
   }
 };
-
-
 
 export const uploadingProcessReducer = (state = false, action) => {
   switch (action.type) {

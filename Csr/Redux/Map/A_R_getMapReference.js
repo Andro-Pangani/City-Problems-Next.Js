@@ -1,6 +1,5 @@
 import { type } from "../types";
 
-
 /// -       -   -   MAP  -  REFERENCE  -
 
 export const getMapReferenceRequest = (payload) => {
@@ -23,33 +22,40 @@ export const getMapReferenceReducer = (state = [], action) => {
   }
 };
 
-// -      -  -    -  ADD MARKERS TO STORE - -  -  
+// -      -  -    -  ADD MARKERS TO STORE - -  -
 
 export const setMarkersToStoreRequest = (payload) => ({
   type: type.Map.setMarkersToStoreRequest,
   payload,
 });
 
+export const removeCaseMarkersFromStore = (payload) => ({
+  type: type.Map.removeCaseMarkersFromStore,
+});
+
 export const setMarkersToStoreReducer = (state = [], action) => {
   switch (action.type) {
     case type.Map.setMarkersToStoreRequest:
       return [...state, ...[action.payload]];
+    case type.Map.removeCaseMarkersFromStore:
+      return [];
     default:
       return state;
   }
 };
 
 export const setAqiMarkersToStore = (payload) => {
- return {
-  type: type.Map.setAqiMarkersToStore,
-  payload
- }
-}
+  return {
+    type: type.Map.setAqiMarkersToStore,
+    payload,
+  };
+};
 
 export const aqiMarkersOnMapReducer = (state = [], action) => {
- switch(action.type){
-  case type.Map.setAqiMarkersToStore:
-   return [...action.payload];
-  default: return state;
- }
-}
+  switch (action.type) {
+    case type.Map.setAqiMarkersToStore:
+      return [...action.payload];
+    default:
+      return state;
+  }
+};

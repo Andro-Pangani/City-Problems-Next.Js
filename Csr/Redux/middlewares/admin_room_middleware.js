@@ -1,6 +1,10 @@
 import { type } from "../types";
 import { _url } from "../../_urls";
-import { getMainDataRequest, getMainDataSuccess } from "../( a-r )getMainData";
+import {
+  getMainDataRequest,
+  getMainDataSuccess,
+  getMainDataRequestPush,
+} from "../( a-r )getMainData";
 import {
   getDeletionFailure,
   getDeletionSuccess,
@@ -33,17 +37,11 @@ export const adminRoomMiddleware = (store) => (next) => (action) => {
           dataAfterDeletion.content = dataAfterDeletion.content.filter(
             (item) => item.id !== action.payload.docId
           );
-          console.log(
-            "### After deletion Content",
-            dataAfterDeletion,
-            " result >",
-            result
-          );
 
           store.dispatch(getDeletionSuccess());
 
           store.dispatch(
-            getMainDataSuccess({
+            getMainDataRequestPush({
               content: dataAfterDeletion.content,
               lastSnapshot: dataAfterDeletion.lastSnapshot,
             })

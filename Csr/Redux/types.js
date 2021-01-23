@@ -1,5 +1,6 @@
 export const type = {
   getMainDataRequest: "GET_MAIN_DATA_REQUEST",
+  getMainDataRequestPush: "GET_MAIN_DATA_REQUEST_PUSH",
   getMainDataSuccess: "GET_MAIN_DATA_SUCCESS",
   getMainDataFailure: "GET_MAIN_DATA_FAILURE",
   getLastSnapshotRefresh: "GET_LAST_SNAPSHOT_REFRESH",
@@ -24,6 +25,7 @@ export const type = {
     TempAddressListClear: "TempAddressListClear",
     getMapReferenceRequest: "GET_MAP_REFERENCE",
     setMarkersToStoreRequest: "SET_MARKERS_TO_STORE_REQUEST",
+    removeCaseMarkersFromStore: "REMOVE_CASE_MARKERS_FROM_STORE",
     getDataByMarker: "GET_DATA_BY_MARKER",
     setMapReferenceToState: "SET_MAP_REFERENCE_TO_STATE",
     getMapSetCenter: "GET_MAP_SET_CENTER",

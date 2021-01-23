@@ -31,6 +31,7 @@ class StockForm extends React.PureComponent {
       description: this.descriptionInput.current.value,
       latitude: this.latitudeInput.current.value,
       longitude: this.longitudeInput.current.value,
+      lastSnapshot: this.props.lastSnapshot,
     };
 
     console.log(
@@ -70,7 +71,7 @@ class StockForm extends React.PureComponent {
             შეფერხება ! მასალა არ ატვირთულა, სცადეთ ხელახლა.
           </div>
         ) : null}
-        <form onSubmit={this.handleSubmit}>
+        <form className="content_uploading_form" onSubmit={this.handleSubmit}>
           <ul>
             <li className="form_list-item">
               <input name="MyFile" ref={this.fileInput} type="file" multiple />
@@ -151,6 +152,7 @@ export default connect(
     uploaded: state.upload.uploaded,
     uploading: state.upload.uploading,
     failure: state.upload.failure,
+    lastSnapshot: state.main_data.lastSnapshot,
   }),
 
   {

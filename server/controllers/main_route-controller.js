@@ -30,6 +30,7 @@ exports.main = async function (req, res) {
     mainData = db.collection("problems").orderBy("time", "desc").limit(3);
   } else {
     // REQUEST FROM SCROLL EVENT
+    console.log("############# FROM SCROLL SNAPSHOT ", queryLastSnapshot);
     mainData = db
       .collection("problems")
       .orderBy("time", "desc")

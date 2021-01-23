@@ -24,11 +24,6 @@ export const getMainData_middleware = (store) => (next) => (action) => {
         url = `${_url.main}?lastSnapshot=${action.payload.lastSnapshot}&isLoading=${action.payload.isLoading}&length=${action.payload.length}&empty=${action.payload.empty}`;
       }
 
-      console.log(
-        "|||||||||||||||||||||| GET MAIN DATA REQUEST MIDDLEWARE ||||||||||||||  ",
-        action.payload.length
-      );
-
       if (isLoadingStore == false) {
         fetch(url, { method: "GET" })
           .then((response) => response.json())
@@ -63,21 +58,7 @@ export const getMainData_middleware = (store) => (next) => (action) => {
                   })
                 );
               } else {
-                // store.dispatch(
-                //   setMaterialDataRequest({
-                //     data: null,
-                //     isLoading,
-                //     isError: true,
-                //   })
-                // );
               }
-
-              console.log(
-                " ############ SINGLE DOCUMENT ######################",
-                single_document,
-                " --- > ",
-                main_data.content
-              );
             } else {
               // SETS VISIBLE CONTENT
               store.dispatch(

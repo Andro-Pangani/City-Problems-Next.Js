@@ -14,8 +14,8 @@ import { navItemStyle } from "./headerJsxStyles";
 
 export function NavItem(props) {
   const [active, setActive] = useState(false);
-  const isLoading = useSelector((state) => state.isLoading);
-  const isError = useSelector((state) => state.isError);
+  const isLoading = useSelector((state) => state.main_data.isLoading);
+  const isError = useSelector((state) => state.main_data.isError);
   const mobileMode = useSelector((state) => state.mobile.mobileMode);
 
   const dispatch = useDispatch();

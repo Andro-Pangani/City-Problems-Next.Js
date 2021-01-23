@@ -65,7 +65,7 @@ body,
   position: relative;
   width: 100%;
   // max-width: 1400px;
-  border: 1px solid #292929;
+  border: 1px solid #080808;
   padding: 0.5rem;
   padding-top: 0.5rem;
 
@@ -123,13 +123,13 @@ body,
   margin-left: 0.5%;
   text-align: center;
   background: #060606;
-  border: 1px solid #424242;
+  border: 1px solid #1d1d1d;
 }
 
 .content_item,
 .aqi_item,
 .map_item {
-  height: 77vh;
+  height: 85vh;
 }
 .right_section {
   width: 20%;
@@ -140,6 +140,8 @@ body,
 .body_section_list {
   position: relative;
   z-index: 2;
+  background: #0c0c0c;
+  border-radius: 10px;
 }
 
 .header_section {
@@ -217,5 +219,6 @@ body,
 @import "./aqi_section/aqi_sectionI_index.scss";
 @import "./map_section/map_section_index.scss";
 @import "./singleCase/singleCase.scss";
+@import "./control_panel/control_panel.scss";
 @import "./mobile.scss";
 @import "./media.scss";

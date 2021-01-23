@@ -1,0 +1,42 @@
+.login_component {
+  position: absolute;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: #000000;
+}
+
+.admin_login {
+  &_form {
+    position: absolute;
+    width: 320px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+  }
+
+  &_form_items_list {
+  }
+
+  &_form_item {
+    margin-bottom: 1rem;
+
+    label {
+      font-size: 1.3rem;
+      color: gray;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    input {
+      border: 1px solid #1d1d1d;
+      font-size: 1.4rem;
+      &::placeholder {
+        font-style: italic;
+        color: rgb(46, 46, 46);
+      }
+    }
+  }
+}

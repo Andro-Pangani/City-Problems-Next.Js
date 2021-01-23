@@ -92,11 +92,6 @@ try {
 }
 
 exports.content_uploading = async (req, res, next) => {
-  console.log("user from upload --> -> ->", req.files, " <- <- <-");
-  // console.log(
-  //   req.files,
-  //   " ---####### req.files FROM CONTENT UPLOADING #############"
-  // );
   var files = req.files;
 
   var link = 0;
@@ -281,12 +276,10 @@ exports.content_uploading = async (req, res, next) => {
           },
         })
         .then((result) => {
-          console.log(" id > ", result.id, " Result After Uploading ");
-
           let lastSnapshot = undefined;
           db.collection("problems")
             .orderBy("time", "desc")
-            .limit(2)
+            .limit(1)
             .get()
             .then((snapshot) => {
               let array1 = [];

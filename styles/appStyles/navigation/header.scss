@@ -12,9 +12,18 @@
   font-family: "ALK Tall Mtavruli", sans-serif;
   font-size: 1.5rem;
 
+  .menu_lang {
+    overflow: visible !important;
+  }
+
   .nav_menu_item {
     display: flex;
-    background: #272727;
+    // background: #272727;
+    background: linear-gradient(90deg, black, #0606060a);
+    border-radius: 5px;
+    box-shadow: 0 0 3px 1px #4e4e4e;
+    margin-left: 0.5rem;
+    overflow: hidden;
     flex: 1 1 auto;
 
     &:first-child {
@@ -32,10 +41,10 @@
       justify-content: center;
       align-items: center;
       position: relative;
-      // text-decoration: none;
-      // background: linear-gradient(#c5c5c5, #909090);
-      // -webkit-background-clip: text;
-      // -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      background: linear-gradient(#878787, #909090);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       border: 1px solid #101010;
       border-left: none;
       padding: 0.2rem;
@@ -65,14 +74,15 @@
 }
 
 .item_count {
-  position: absolute;
-  text-align: center;
-  left: 100%;
-  top: -0.5rem;
-  transform: translate(-150%, 0);
-  font-size: 1.2rem;
-  background: #444444;
-  padding: 3px;
+  // position: absolute;
+  // text-align: center;
+  // left: 100%;
+  // top: -0.5rem;
+  // transform: translate(-150%, 0);
+  font-size: 1.8rem;
+  // background: #444444;
+  padding: 5px;
+  padding-left: 10px;
   color: #ababab;
   border-radius: 2px;
   margin-left: 2px;
@@ -90,7 +100,6 @@
 
 .lang_active {
   position: relative;
-  background: #616161;
   border-radius: 3px;
   font-size: 2rem;
   padding: 0.1rem 0.5rem;
@@ -100,13 +109,23 @@
 .languages_list {
   position: absolute;
   display: flex;
-  top: 100%;
+  width: 60px;
+  top: 170%;
+  border-radius: 5px;
+  padding: 10px;
+  background: #292828;
+
   flex-direction: column;
   z-index: 999;
   .languages_list_item {
-    background: gray;
+    background: #171717;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 5px;
     span {
-      color: rgb(218, 218, 218);
+      padding: 5px;
+      display: inline-block;
+      color: #a2a2a2;
       font-size: 1.8rem;
     }
   }

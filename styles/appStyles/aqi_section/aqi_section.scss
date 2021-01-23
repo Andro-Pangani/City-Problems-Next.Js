@@ -9,7 +9,7 @@ $borderColor: #3a3a3a;
   border-bottom: none;
   box-sizing: border-box;
   overflow: hidden;
-  background: #1d1d1d;
+  // background: #1d1d1d;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   background-repeat: no-repeat;
@@ -18,39 +18,61 @@ $borderColor: #3a3a3a;
   border-radius: 3px;
 }
 
+.aqi_section_header {
+  width: 100%;
+  border: 1px solid #353535;
+  margin: 0 auto;
+}
+
 .aqi_section_title {
   position: relative;
   letter-spacing: 0.3rem;
   padding: 0.5rem;
-  max-width: 100%;
+  max-width: 95%;
   text-align: center;
-  font-size: 3rem;
-  margin: 0px 0px 1.5rem 0;
-  background: linear-gradient(#eee, #333);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  box-shadow: 0 0.5rem 0.8rem 0.3rem #5d3e3e;
-  border-top: 1px solid #525252;
-  font-family: "ALK Tall Mtavruli", sans-serif;
+  font-size: 2.5rem;
+  margin: 0px auto 0rem;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  box-shadow: 0 0 0.8rem 0.3rem #101010;
+
+  &-text {
+    background: linear-gradient(#eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "ALK Tall Mtavruli", sans-serif;
+  }
 }
 
 .aqi_nav_menu {
-  width: 100%;
   display: flex;
+  width: 95%;
+  padding-top: 10px;
+  padding-bottom: 10px;
   flex-wrap: wrap;
+  margin: 0 auto;
   margin-bottom: 0.8rem;
-  box-shadow: 0 0.5rem 1rem #212121;
+  border-radius: 5px;
+  box-shadow: 0 0 0.8rem 0.3rem #101010;
+  border: 1px solid #1f1f1f;
   justify-content: space-around;
+  overflow: hidden;
+  &-top,
+  &-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
 }
 .aqi_nav_item {
   position: relative;
+  width: 50%;
   padding: 0.5rem;
-  width: 25%;
   text-align: center;
 
-  border-top: 1px solid #6d6d6d;
-  border-right: 1px solid $borderColor;
-  border-bottom: 1px solid $borderColor;
+  // border-top: 1px solid #6d6d6d;
+  // border-right: 1px solid $borderColor;
+  // border-bottom: 1px solid $borderColor;
 
   &:first-child {
     margin-left: 0;
@@ -60,11 +82,15 @@ $borderColor: #3a3a3a;
   }
   .aqi_nav_item-text {
     display: inline-block;
-    font-size: 1.1rem;
-    padding: 0rem;
-    font-family: monospace;
+    font-size: 1.8rem;
+    padding: 0.2rem;
+    border-radius: 3px;
+    font-family: "Alk Tall Mtavruli";
     text-decoration: none;
-    color: #b1b1b1;
+    background: linear-gradient(#b19f9c, #383838);
+    box-shadow: 0 0rem 0.1rem 0.1rem #101010;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
 

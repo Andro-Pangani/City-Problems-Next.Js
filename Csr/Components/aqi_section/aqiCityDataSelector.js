@@ -4,8 +4,6 @@ import { store } from "../../Redux/Store";
 import { getMapReferenceReducer } from "../../Redux/Map/A_R_getMapReference";
 import { checkForAlarm, setAqiColor } from "../functions/aqi/aqiFunctions";
 
-
-
 let chartSet = false;
 let alarm = false;
 
@@ -14,12 +12,12 @@ export const aqiCityDataSelected = createSelector(
   (state) => state.aqi.cityData,
   (cityData) => {
     let chartData = {};
+
     let _cityData = cityData.data
       ? cityData.data.map((station) => {
           // station ex. (Tbilisi-Marjanishvili)
           let empty = true;
           station.stationequipment_set.map((substance) => {
-           
             let data = substance.data1hour_set;
             if (data.length > 0) {
               empty = false;
@@ -29,8 +27,6 @@ export const aqiCityDataSelected = createSelector(
           if (empty) {
             station.empty = true;
           } else {
-
-            
             station.empty = false;
             station.stationequipment_set.map((substance) => {
               let lastIndex = substance.data1hour_set.length - 1;
@@ -56,8 +52,8 @@ export const aqiCityDataSelected = createSelector(
 
               substance.substance.aqi_data = aqiData;
 
-              if(alarm == false && lastValue){
-               alarm = checkForAlarm(lastValue.value, aqiIndexLevelSet)
+              if (alarm == false && lastValue) {
+                alarm = checkForAlarm(lastValue.value, aqiIndexLevelSet);
               }
 
               if (lastValue && !chartSet) {
@@ -69,7 +65,6 @@ export const aqiCityDataSelected = createSelector(
                   data: substance.data1hour_set,
                   aqi_data: aqiData,
                   aqiLevel: substance.substance.airqualityindexlevel_set[0],
-                 
                 };
               }
             });
@@ -80,12 +75,10 @@ export const aqiCityDataSelected = createSelector(
           return station;
         })
       : cityData;
-       
+
     if (_cityData) {
-     _cityData.dataState = cityData.dataState;
-
+      _cityData.dataState = cityData.dataState;
     }
-
     return { cityData: _cityData, chartData: chartData };
   }
 );
