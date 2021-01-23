@@ -70,6 +70,7 @@ function currentTime() {
 // - function returns path to current file
 function tempDest(file_mimetype, filename) {
   console.log("############## mimetype", file_mimetype);
+
   switch (file_mimetype) {
     case "image/jpeg":
     case "image/png":
@@ -82,10 +83,24 @@ function tempDest(file_mimetype, filename) {
   }
 }
 
+let _url_images = path.join(_url, "images/");
+let _url_videos = path.join(_url, "videos/");
 try {
   if (!fs.existsSync(_url)) {
     fs.mkdirSync(_url);
   }
+
+  if (!fs.existsSync(_url_images)) {
+    console.log("######## NO IMAGES FOLDER ");
+    fs.mkdirSync(_url_images);
+  }
+
+  if (!fs.existsSync(_url_videos)) {
+    console.log("######## NO VIDEOS FOLDER");
+
+    fs.mkdirSync(_url_videos);
+  }
+
   console.log("FOLDER EXIST");
 } catch (err) {
   console.error(err, "#### error from checking if folders exist");

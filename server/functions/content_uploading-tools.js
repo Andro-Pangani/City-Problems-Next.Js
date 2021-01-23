@@ -6,46 +6,46 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-exports.minimizeVideo = (req, res, next) => {
-  try {
-    if (fs.existsSync(_url_videos)) {
-      fs.readdirSync(_url_videos).forEach((file) => {
-        console.log(
-          _url_videos,
-          file,
-          '##<-path->####>-file-################|"||||||||||#### File from videos'
-        );
+// exports.minimizeVideo = (req, res, next) => {
+//   try {
+//     if (fs.existsSync(_url_videos)) {
+//       fs.readdirSync(_url_videos).forEach((file) => {
+//         console.log(
+//           _url_videos,
+//           file,
+//           '##<-path->####>-file-################|"||||||||||#### File from videos'
+//         );
 
-        //minimizer
-        try {
-          let process = new ffmpeg(path.join(_url_videos, file));
+//         //minimizer
+//         try {
+//           let process = new ffmpeg(path.join(_url_videos, file));
 
-          process.then((video) => {
-            console.log(" @@@@@@@@@@@@ VIDEO IS REDY ");
-            // FFmpeg configuration
-            console.log(" @@@@@@@@@@@@ VIDEO IS REDY  - end -");
-            video
-              .setVideoBitRate(1024)
-              .save(path.join(_url_videos, file), (error, file) => {
-                if (error) {
-                  console.log("@@@@@@@ ERROR FROM FMPEG SAVE", error);
-                }
-              });
-          });
-        } catch (err) {
-          console.log(err, " @@@@@@@@@@@ errror from ffmpeg");
-        }
-      });
-    } else {
-      console.log('||||||| folder doesn exist bro "" from video minim');
-    }
+//           process.then((video) => {
+//             console.log(" @@@@@@@@@@@@ VIDEO IS REDY ");
+//             // FFmpeg configuration
+//             console.log(" @@@@@@@@@@@@ VIDEO IS REDY  - end -");
+//             video
+//               .setVideoBitRate(1024)
+//               .save(path.join(_url_videos, file), (error, file) => {
+//                 if (error) {
+//                   console.log("@@@@@@@ ERROR FROM FMPEG SAVE", error);
+//                 }
+//               });
+//           });
+//         } catch (err) {
+//           console.log(err, " @@@@@@@@@@@ errror from ffmpeg");
+//         }
+//       });
+//     } else {
+//       console.log('||||||| folder doesn exist bro "" from video minim');
+//     }
 
-    next();
-  } catch (err) {
-    console.log(err, " ####### error form video minimizer content uploading");
-    next();
-  }
-};
+//     next();
+//   } catch (err) {
+//     console.log(err, " ####### error form video minimizer content uploading");
+//     next();
+//   }
+// };
 
 exports.minimize = async (req, res, next) => {
   (async () => {
