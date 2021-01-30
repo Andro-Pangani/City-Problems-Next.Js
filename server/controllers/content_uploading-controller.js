@@ -107,6 +107,11 @@ try {
 }
 
 exports.content_uploading = async (req, res, next) => {
+  var logged = false;
+  if (req.cookies.user) {
+    logged = req.cookies.user ? req.cookies.user.logged : false;
+  }
+
   var files = req.files;
 
   var link = 0;
@@ -292,31 +297,41 @@ exports.content_uploading = async (req, res, next) => {
         })
         .then((result) => {
           let lastSnapshot = undefined;
-          db.collection("problems")
-            .orderBy("time", "desc")
-            .limit(1)
-            .get()
-            .then((snapshot) => {
-              let array1 = [];
-              let data;
+          if (logged) {
+            db.collection("problems")
+              .orderBy("time", "desc")
+              .limit(1)
+              .get()
+              .then((snapshot) => {
+                let array1 = [];
+                let data;
 
-              lastSnapshot = snapshot.docs.length - 1;
-              let mark = snapshot.docs[lastSnapshot];
-              if (mark) {
-                mark = mark.data().time;
-              }
+                lastSnapshot = snapshot.docs.length - 1;
+                let mark = snapshot.docs[lastSnapshot];
+                if (mark) {
+                  mark = mark.data().time;
+                }
 
-              snapshot.forEach((doc) => {
-                data = doc.data();
-                data.id = doc.id;
-                array1.push(data);
+                snapshot.forEach((doc) => {
+                  data = doc.data();
+                  data.id = doc.id;
+                  array1.push(data);
+                });
+
+                res.json({
+                  content: array1,
+                  lastSnapshot: mark,
+                  uploaded: true,
+                });
+              })
+              .catch((err) => {
+                console.log(err, "*** err from Get after uploading ;)");
               });
-
-              res.json({ content: array1, lastSnapshot: mark, uploaded: true });
-            })
-            .catch((err) => {
-              console.log(err, "*** err from Get after uploading ;)");
+          } else {
+            res.json({
+              content: [],
             });
+          }
         })
         .catch((err) => {
           console.log("Error from File uploading", err);

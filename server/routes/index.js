@@ -6,6 +6,9 @@ const alternativeTools = require("../functions/alternative-tools");
 const content_uploading_tools = require("../functions/content_uploading-tools");
 
 router.route("/main").get(controllers.main);
+
+router.route("/api/getUnverified").get(controllers.unverified);
+
 router.route("/getSingleCase").get(controllers.getSingleCase);
 
 router.route("/delete").post(controllers.delete_case);
@@ -37,7 +40,22 @@ router
   .route("/alternative/singleDelete")
   .post(controllers.alternativeSingleDelete);
 
-router.route("/login").get(controllers.authentication);
+router.route("/api/login").post(controllers.login);
+router.route("/api/login").get(controllers.login_get);
+
+router.route("/api/logout").post(controllers.logout);
+router.route("/api/getAllAdmins").post(controllers.get_all_admins);
+router.route("/api/changeAdminsName").post(controllers.admin_change_name);
+router
+  .route("/api/changeAdminsPassword")
+  .post(controllers.admin_change_password);
+
+router
+  .route("/api/admin/createNewAdmin")
+  .post(controllers.adminCreator.admin_create);
+router
+  .route("/api/admin/deleteAdmin")
+  .post(controllers.adminCreator.admin_delete);
 
 router.param("id", (req, res, next, parameter) => {
   console.log("ROUTER PARAM IS param Middleware - ", parameter);

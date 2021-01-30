@@ -20,7 +20,6 @@ $borderColor: #3a3a3a;
 
 .aqi_section_header {
   width: 100%;
-  border: 1px solid #353535;
   margin: 0 auto;
 }
 
@@ -32,6 +31,7 @@ $borderColor: #3a3a3a;
   text-align: center;
   font-size: 2.5rem;
   margin: 0px auto 0rem;
+  border: 1px solid #1d1b1b;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   box-shadow: 0 0 0.8rem 0.3rem #101010;
@@ -51,12 +51,14 @@ $borderColor: #3a3a3a;
   padding-bottom: 10px;
   flex-wrap: wrap;
   margin: 0 auto;
+  margin-top: 1rem;
   margin-bottom: 0.8rem;
-  border-radius: 5px;
-  box-shadow: 0 0 0.8rem 0.3rem #101010;
-  border: 1px solid #1f1f1f;
+  background: linear-gradient(180deg, #2d2d2d, #292929, #131313);
+  border-bottom-left-radius: 3px;
+  border-radius: 3px;
   justify-content: space-around;
   overflow: hidden;
+
   &-top,
   &-bottom {
     width: 100%;

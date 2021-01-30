@@ -83,6 +83,7 @@ function Content(props) {
               centerMap={centerMap}
               key={index}
               item={item}
+              logged={props.logged}
             />
           );
         })
@@ -103,6 +104,7 @@ const stateToProps = (state) => {
     isLoading: state.main_data.isLoading,
     isError: state.main_data.isError,
     data: state.material_data.data,
+    logged: state.main_data.logged,
     lastSnapshot: state.main_data.lastSnapshot,
     length: state.main_data.length,
   };

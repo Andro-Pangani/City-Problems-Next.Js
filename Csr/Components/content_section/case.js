@@ -110,14 +110,18 @@ export class Case extends React.Component {
           <div className="mainDataQuantity">
             {this.state.currentFileIndex}/{urls.length}
           </div>
-          {/* {!approoved ? <ApprooveSection id={this.props.item.id} /> : null}
+
+          {!approoved ? <ApprooveSection id={this.props.item.id} /> : null}
           <div className="admin_section"></div>
-    */}
-          <DeleteSection
-            coords={item.coords}
-            urls={urls}
-            id={this.props.item.id}
-          />
+
+          {this.props.logged ? (
+            <DeleteSection
+              coords={item.coords}
+              urls={urls}
+              id={this.props.item.id}
+            />
+          ) : null}
+
           <div className="case_location">
             <span className="location">Location: </span>
             <span className="location_data"> {address ? address : "_"}</span>
@@ -148,9 +152,6 @@ export class Case extends React.Component {
             >
               <a>More</a>
             </Link>
-            {/* <Link href={"/about"}>
-              <a>More</a>
-            </Link> */}
           </div>
         </div>
         <div className="case_footer">

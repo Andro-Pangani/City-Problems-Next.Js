@@ -26,7 +26,8 @@ import { setMobileTabIndex } from "../../content_section/reduxThunk/mobile/( a -
 import { aqiInfoWindow, aqiMapMarker } from "./map_style";
 import { myOvelayMarker } from "./mapOverlayFunc";
 import { addresses, stationCoords } from "./mapSelectedData";
-
+import { AddAqiMarkers } from "../lib/addAqiMarkers";
+import { AddMarkers } from "../lib/addCaseMarkers";
 const map_key = "AIzaSyCYqtWX_pBEdxPVlz_0GAypoQtAmbdhR0w";
 
 class MapComponent extends React.Component {
@@ -34,7 +35,8 @@ class MapComponent extends React.Component {
     super(props);
     this.googleMapRef = React.createRef();
     this.InputSearchRef = React.createRef();
-    this.AddMarkers = this.AddMarkers.bind(this);
+    this.AddMarkers = AddMarkers.bind(this);
+    this.AddAqiMarkers = AddAqiMarkers.bind(this);
     this.handleClickFunction = this.handleClickFunction.bind(this);
     this.state = {
       clickedOnMap: false,
@@ -49,6 +51,10 @@ class MapComponent extends React.Component {
   addresses = [];
   mapScript = "";
   mapOthers = "";
+
+  // -->  -->  -->  Add Markers  <--   <--   <--
+  markers = [];
+  updated = 0;
 
   scriptOnload = async () => {
     this.mapTag = await createGoogleMap(this.googleMapRef, this.InputSearchRef);
@@ -79,13 +85,18 @@ class MapComponent extends React.Component {
     window.document.body.appendChild(googleMapScript);
     googleMapScript.addEventListener("load", this.scriptOnload);
     console.log(
+      " ################# Map Component Did Mount PROPS ADDRESS",
       this.props.addresses,
-      " ################# Map Component Did Mount"
+      " STATE ADDRESSES ",
+      this.state.addresses
     );
   }
 
   componentWillUnmount() {
     this.props.removeCaseMarkersFromStore();
+    this.setState({
+      addresses: [],
+    });
 
     let scripts = window.document.getElementsByTagName("script");
     this.mapOthers = window.document.body.getElementsByClassName(
@@ -102,6 +113,7 @@ class MapComponent extends React.Component {
       console.log("################### this Map Tag", this.mapTag);
       // this.mapTag.removeEventListener("click", this.handleClickFunction);
     }
+    console.log("||||||||||||||||||| MAP COMPONENT UNMOUNTED |||||||||||||| ");
   }
 
   componentDidUpdate() {
@@ -156,101 +168,6 @@ class MapComponent extends React.Component {
       });
     }
     this.updated = this.updated + 1;
-  }
-
-  // -->  -->  -->  Add Markers  <--   <--   <--
-  markers = [];
-  updated = 0;
-
-  AddMarkers(addresses) {
-    if (addresses) {
-      if (addresses.length) {
-        addresses.forEach((item) => {
-          if (typeof item.coords.lat === "number") {
-            var marker = "";
-            if (window.google && window.google.maps) {
-              marker = new window.google.maps.Marker({
-                position: item.coords,
-                map: this.mapTag,
-                title: item.id,
-              });
-              marker.addListener("click", (e) => {
-                this.markerEventHandlerFunc(marker, item);
-              });
-              this.markers.push(marker);
-              marker.setMap(this.mapTag);
-              this.props.setMarkersToStoreRequest(marker);
-
-              // set markers request
-            }
-          }
-        });
-        console.log(
-          this.updated,
-          " ((((((())))))) <  A D D   -   M A R K E R  > (((((((()))))) ",
-          this.markers
-        );
-      }
-    }
-  }
-
-  AddAqiMarkers(addresses) {
-    if (addresses) {
-      if (addresses.length && window.google.maps) {
-        const image = {
-          url:
-            "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
-
-          // This marker is 20 pixels wide by 32 pixels high.
-          size: new window.google.maps.Size(10, 10),
-        };
-
-        let aqiMarkers = [];
-        addresses.forEach((item) => {
-          if (typeof item.coords.lat === "number") {
-            // aqiMarker.fillColor = aqiMapMarker[item.props.aqi_level].color;
-            // aqiMarker.strokeColor = item.props.color;
-            let infoWindow = new window.google.maps.InfoWindow({
-              content: aqiInfoWindow(item, this.props.language),
-              maxWidth: 300,
-            });
-            var marker = "";
-            if (window.google) {
-              marker = new window.google.maps.Marker({
-                position: item.coords,
-                map: this.mapTag,
-                station_id: item.station_id.toString(),
-                infoWindow: infoWindow,
-                marker: marker,
-                icon: image,
-              });
-
-              marker.addListener("click", (e) => {
-                infoWindow.open(this.mapTag, marker);
-              });
-              this.markers.push(marker);
-              marker.setMap(this.mapTag);
-
-              aqiMarkers.push(marker);
-
-              myOvelayMarker({
-                coords: item.coords,
-                mapTag: this.mapTag,
-                infoWindow: infoWindow,
-                marker: marker,
-                props: {
-                  color: aqiMapMarker[item.props.aqi_level].color,
-                },
-              });
-            }
-          }
-        });
-
-        // set aqiMarkers to store here with
-        // aqiMarkers var
-        this.props.setAqiMarkersToStore(aqiMarkers);
-      }
-    }
   }
 
   // MARKER CLICK HANDLER

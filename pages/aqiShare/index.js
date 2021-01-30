@@ -84,7 +84,10 @@ export default function AboutPage({ content }) {
           <div className="single_case-upload_date">{upload_date}</div> */}
         </header>
         <div className="single_case_content">
-          <img src={`/aqi/ge/tbilisi/${aqiImageName}`} />
+          <img
+            className="single_case_aqiShare"
+            src={`/aqi/ge/tbilisi/${aqiImageName}`}
+          />
         </div>
         <div
           className="fb-share-button"

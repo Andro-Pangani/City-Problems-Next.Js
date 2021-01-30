@@ -1,3 +1,5 @@
+@import "./change_credentials.scss";
+
 .login_component {
   position: absolute;
   width: 100vw;
@@ -5,16 +7,44 @@
   left: 0;
   height: 100vh;
   background: #000000;
-}
 
-.admin_login {
-  &_form {
+  .login_component_container {
     position: absolute;
     width: 320px;
+    max-height: 90vh;
+    overflow-y: auto;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: auto;
+  }
+
+  .login_page-message {
+    color: darkred;
+    font-size: 2rem;
+  }
+}
+
+.logged_user_component {
+  .logged_user-name {
+    color: gray;
+    font-size: 3rem;
+  }
+
+  .logged_user-status {
+    font-size: 1.5rem;
+    color: gray;
+
+    .user_status_value {
+      color: green;
+    }
+  }
+}
+
+.admin_login {
+  &_form {
+    width: 100%;
+    height: 100%;
   }
 
   &_form_items_list {
@@ -24,6 +54,7 @@
     margin-bottom: 1rem;
 
     label {
+      width: 100%;
       font-size: 1.3rem;
       color: gray;
       display: inline-block;
@@ -32,10 +63,11 @@
 
     input {
       border: 1px solid #1d1d1d;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
       &::placeholder {
         font-style: italic;
-        color: rgb(46, 46, 46);
+        color: rgb(29, 29, 29);
       }
     }
   }

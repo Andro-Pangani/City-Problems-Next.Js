@@ -11,6 +11,7 @@ import { getMobileMenuClicked } from "../../Redux/mobile/( a - r )mobileMenu";
 import { languages } from "../../language/languages";
 import { LanguagesComponent } from "./languagesComponent.tsx";
 import { navItemStyle } from "./headerJsxStyles";
+import { HeaderMenuButton } from "./header_menu_button";
 
 const navMobileOn = {
   position: "absolute",
@@ -164,8 +165,12 @@ class Header_ extends React.Component {
                 {languages.headerNavigation[this.props.language].upload}
               </span>
             </li>
-            <li type={"language"} className="nav_menu_item menu_lang">
-              <LanguagesComponent />
+            <li
+              // type={"language"}
+              onClick={this.menuButtonHandler}
+              className="nav_menu_item menu_lang"
+            >
+              <HeaderMenuButton />
             </li>
           </ul>
         </nav>

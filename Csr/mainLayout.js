@@ -14,7 +14,7 @@ import { MapContainer } from "./Components/map_section/map/map_container";
 import { MobileMenuComponent } from "./mobile/mobileMenuComponent";
 
 // import AqiChartSection from "./Components/aqi_section/aqi_chart_section";
-// import { ReloadButtonComponent } from "./specialTools/reloadButton";
+import { ReloadButtonComponent } from "./specialTools/reloadButton";
 // - <- Components
 // -.-.-.-.-
 // + Redux ->
@@ -221,10 +221,10 @@ export class MainLayoutTest extends React.Component {
               <MapContainer />
             </li>
             {/* <li className="body_section_item reload_item">
-            <div className="contentSectionReload">
-              <ReloadButtonComponent />
-            </div>
-          </li> */}
+              <div className="contentSectionReload">
+                <ReloadButtonComponent />
+              </div>
+            </li> */}
             {/* <li className="body_section_item chart_item">
             <AqiChartSection />
           </li> */}

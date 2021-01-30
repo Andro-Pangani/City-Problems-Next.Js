@@ -9,10 +9,10 @@ export const addresses = createSelector(
     // -  if map is clear
 
     if (markersOnMap.length == 0) {
-      console.log(
-        "############### RETURED ALL MARKERS FROM SELECTOR!!!!!!!!!!! ",
-        allMarkers
-      );
+      // console.log(
+      //   "############### RETURED ALL MARKERS FROM SELECTOR!!!!!!!!!!! ",
+      //   allMarkers
+      // );
 
       return allMarkers;
     }

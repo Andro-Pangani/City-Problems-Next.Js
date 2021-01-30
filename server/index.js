@@ -44,7 +44,8 @@ app.prepare().then(() => {
 
   server.use(bodyParser.json());
   server.use(bodyParser.urlencoded({ extended: false }));
-  server.use(cookieParser("secret"));
+  server.use(cookieParser());
+  server.use(express.json());
 
   server.use("/", routes);
 

@@ -7,6 +7,7 @@ const _url_local = {
   admin: "http://localhost:3000/admin",
   approove: "http://localhost:3000/approove",
   aqi: "http://localhost:3000/aqi",
+  getUnverified: "http://localhost:3000/api/getUnverified",
   alternative: {
     upload: "http://localhost:3000/alternative/upload",
     single: {
@@ -29,6 +30,7 @@ const _url_global = {
   admin: `https://${domain}/admin`,
   approove: `https://${domain}/approove`,
   aqi: `https://${domain}/aqi`,
+  getUnverified: `https://${domain}/api/getUnverified`,
   alternative: {
     upload: `https://${domain}/alternative/upload`,
     single: {

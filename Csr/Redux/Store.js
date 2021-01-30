@@ -41,6 +41,8 @@ import { getDeletionReducer } from "./AdminRoom/a - r _adminRoom";
 import { setLanguagesReducer } from "./languages/( a - r ) languages";
 import { addAqiMarkersMiddleware } from "./middlewares/add_aqi_markers_middleware";
 import { alternativeButtonReducer } from "./( a - r ) alternativeButton";
+import { getUnverifiedDataReducer } from "./( a - r ) getUnverifiedData";
+import { getUnverifiedDataMiddleware } from "./middlewares/get_unverified_data_middleware";
 // ooo sorry for this andro 'll fix later
 const getMapRefMiddleware = (store) => (next) => (action) => {
   if (action.type === type.Map.getMapReferenceRequest) {
@@ -60,6 +62,7 @@ export const store = createStore(
       uploadAddressFromMap: uploadAddressFromMap,
     }),
     main_data: getMainDataReducer,
+    unverified_data: getUnverifiedDataReducer,
     material_data: setMaterialDataReducer,
     alternative_uploading: alternativeUploadingReducer,
     aqi: combineReducers({
@@ -90,6 +93,7 @@ export const store = createStore(
     applyMiddleware(adminRoomMiddleware),
     applyMiddleware(alternativeUploadingMiddleware),
     applyMiddleware(getMainData_middleware),
+    applyMiddleware(getUnverifiedDataMiddleware),
     applyMiddleware(getMapRefMiddleware),
     applyMiddleware(getAdmin_middleware),
     applyMiddleware(getAqiMiddleware),

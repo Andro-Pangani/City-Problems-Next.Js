@@ -7,6 +7,10 @@ export const type = {
   getAdminRequest: "GET_ADMIN_REQUEST",
   getAdminSuccess: "GET_ADMIN_SUCCESS",
   getAdminReject: "GET_ADMIN_REJECT",
+  getUnverified: {
+    DataRequest: "GET_UNVERIFIED_DATA_REQUEST",
+    DataSuccess: "GET_UNVERIFIED_DATA_SUCCESS",
+  },
   Languages: {
     setLanguage_En: "SET_LANGUAGE_EN",
     setLanguage_Ge: "SET_LANGUAGE_GE",

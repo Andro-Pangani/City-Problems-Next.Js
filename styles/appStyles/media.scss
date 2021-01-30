@@ -58,6 +58,44 @@
     }
   }
 
+  // single case ==> ==> ==>
+
+  .single_case {
+    height: auto;
+
+    .single_case_header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 0;
+
+      .single_case-type {
+        font-size: 1.2rem;
+        text-align: left;
+      }
+
+      .single_case {
+        &-address_title {
+          font-size: 1.4rem;
+        }
+      }
+
+      .single_case-upload_data {
+        display: flex;
+      }
+    }
+  }
+
+  .single_case_aqiShare {
+    max-width: 100%;
+  }
+
+  .single_case_item {
+    height: auto;
+  }
+
+  // <== <== single case
+
   .mobileMenu {
     display: block;
 
@@ -114,13 +152,6 @@
     box-shadow: 0 0 32px 5px black;
   }
 
-  // .aqi_section {
-  //   height: 100%;
-  //   margin: 0;
-  // }
-  // .aqi_item {
-  //   margin: 0;
-  // }
   .aqi_chart_section {
     height: 80vh;
   }

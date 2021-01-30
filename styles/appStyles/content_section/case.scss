@@ -4,12 +4,12 @@ $borderColor: #080808;
 .case_container {
   position: relative;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   margin-bottom: 28px;
-  // overflow: hidden;
+  overflow: hidden;
   font-size: 14px;
-  box-shadow: 0px 0px 9px #777777;
-  border-bottom: 1px solid #3c3c3c;
+  // box-shadow: 0px 0px 9px #777777;
+  background: #131313;
 }
 
 .case_header {
@@ -19,6 +19,7 @@ $borderColor: #080808;
   align-items: baseline;
   padding: 0.5rem;
   border-bottom: 1px solid #0e0e0e;
+  background: #1d1d1d;
   background-repeat: no-repeat;
   background-size: inherit;
   background-position-y: 0px;
@@ -119,6 +120,7 @@ $borderColor: #080808;
 
 .main_image_tag,
 .main_video_tag {
+  position: relative;
   max-width: 100%;
   min-width: 20vw;
   min-height: 20vh;

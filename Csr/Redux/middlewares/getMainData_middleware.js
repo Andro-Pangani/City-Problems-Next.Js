@@ -94,6 +94,7 @@ export const getMainData_middleware = (store) => (next) => (action) => {
           .then((data) => {
             store.dispatch(getScrollContentSuccess(data));
             let main_data = store.getState().main_data;
+
             let isLoading = main_data.isLoading;
             let isError = main_data.isError;
 

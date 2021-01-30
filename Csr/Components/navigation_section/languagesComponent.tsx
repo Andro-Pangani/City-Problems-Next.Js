@@ -36,8 +36,9 @@ export function LanguagesComponent(props){
   dispatch(setLanguage(lang))
  }
 
- const lang_list = () => {
+ const lang_list = (e) => {
   showLangList(!langList);
+  e.stopPropagation();
   console.log("Lang List");
   
  }

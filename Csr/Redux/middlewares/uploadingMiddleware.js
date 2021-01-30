@@ -70,14 +70,17 @@ export const uploadingMiddleware = (store) => (next) => (action) => {
               lastSnapshot,
               isError,
             } = store.getState().main_data;
-            store.dispatch(
-              getMainDataRequestPush({
-                content: [...result.content, ...content],
-                isLoading: isLoading,
-                lastSnapshot: payload.lastSnapshot,
-                fromScroll: null,
-              })
-            );
+
+            if (result.content.length > 0) {
+              store.dispatch(
+                getMainDataRequestPush({
+                  content: [...result.content, ...content],
+                  isLoading: isLoading,
+                  lastSnapshot: payload.lastSnapshot,
+                  fromScroll: null,
+                })
+              );
+            }
           }, 3000);
         })();
 

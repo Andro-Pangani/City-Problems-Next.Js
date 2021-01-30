@@ -26,11 +26,10 @@ export const getDeletionFailure = () => {
 };
 
 const delInitState = {
- refresh: false,
+  refresh: false,
   deleting: false,
   deleted: false,
   failure: false,
- 
 };
 
 export const getDeletionReducer = (state = delInitState, action) => {
@@ -46,7 +45,6 @@ export const getDeletionReducer = (state = delInitState, action) => {
         deleting: false,
         deleted: true,
         refresh: false,
-      
       };
 
     case type.Delete.get_Deletion_Failure:
@@ -88,6 +86,7 @@ export const getApproovingSuccess = (payload) => ({
   payload,
 });
 const initialState = [];
+
 export const getApproovingReducer = (state = initialState, action) => {
   switch (action.type) {
     case type.Approove.get_Approoving_Success:

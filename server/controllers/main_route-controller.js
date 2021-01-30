@@ -1,4 +1,3 @@
-const { query } = require("express");
 const admin = require("firebase-admin");
 
 const db = admin.firestore();
@@ -7,11 +6,24 @@ exports.main = async function (req, res) {
   var array1 = [];
   var data = "";
 
+  var logged = false;
+  if (req.cookies.user) {
+    logged = req.cookies.user ? req.cookies.user.logged : false;
+  }
+
   console.log(
-    "********** REQ QUERIES FROM MAIN CONTROLLER ",
-    req.query,
-    " ************* "
+    req.cookies,
+    " cookies ########",
+    req.cookies.user
+    // req.signedCookies,
+    // " <<############### Signed Cookies"
   );
+
+  // console.log(
+  //   "********** REQ QUERIES FROM MAIN CONTROLLER ",
+  //   req.query,
+  //   " ************* "
+  // );
 
   let length = parseInt(req.query.length);
   let empty = req.query.empty;
@@ -24,18 +36,47 @@ exports.main = async function (req, res) {
 
   // SINGLE CASE REQUEST FROM FACEBOOK
   if (empty === "true") {
-    mainData = db.collection("problems").orderBy("time", "desc").limit(length);
+    if (!logged) {
+      mainData = db
+        .collection("problems")
+        .where("approoved", "==", true)
+        .orderBy("time", "desc")
+        .limit(length);
+    } else {
+      mainData = db
+        .collection("problems")
+        .orderBy("time", "desc")
+        .limit(length);
+    }
   } else if (!queryLastSnapshot) {
     // FIRST DATA REQUEST
-    mainData = db.collection("problems").orderBy("time", "desc").limit(3);
+
+    if (!logged) {
+      mainData = db
+        .collection("problems")
+        .where("approoved", "==", true)
+        .orderBy("time", "desc")
+        .limit(3);
+    } else {
+      mainData = db.collection("problems").orderBy("time", "desc").limit(3);
+    }
   } else {
     // REQUEST FROM SCROLL EVENT
     console.log("############# FROM SCROLL SNAPSHOT ", queryLastSnapshot);
-    mainData = db
-      .collection("problems")
-      .orderBy("time", "desc")
-      .startAfter(queryLastSnapshot)
-      .limit(3);
+    if (!logged) {
+      mainData = db
+        .collection("problems")
+        .where("approoved", "==", true)
+        .orderBy("time", "desc")
+        .startAfter(queryLastSnapshot)
+        .limit(length);
+    } else {
+      mainData = db
+        .collection("problems")
+        .orderBy("time", "desc")
+        .startAfter(queryLastSnapshot)
+        .limit(length);
+    }
   }
 
   var prevSnapshot = queryLastSnapshot;
@@ -76,6 +117,7 @@ exports.main = async function (req, res) {
       snapshot.forEach((doc) => {
         data = doc.data();
         data.id = doc.id;
+
         array1.push(data);
       });
 
@@ -90,9 +132,12 @@ exports.main = async function (req, res) {
         lastSnapshot: mark,
         prevSnapshot: prevSnapshot,
         length: length,
+        logged,
       });
     })
-    .catch((err) => {});
+    .catch((err) => {
+      console.log(err, " <<<<<<<< error from main route controller");
+    });
 
   // res.render('main', { airdata })
 };

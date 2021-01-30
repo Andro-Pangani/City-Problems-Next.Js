@@ -30,7 +30,6 @@ export class CaseData extends React.Component {
         length: this.props.urls.length,
         currentFileIndex: 1,
       });
-      console.log("******* LIST LENGTH * 1");
     } else if (this.state.length > 1) {
       // LIST
       this.setState({
@@ -49,15 +48,8 @@ export class CaseData extends React.Component {
   };
 
   componentDidUpdate(prevProps) {
-
-
     //IF DATA IS NEW
     if (prevProps.id !== this.props.id) {
-      console.log(" ######## RESETED ");
-      console.log(
-        "- CHILD - ************* BEFORE CURRENT iNDEX",
-        this.state.currentFileIndex
-      );
       this.setState({
         length: this.props.urls.length,
         x: 0,

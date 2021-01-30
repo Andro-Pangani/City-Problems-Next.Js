@@ -69,12 +69,6 @@ export const adminRoomMiddleware = (store) => (next) => (action) => {
               }
             });
           }
-
-          console.log(
-            result,
-            " - - - - -  result after deleting - - - - - - - - -"
-          );
-
           //getting updated data
         } catch (error) {
           console.error(" Error FROM DELETION - ", error);
@@ -82,7 +76,12 @@ export const adminRoomMiddleware = (store) => (next) => (action) => {
       })();
       break;
     case type.Verification.get_Verification_Request:
-      console.log(action.payload, " => ", action.type);
+      console.log(
+        "################### approove",
+        action.payload,
+        " => ",
+        action.type
+      );
       break;
     case type.Approove.get_Approoving_Request:
       (async () => {
@@ -97,9 +96,34 @@ export const adminRoomMiddleware = (store) => (next) => (action) => {
 
           let result = await res;
 
+          let dataAfterApproove = store.getState().main_data;
+          dataAfterApproove.content = dataAfterApproove.content.map((item) => {
+            if (item.id === action.payload.docId) {
+              item.approoved = true;
+              return item;
+            } else {
+              return item;
+            }
+          });
+
+          store.dispatch(
+            getMainDataRequestPush({
+              content: dataAfterApproove.content,
+              lastSnapshot: dataAfterApproove.lastSnapshot,
+            })
+          );
+
+          store.dispatch(
+            setMaterialDataRequest({
+              data: dataAfterApproove.content,
+              isLoading: false,
+              isError: false,
+            })
+          );
+
           // filtering store data
 
-          store.dispatch(getMainDataRequest());
+          // store.dispatch(getMainDataRequest());
           console.log(res, " result after Approoving ");
         } catch (error) {
           console.error(" Error - ", error);

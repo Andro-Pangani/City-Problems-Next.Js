@@ -68,7 +68,6 @@ body,
   border: 1px solid #080808;
   padding: 0.5rem;
   padding-top: 0.5rem;
-
   overflow: hidden;
 }
 
@@ -141,7 +140,7 @@ body,
   position: relative;
   z-index: 2;
   background: #0c0c0c;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .header_section {
@@ -206,10 +205,10 @@ body,
   width: 2px;
 }
 ::-webkit-scrollbar-track {
-  background: rgb(169, 58, 58);
+  background: rgb(95, 84, 84);
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(rgb(153, 148, 0), rgb(206, 49, 49));
+  background: linear-gradient(rgb(153, 148, 0), rgb(139, 34, 34));
 }
 
 @import "./geo_fonts/geo_fonts.scss";

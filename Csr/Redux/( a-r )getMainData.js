@@ -30,6 +30,7 @@ const main_content = {
   scrollIsLoading: false,
   length: 0,
   docId: null,
+  logged: undefined,
 };
 
 export const getMainDataReducer = (state = main_content, action) => {
@@ -46,6 +47,7 @@ export const getMainDataReducer = (state = main_content, action) => {
         isLoading: false,
         length: action.payload.length,
         docId: action.payload.docId,
+        logged: action.payload.logged,
       };
 
     case type.getMainDataRequestPush:
