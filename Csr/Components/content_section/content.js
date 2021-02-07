@@ -59,7 +59,6 @@ function Content(props) {
     }
   };
 
-  console.log(props.data, "!! ********** * PROPS DATA FROM CONTENT ");
   return (
     <section
       onScroll={handleScroll}
@@ -75,13 +74,13 @@ function Content(props) {
       ) : isError ? (
         <div>is error !</div>
       ) : data ? (
-        data.map((item, index) => {
+        data.map((item) => {
           return (
             <Case
               lastSnapshot={props.lastSnapshot}
               length={props.length}
               centerMap={centerMap}
-              key={index}
+              key={item.id}
               item={item}
               logged={props.logged}
             />

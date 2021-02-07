@@ -17,7 +17,6 @@ class ApprooveSection extends React.PureComponent {
   };
 
   handleClick_yes = () => {
-    console.log(" Approove start ;) ", this.props.id);
     this.props.getApproovingRequest({ docId: this.props.id });
   };
 

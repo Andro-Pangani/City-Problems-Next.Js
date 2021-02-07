@@ -15,13 +15,11 @@ const bodyParser = require("body-parser");
 // IF USER WILL CHANGE COOKIES
 
 const COOKIE_SECRET = "Q323421341ASDFFASD3235AWAEDFA";
-
-const COOKIE_OPTIONS = {
+exports.COOKIE_OPTIONS = {
   httpOnly: true,
   secure: !dev,
   signed: true,
 };
-
 //         * FIREBASE SETUP *
 
 const admin = require("firebase-admin");
@@ -44,7 +42,7 @@ app.prepare().then(() => {
 
   server.use(bodyParser.json());
   server.use(bodyParser.urlencoded({ extended: false }));
-  server.use(cookieParser());
+  server.use(cookieParser(COOKIE_SECRET));
   server.use(express.json());
 
   server.use("/", routes);

@@ -8,10 +8,6 @@ export const HeaderMenuButton = () => {
   const logged = useSelector((state) => state.main_data.logged);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log("menu button clicked", clicked);
-  });
-
   const handleClick = (e) => {
     setClicked(!clicked);
     e.stopPropagation();

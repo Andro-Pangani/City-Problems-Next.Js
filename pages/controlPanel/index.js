@@ -37,6 +37,7 @@ export default function Login() {
   };
 
   useEffect(() => {
+    console.log("111111111111111  INDEX PAGE UPDATE");
     updatePage();
   }, []);
 

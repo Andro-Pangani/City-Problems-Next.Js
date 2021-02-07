@@ -1,20 +1,15 @@
 const admin = require("firebase-admin");
-
 const db = admin.firestore();
 
-const COOKIE_OPTIONS = {
-  httpOnly: true,
-  secure: false,
-  signed: true,
-};
+const COOKIE_OPTIONS = require("../../index").COOKIE_OPTIONS;
 
 exports.login = (req, res) => {
   let { user, password } = req.body;
   let signedUser = req.cookies.user ? req.cookies.user : undefined;
 
   console.log(
-    signedUser,
     req.cookies.user,
+    req.signedCookies,
     "signed cookies ########",
     " req body ###### >>>",
     req.body
@@ -49,7 +44,7 @@ exports.login = (req, res) => {
             };
           }
         });
-        res.cookie("user", loggedAdmin);
+        res.cookie("user", loggedAdmin, { signed: true });
 
         if (loggedAdmin.logged) {
           res.json({

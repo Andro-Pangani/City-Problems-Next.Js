@@ -21,6 +21,7 @@
     "express": "^4.17.0",
     "ffmpeg": "0.0.4",
     "firebase-admin": "^8.6.1",
+    "helmet": "^4.4.1",
     "imagemin": "^7.0.1",
     "imagemin-jpegtran": "^6.0.0",
     "imagemin-mozjpeg": "^8.0.0",

@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { json } from "body-parser";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   changeAdminsName,
   changeAdminsPassword,
@@ -8,12 +9,13 @@ import {
 } from "../Csr/Components/functions/loginUser";
 
 // ADMIN LIST ITEM COMPONENT ==> ==> ==>
-const AdminItemComponent = ({ admin }) => {
+const AdminItemComponent = ({ admin, getAllAdmins }) => {
   const handleDeleteAdmin = (e) => {
     e.preventDefault();
     console.log(admin);
     deleteAdmin(admin.id).then((response) => {
       console.log(admin, "input <-> res", response);
+      getAllAdmins();
     });
   };
 
@@ -33,11 +35,8 @@ const AdminItemComponent = ({ admin }) => {
 export const ChangeCredentials = ({ profile, updatePage }) => {
   const cred_InputNameRef = useRef(null);
   const cred_InputPasswordRef = useRef(null);
-
-  const [usersList, setUsersList] = useState({
-    admins: [],
-    error: "",
-  });
+  const inputCreateNewName = useRef(null);
+  const inputCreateNewPassword = useRef(null);
 
   const [currentProfile, setCurrentProfile] = useState({
     name: "",
@@ -100,8 +99,8 @@ export const ChangeCredentials = ({ profile, updatePage }) => {
     console.log(newPassword);
   };
 
-  //  <== <== <== <== <== <==
   // HANDLE CHANGE CREDENTIALS <END>
+  //  <== <== <== <== <== <==
 
   // /////- CREATE NEW ADMIN - <START>
   // ==> ==> ==> ==> ==> ==> ==>
@@ -119,27 +118,25 @@ export const ChangeCredentials = ({ profile, updatePage }) => {
     e.preventDefault();
     createNewAdmin(newAdmin.name, newAdmin.password).then((response) => {
       console.log(response, " ### from create new admin front");
+      inputCreateNewName.current.value = "";
+      inputCreateNewPassword.current.value = "";
+      getAllAdminsHandler();
     });
   };
   // <== <== <== <== <== <==
 
-  //  DELETE ADMIN
-  // ==> ==> ==> ==> ==> ==> ==>
+  // ==>  GET ALL ADMINS HANDLER ==> ==>
 
-  // <== <== <==
-
-  useEffect(() => {
-    if (currentProfile !== profile) {
-      setCurrentProfile(profile);
-    }
-
-    console.log("########## USEFFECT FROM CONTROL PANEL");
-  }, [profile]);
+  const [usersList, setUsersList] = useState({
+    admins: [],
+    error: "",
+  });
 
   const getAllAdminsHandler = () => {
     if (currentProfile.status === "creator") {
       getAllAdmins(currentProfile.id).then((response) => {
         console.log(" ######## CREATOR", response.data);
+
         setUsersList({
           admins: response.data.admins,
           error: response.data.error,
@@ -147,6 +144,17 @@ export const ChangeCredentials = ({ profile, updatePage }) => {
       });
     }
   };
+
+  // <== <== <==
+
+  useEffect(() => {
+    // if (currentProfile !== profile) {
+    setCurrentProfile(profile);
+    // }
+    // getAllAdminsHandler();
+
+    console.log("########## USEFFECT FROM CONTROL PANEL");
+  }, [profile]);
 
   return (
     <div className="change_credentials_component">
@@ -208,10 +216,13 @@ export const ChangeCredentials = ({ profile, updatePage }) => {
             <ul className="admins_list">
               {usersList.admins.map((admin, index) => {
                 return (
-                  <li key={index} className="admins_list_item">
+                  <li key={admin.id} className="admins_list_item">
                     {/* ALL ADMINS FORM */}
 
-                    <AdminItemComponent admin={admin} />
+                    <AdminItemComponent
+                      admin={admin}
+                      getAllAdmins={getAllAdminsHandler}
+                    />
                   </li>
                 );
               })}
@@ -229,6 +240,7 @@ export const ChangeCredentials = ({ profile, updatePage }) => {
                     onChange={handleChangeNewAdmin}
                     name="name"
                     type="text"
+                    ref={inputCreateNewName}
                   />
                 </li>
                 <li className="generate_list-item">
@@ -237,6 +249,7 @@ export const ChangeCredentials = ({ profile, updatePage }) => {
                     onChange={handleChangeNewAdmin}
                     name="password"
                     type="password"
+                    ref={inputCreateNewPassword}
                   />
                 </li>
               </ul>

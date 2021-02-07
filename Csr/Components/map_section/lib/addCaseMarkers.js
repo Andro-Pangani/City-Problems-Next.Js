@@ -21,13 +21,6 @@ export function AddMarkers(addresses) {
           }
         }
       });
-
-      console.log(
-        addresses,
-        this.updated,
-        " ((((((())))))) <  A D D   -   M A R K E R  > (((((((()))))) ",
-        this.markers
-      );
     }
   }
 }

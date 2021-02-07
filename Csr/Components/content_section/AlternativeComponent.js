@@ -13,7 +13,6 @@ export function AlternativeComponent(props) {
     if (props.clickedState !== clicked) {
       setClicked(props.clickedState);
     }
-    console.log("3333333 alt Component Updated", props.clickedState, clicked);
     //clicked
     if (clicked && !window_opened) {
       OpenAltWindow();

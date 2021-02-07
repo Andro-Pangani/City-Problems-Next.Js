@@ -1,5 +1,5 @@
 exports.login_get = (req, res) => {
-  console.log(req.cookies.user, " From login get");
+  console.log(req.signedCookies.user, " From login get");
 
   // if(req.cookies.user){
   //  let user = req.cookies.user;
@@ -19,11 +19,13 @@ exports.login_get = (req, res) => {
     status: null,
   };
 
-  if (req.cookies.user) {
-    user.name = req.cookies.user.name;
-    user.id = req.cookies.user.id;
-    user.logged = req.cookies.user.logged;
-    user.status = req.cookies.user.status;
+  if (req.signedCookies.user) {
+    let { name, id, logged, status } = req.signedCookies.user;
+
+    user.name = name;
+    user.id = id;
+    user.logged = logged;
+    user.status = status;
   }
   res.json({
     user,

@@ -1,14 +1,15 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment } from 'react';
 import {
   addNewAddress,
   stopUploadingProcess,
-} from "../../../Redux/Upload/( a - r )upload";
-import { connect, useDispatch } from "react-redux";
+} from '../../../Redux/Upload/( a - r )upload';
+import { connect, useDispatch } from 'react-redux';
 import {
   setMobileNavItemClicked,
   setMobileShowOnMapClicked,
   setUploadAddressFromMap,
-} from "../../../Redux/mobile/( a - r )mobileMenu";
+} from '../../../Redux/mobile/( a - r )mobileMenu';
+import { setMobileTabIndex } from '../../content_section/reduxThunk/mobile/( a - r ) mobileMenu';
 
 //  AddressItem ==>
 
@@ -27,7 +28,8 @@ const AddressItem = (props) => {
     //MOBILE NAVIGATION SISTEM
     dispatch(setMobileNavItemClicked(false));
     dispatch(setMobileShowOnMapClicked(false));
-    console.log(" HANDLE CLICK MAP ADDRESS ITEM ");
+    dispatch(setMobileTabIndex(0));
+    console.log(' HANDLE CLICK MAP ADDRESS ITEM ');
   };
 
   return (
@@ -51,7 +53,7 @@ class MapAddressList extends Component {
 
   mapAddressList_click = (val) => {
     // var addressObj = [{ name: this.props.name, coords: this.props.coords }];
-    console.log("*********** BEFORE SENDADDRESS *********** ", val);
+    console.log('*********** BEFORE SENDADDRESS *********** ', val);
     this.props.addNewAddress(val);
     // store -> mapTempAddressList : [empty]
     // this.props.clearList();
@@ -59,7 +61,7 @@ class MapAddressList extends Component {
   };
 
   CloseList = () => {
-    console.log("close");
+    console.log('close');
     this.setState({
       closed: !this.state.closed,
     });
@@ -71,7 +73,7 @@ class MapAddressList extends Component {
     //   closed: false,
     // });
 
-    console.log("open List from map addresses");
+    console.log('open List from map addresses');
   };
 
   componentDidMount() {
@@ -86,14 +88,14 @@ class MapAddressList extends Component {
       });
     }
     console.log(
-      "did update address list ?>>>>>>><<<<<<< closed > ",
+      'did update address list ?>>>>>>><<<<<<< closed > ',
       this.state.closed,
-      " Mark",
+      ' Mark',
       mapClicked
     );
   }
 
-  arrowDown = "\u25BC";
+  arrowDown = '\u25BC';
 
   render() {
     return (
@@ -102,12 +104,12 @@ class MapAddressList extends Component {
           <div className="AddressListHeader">
             <div className="listHeader-text">დააჭირეთ რუქას</div>
             <div onClick={this.CloseList} className="closeList">
-              {this.state.closed ? this.arrowDown : "X"}
+              {this.state.closed ? this.arrowDown : 'X'}
             </div>
           </div>
           <ul
             style={
-              this.state.closed ? { height: "0" } : { height: "fit-content" }
+              this.state.closed ? { height: '0' } : { height: 'fit-content' }
             }
             className="MapAddressList"
           >

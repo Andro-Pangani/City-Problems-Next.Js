@@ -31,8 +31,6 @@ export class Case extends React.Component {
   // TO CASE_DATA COMPONENT
 
   changeMyIndex = (index) => {
-    // console.log("- FUNCTION PARRENT - |||||||||||| ", index);
-
     if (this.state.currentFileIndex !== index) {
       this.setState({
         currentFileIndex: index,
@@ -41,8 +39,6 @@ export class Case extends React.Component {
   };
 
   componentDidMount() {
-    console.log("22222222 Case Parrent updated", this.state.altButtonClicked);
-
     let size = this.caseContainerRef.current.getBoundingClientRect();
     let width = size.width;
 
@@ -69,7 +65,6 @@ export class Case extends React.Component {
     this.setState({
       altButtonClicked: state,
     });
-    console.log(state, "Handler alt button state container");
   };
 
   funcDelivery = (func) => {

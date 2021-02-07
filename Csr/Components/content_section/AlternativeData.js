@@ -42,7 +42,6 @@ export function AlternativeDataComponent(props) {
   }
 
   useEffect(() => {
-    console.log("Use Effect >>>> #### from Alternative data");
     setAltButton(props.altButton);
 
     if (!props.altButton) {

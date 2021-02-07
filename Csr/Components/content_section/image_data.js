@@ -12,12 +12,9 @@ export class ImageTag extends React.Component {
     };
   }
 
-  handleClick = (e) => {
-    // console.log("img clicked");
-  };
+  handleClick = (e) => {};
 
   loadHandler = () => {
-    // console.log(" ~ ~ ~ ~ ~ ~ YEa Image is Loaded ~ ~ ~ ~ ~ ~ ");
     this.setState({
       loaded: true,
     });
@@ -27,14 +24,9 @@ export class ImageTag extends React.Component {
     this.setState({
       startSharing: true,
     });
-    // console.log(this.state.startSharing, " clicked");
   };
 
   render() {
-    let ogUrl = `https://hiddenwood.herokuapp.com/share`;
-
-    // ${this.props.id}&imageUrl=${this.props.link}`
-
     return (
       <>
         <img
@@ -44,21 +36,6 @@ export class ImageTag extends React.Component {
           className="main_image_tag"
           src={this.props.link}
         />
-        {/* <button
-     name="start_sharing_button"
-     className="start_sharing_button"
-     onClick={this.startSharing}
-     >
-      Share
-     </button> */}
-        {
-          <div
-            className="fb-share-button"
-            data-href={ogUrl}
-            data-layout="button"
-            style={{ display: this.state.startSharing ? "block" : "none" }}
-          ></div>
-        }
       </>
     );
   }

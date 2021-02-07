@@ -11,14 +11,6 @@ export class VideoTag extends React.Component {
 
   clickhandler = (e) => {
     e.preventDefault();
-
-    // console.log(
-    //   "e Video",
-    //   e.target,
-    //   e.currentTarget,
-    //   this.videoTag,
-    //   " < videoTag"
-    // );
   };
 
   render() {
@@ -26,8 +18,6 @@ export class VideoTag extends React.Component {
       <video
         ref={this.videoTag}
         onClick={this.clickhandler}
-        // onTouchStart={this.clickhandler}
-
         className="main_video_tag"
         src={this.props.link}
         controls="controls"

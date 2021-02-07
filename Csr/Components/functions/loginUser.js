@@ -68,6 +68,20 @@ export const getAllAdmins = async (id) => {
   return data;
 };
 
+export const getAllAdminsHandler = () => {
+  if (currentProfile.status === "creator") {
+    getAllAdmins(currentProfile.id).then((response) => {
+      console.log(" ######## CREATOR", response.data);
+      if (usersList.admins != response.data.admins) {
+        setUsersList({
+          admins: response.data.admins,
+          error: response.data.error,
+        });
+      }
+    });
+  }
+};
+
 // <== <== <==
 
 // CREATE NEW ==> ==> ==>

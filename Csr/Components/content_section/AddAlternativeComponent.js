@@ -19,10 +19,6 @@ function AlternativeUploadForm(props) {
     let files = fileInput.current.files;
 
     if (files.length > 3) {
-      console.log(
-        files,
-        " bodishi batono magram 3 failze meti ar sheizleba ;)"
-      );
       return;
     }
 
@@ -32,7 +28,6 @@ function AlternativeUploadForm(props) {
       files,
       description: descInput.current.value,
     };
-    console.log(alternative, " alternative object #########################");
     dispatch(getAlternativeUploadingRequest(alternative));
   }
 

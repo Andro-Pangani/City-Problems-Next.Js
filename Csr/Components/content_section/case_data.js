@@ -63,13 +63,7 @@ export class CaseData extends React.Component {
       this.props.changeParrentIndex(this.state.currentFileIndex, false);
     } else {
       this.props.changeParrentIndex(this.state.currentFileIndex);
-      // console.log("- CHILD - Updated list length ###### ", this.state.length);
     }
-
-    // console.log(
-    //   "- CHILD - ###### After CURRENT iNDEX",
-    //   this.state.currentFileIndex
-    // );
 
     // when parrent updates
     // it comes here and then
@@ -88,7 +82,7 @@ export class CaseData extends React.Component {
             let translateIndex = index + 1;
             return (
               <li
-                key={index}
+                key={link.link}
                 // onTouchStart={this.handleClick}
                 onClick={this.handleClick}
                 ref={this.liRef}
@@ -109,6 +103,6 @@ export class CaseData extends React.Component {
       );
     }
 
-    return <div>gra</div>;
+    return <div>no urls</div>;
   }
 }

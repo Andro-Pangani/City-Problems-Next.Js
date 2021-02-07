@@ -97,7 +97,6 @@ function AqiStation(props) {
   });
 
   const centerMap = (val) => {
-    console.log("Lat Lng ", val, " from Aqi");
     if (val && typeof val.lng === "number") {
       if (props.mapReference) {
         props.mapReference.setCenter(val);

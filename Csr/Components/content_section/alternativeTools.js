@@ -13,7 +13,6 @@ export function AlternativeItemApproove(props) {
       fileId: props.item.fileId,
     });
 
-    console.log(res, " from Approove button");
     if (res.status == 200) {
       setApprooveState(true);
     }
@@ -40,7 +39,6 @@ export function AlternativeItemDelete(props) {
       filename: props.item.filename,
     });
 
-    console.log(res, " from Approove button");
     if (res.status == 200) {
       setDeleteState(true);
       dispatch(getAlternativeUploadingRefresh());

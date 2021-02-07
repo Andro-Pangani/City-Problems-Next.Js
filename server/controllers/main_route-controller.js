@@ -7,23 +7,16 @@ exports.main = async function (req, res) {
   var data = "";
 
   var logged = false;
-  if (req.cookies.user) {
-    logged = req.cookies.user ? req.cookies.user.logged : false;
+  if (req.signedCookies.user) {
+    logged = req.signedCookies.user.logged;
   }
 
   console.log(
     req.cookies,
-    " cookies ########",
-    req.cookies.user
-    // req.signedCookies,
-    // " <<############### Signed Cookies"
+    " < RESCOOKIES< SIGNED COOKIES >",
+    req.signedCookies.user,
+    "  MAIN ROUTE - CONTROLLER ########"
   );
-
-  // console.log(
-  //   "********** REQ QUERIES FROM MAIN CONTROLLER ",
-  //   req.query,
-  //   " ************* "
-  // );
 
   let length = parseInt(req.query.length);
   let empty = req.query.empty;

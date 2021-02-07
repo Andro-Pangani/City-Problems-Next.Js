@@ -23,9 +23,7 @@ class DeleteSection extends React.PureComponent {
   }
 
   handleClick = () => {
-    
     this.setState({ clicked: !this.state.clicked });
-    console.log(this.props.startDeleting, "delete");
   };
 
   handleClick_no = () => {
@@ -52,8 +50,6 @@ class DeleteSection extends React.PureComponent {
     this.props.urls.map((item, index) => {
       caseItem[`file${index}`] = item.filename;
     });
-
-    console.log(caseItem);
 
     this.props.getDeletionRequest(caseItem);
   };
@@ -107,7 +103,7 @@ const stateToProps = (state) => {
     deleting: state.deletion.deleting,
     deleted: state.deletion.deleted,
     failure: state.deletion.failure,
-    refresh: state.deletion.refresh
+    refresh: state.deletion.refresh,
   };
 };
 

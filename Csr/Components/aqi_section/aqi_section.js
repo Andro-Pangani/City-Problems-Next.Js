@@ -65,12 +65,9 @@ function AqiSection(props) {
       aqiContentRef.current.scrollHeight - aqiContentRef.current.scrollTop ===
       aqiContentRef.current.clientHeight;
     if (result) console.log(result, " ** result **");
-
-    // aqiContentRef.current.scrollTo(0, aqiContentRef.current.scrollHeight);
   }
 
   function handleActive(title) {
-    // console.log("<<<< Handle Active >>>>>>>>  ", title);
     setActive(title);
     return active;
   }
