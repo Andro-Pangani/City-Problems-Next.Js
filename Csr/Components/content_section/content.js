@@ -1,12 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
-import { connect, useDispatch } from "react-redux";
-import { Case } from "./case";
-import { getMainDataRequest } from "../../Redux/( a-r )getMainData";
-import { getScrollContentRequest } from "../../Redux/scollContent/getScrollContent";
+import React, { useEffect, useRef, useState } from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
+import { Case } from './case';
+import { getMainDataRequest } from '../../Redux/( a-r )getMainData';
+import { getScrollContentRequest } from '../../Redux/scollContent/getScrollContent';
+import { setContentScrollController } from '../../Redux/domElements/( a - r ) ContentScrollController';
 
 function Content(props) {
-  const contentSectionRef = useRef(null);
   const dispatch = useDispatch();
+  const contentSectionRef = useRef(null);
+  const scrollControllerState = useSelector((state) => state.requestFromScroll);
   const [data, setData] = useState(props.data);
   const [isLoading, setLoading] = useState(props.isLoading);
   const [isError, setError] = useState(props.isError);
@@ -27,7 +29,7 @@ function Content(props) {
   });
 
   const centerMap = (val) => {
-    if (val && typeof val.lng === "number") {
+    if (val && typeof val.lng === 'number') {
       if (props.mapReference) {
         props.mapReference.setCenter(val);
       }
@@ -35,6 +37,12 @@ function Content(props) {
   };
 
   const handleScroll = () => {
+    // toll for
+    if (!scrollControllerState) {
+      dispatch(setContentScrollController(true));
+      return;
+    }
+
     let content = contentSectionRef.current;
     let bounding = content.getBoundingClientRect();
     let scrollEnd = content.scrollHeight - bounding.height - 5;
@@ -52,7 +60,6 @@ function Content(props) {
           );
 
           send = true;
-
           return;
         }
       }

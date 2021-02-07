@@ -1,34 +1,35 @@
-import React, { createRef } from "react";
-import { connect } from "react-redux";
+import React, { createRef } from 'react';
+import { connect } from 'react-redux';
 
-import { createGoogleMap, icon } from "./mapElements";
-import { geocodeLatLng } from "./map_libraries";
-import MapAddressList from "./map_addresses";
+import { createGoogleMap, icon } from './mapElements';
+import { geocodeLatLng } from './map_libraries';
+import MapAddressList from './map_addresses';
 
 import {
   mapTempAddressList,
   mapTempAddressListClear,
-} from "../../../Redux/Map/indexMap";
+} from '../../../Redux/Map/indexMap';
 
 import {
   getMapReferenceRequest,
   removeCaseMarkersFromStore,
   setAqiMarkersToStore,
   setMarkersToStoreRequest,
-} from "../../../Redux/Map/A_R_getMapReference";
+} from '../../../Redux/Map/A_R_getMapReference';
 
-import { startUploadingProcess } from "../../../Redux/Upload/( a - r )upload";
+import { startUploadingProcess } from '../../../Redux/Upload/( a - r )upload';
 
-import { addLocation } from "../../../Redux/Map/addLocationRequest/indexAddLocation";
-import { getDataByMarker } from "../../../Redux/Materials/( a - r )materials";
-import { setMobileNavItemClicked } from "../../../Redux/mobile/( a - r )mobileMenu";
-import { setMobileTabIndex } from "../../content_section/reduxThunk/mobile/( a - r ) mobileMenu";
-import { aqiInfoWindow, aqiMapMarker } from "./map_style";
-import { myOvelayMarker } from "./mapOverlayFunc";
-import { addresses, stationCoords } from "./mapSelectedData";
-import { AddAqiMarkers } from "../lib/addAqiMarkers";
-import { AddMarkers } from "../lib/addCaseMarkers";
-const map_key = "AIzaSyCYqtWX_pBEdxPVlz_0GAypoQtAmbdhR0w";
+import { addLocation } from '../../../Redux/Map/addLocationRequest/indexAddLocation';
+import { getDataByMarker } from '../../../Redux/Materials/( a - r )materials';
+import { setMobileNavItemClicked } from '../../../Redux/mobile/( a - r )mobileMenu';
+import { setMobileTabIndex } from '../../content_section/reduxThunk/mobile/( a - r ) mobileMenu';
+import { aqiInfoWindow, aqiMapMarker } from './map_style';
+import { myOvelayMarker } from './mapOverlayFunc';
+import { addresses, stationCoords } from './mapSelectedData';
+import { AddAqiMarkers } from '../lib/addAqiMarkers';
+import { AddMarkers } from '../lib/addCaseMarkers';
+import { setContentScrollController } from '../../../Redux/domElements/( a - r ) ContentScrollController';
+const map_key = 'AIzaSyCYqtWX_pBEdxPVlz_0GAypoQtAmbdhR0w';
 
 class MapComponent extends React.Component {
   constructor(props) {
@@ -47,10 +48,10 @@ class MapComponent extends React.Component {
     };
   }
 
-  mapTag = "";
+  mapTag = '';
   addresses = [];
-  mapScript = "";
-  mapOthers = "";
+  mapScript = '';
+  mapOthers = '';
 
   // -->  -->  -->  Add Markers  <--   <--   <--
   markers = [];
@@ -76,18 +77,18 @@ class MapComponent extends React.Component {
   };
 
   componentDidMount() {
-    const googleMapScript = document.createElement("script");
+    const googleMapScript = document.createElement('script');
     this.mapScript = googleMapScript;
-    googleMapScript.setAttribute("async", "");
+    googleMapScript.setAttribute('async', '');
     googleMapScript.defer = true;
     googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${map_key}&libraries=places`;
 
     window.document.body.appendChild(googleMapScript);
-    googleMapScript.addEventListener("load", this.scriptOnload);
+    googleMapScript.addEventListener('load', this.scriptOnload);
     console.log(
-      " ################# Map Component Did Mount PROPS ADDRESS",
+      ' ################# Map Component Did Mount PROPS ADDRESS',
       this.props.addresses,
-      " STATE ADDRESSES ",
+      ' STATE ADDRESSES ',
       this.state.addresses
     );
   }
@@ -98,22 +99,22 @@ class MapComponent extends React.Component {
       addresses: [],
     });
 
-    let scripts = window.document.getElementsByTagName("script");
+    let scripts = window.document.getElementsByTagName('script');
     this.mapOthers = window.document.body.getElementsByClassName(
-      "pac-container"
+      'pac-container'
     )[0];
     if (window.document.body.contains(this.mapScript)) {
-      this.mapOthers.removeEventListener("load", this.scriptOnload);
+      this.mapOthers.removeEventListener('load', this.scriptOnload);
       window.document.body.removeChild(this.mapScript);
       if (this.mapOthers) window.document.body.removeChild(this.mapOthers);
       window.google.maps = null;
     }
 
     if (this.mapTag) {
-      console.log("################### this Map Tag", this.mapTag);
+      console.log('################### this Map Tag', this.mapTag);
       // this.mapTag.removeEventListener("click", this.handleClickFunction);
     }
-    console.log("||||||||||||||||||| MAP COMPONENT UNMOUNTED |||||||||||||| ");
+    console.log('||||||||||||||||||| MAP COMPONENT UNMOUNTED |||||||||||||| ');
   }
 
   componentDidUpdate() {
@@ -151,7 +152,7 @@ class MapComponent extends React.Component {
         return item.setMap(null);
       });
       console.log(
-        "@language Changed <<>>>>>>>>>>>  ",
+        '@language Changed <<>>>>>>>>>>>  ',
         this.props.language,
         markers
       );
@@ -172,7 +173,16 @@ class MapComponent extends React.Component {
 
   // MARKER CLICK HANDLER
   markerEventHandlerFunc = (marker, item) => {
-    this.props.getDataByMarker({ data: [item] });
+    // TURNS OFF REQUEST TO [DB] FROM CONTENT
+    // IN SCROLL *EVENT
+    this.props.setContentScrollController(false);
+    //
+    // PUSHES DATA TO STORE
+    this.props.getDataByMarker({
+      data: [item],
+      isLoading: this.props.isLoading,
+      isError: this.props.isError,
+    });
 
     // Mobile Navigation System
     if (this.props.mobileMode) {
@@ -212,7 +222,7 @@ class MapComponent extends React.Component {
 
   //  CLICK EVENT ON MAP
   handleClick = () => {
-    this.mapTag.addListener("click", this.handleClickFunction);
+    this.mapTag.addListener('click', this.handleClickFunction);
   };
 
   // removes store -> mapTempAddressList -> [ data ]
@@ -237,7 +247,7 @@ class MapComponent extends React.Component {
 
           if (this.props.inUploadingSection) {
             geocoder.geocode({ location: pos }, (results, status) => {
-              if (status === "OK") {
+              if (status === 'OK') {
                 let addresses = [];
                 if (results[0]) {
                   addresses = results.map((address) => ({
@@ -255,7 +265,7 @@ class MapComponent extends React.Component {
         },
         (error) => {
           if (error.code == error.PERMISSION_DENIED) {
-            console.log("@@@Permision Denied");
+            console.log('@@@Permision Denied');
             this.setState({
               my_geolocation_info: true,
             });
@@ -327,6 +337,8 @@ const stateToProps = (state) => {
     mapReference: state.mapRef,
     mobileMode: state.mobile.mobileMode,
     language: state.language,
+    isLoading: state.main_data.isLoading,
+    isError: state.main_data.isError,
   };
 };
 
@@ -342,6 +354,7 @@ const mapDispatchtoProps = {
   setMobileNavItemClicked,
   setAqiMarkersToStore,
   removeCaseMarkersFromStore,
+  setContentScrollController,
 };
 export const ConnectedMapComponent = connect(
   stateToProps,

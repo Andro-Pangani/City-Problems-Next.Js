@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setMaterialDataRequest } from "../../Redux/Materials/( a - r )materials";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setContentScrollController } from '../../Redux/domElements/( a - r ) ContentScrollController';
+import { setMaterialDataRequest } from '../../Redux/Materials/( a - r )materials';
 import {
   getMobileMenuClicked,
   setMobileNavItemClicked,
-} from "../../Redux/mobile/( a - r )mobileMenu";
+} from '../../Redux/mobile/( a - r )mobileMenu';
 import {
   getUploadingSectionRequest,
   stopUploadingProcess,
-} from "../../Redux/Upload/( a - r )upload";
-import { setMobileTabIndex } from "../content_section/reduxThunk/mobile/( a - r ) mobileMenu";
-import { navItemStyle } from "./headerJsxStyles";
+} from '../../Redux/Upload/( a - r )upload';
+import { setMobileTabIndex } from '../content_section/reduxThunk/mobile/( a - r ) mobileMenu';
+import { navItemStyle } from './headerJsxStyles';
 
 export function NavItem(props) {
   const [active, setActive] = useState(false);
@@ -37,6 +38,7 @@ export function NavItem(props) {
   }, [props]);
 
   function handleClick() {
+    dispatch(setContentScrollController(false));
     props.updateActive(props.type);
     // if uploading section is open, close uploading section
     if (inUploadingSection) dispatch(getUploadingSectionRequest(false));

@@ -40,7 +40,7 @@ $borderColor: #3a3a3a;
     background: linear-gradient(#eee, #333);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-family: "ALK Tall Mtavruli", sans-serif;
+    font-family: 'ALK Tall Mtavruli', sans-serif;
   }
 }
 
@@ -53,7 +53,8 @@ $borderColor: #3a3a3a;
   margin: 0 auto;
   margin-top: 1rem;
   margin-bottom: 0.8rem;
-  background: linear-gradient(180deg, #2d2d2d, #292929, #131313);
+  border: 1px solid #212020;
+
   border-bottom-left-radius: 3px;
   border-radius: 3px;
   justify-content: space-around;
@@ -68,6 +69,8 @@ $borderColor: #3a3a3a;
 }
 .aqi_nav_item {
   position: relative;
+  display: flex;
+  justify-content: center;
   width: 50%;
   padding: 0.5rem;
   text-align: center;
@@ -87,7 +90,7 @@ $borderColor: #3a3a3a;
     font-size: 1.8rem;
     padding: 0.2rem;
     border-radius: 3px;
-    font-family: "Alk Tall Mtavruli";
+    font-family: 'Alk Tall Mtavruli';
     text-decoration: none;
     background: linear-gradient(#b19f9c, #383838);
     box-shadow: 0 0rem 0.1rem 0.1rem #101010;
@@ -99,12 +102,11 @@ $borderColor: #3a3a3a;
 .aqi_city_sign {
   position: absolute;
   display: block;
+  border: 1px solid #212020;
   width: 80%;
   height: 70%;
   margin-bottom: 1px;
   margin-right: 3px;
-  // border: 1px solid gray;
-  // border-right-color: transparent;
 }
 
 .aqi_content {
