@@ -1,27 +1,27 @@
 // local Server urls
 
 const _url_local = {
-  main: "http://localhost:3000/main",
-  getSingleCase: "http://localhost:3000/getSingleCase",
-  delete: "http://localhost:3000/delete",
-  admin: "http://localhost:3000/admin",
-  approove: "http://localhost:3000/approove",
-  aqi: "http://localhost:3000/aqi",
-  getUnverified: "http://localhost:3000/api/getUnverified",
+  main: 'http://localhost:3000/main',
+  getSingleCase: 'http://localhost:3000/getSingleCase',
+  delete: 'http://localhost:3000/delete',
+  admin: 'http://localhost:3000/admin',
+  approove: 'http://localhost:3000/approove',
+  aqi: 'http://localhost:3000/aqi',
+  getUnverified: 'http://localhost:3000/api/getUnverified',
   alternative: {
-    upload: "http://localhost:3000/alternative/upload",
+    upload: 'http://localhost:3000/alternative/upload',
     single: {
-      approove: "http://localhost:3000/alternative/singleApproove",
-      delete: "http://localhost:3000/alternative/singleDelete",
+      approove: 'http://localhost:3000/alternative/singleApproove',
+      delete: 'http://localhost:3000/alternative/singleDelete',
     },
   },
   upload: {
-    case: "http://localhost:3000/file/upload",
+    case: 'http://localhost:3000/file/upload',
   },
-  share: "http://localhost:3000/share",
+  share: 'http://localhost:3000/share',
 };
 
-const domain = "powerful-thicket-90466.herokuapp.com";
+const domain = 'powerful-thicket-90466.herokuapp.com';
 
 const _url_global = {
   main: `https://${domain}/main`,
@@ -44,13 +44,13 @@ const _url_global = {
   share: `https://${domain}/share`,
 };
 
-const dev = process.env.NODE_ENV !== "production" ? true : false;
-console.log(process.env.NODE_ENV, "############################## node env");
+const dev = process.env.NODE_ENV !== 'production' ? true : false;
+console.log(process.env.NODE_ENV, '############################## node env');
 
 // changes from master branch ;)1.
 
-// export const _url = _url_global;
-export const _url = _url_local;
+export const _url = _url_global;
+// export const _url = _url_local;
 
 // export const _url = {
 //   main: "https://hiddenwood.herokuapp.com/main",
