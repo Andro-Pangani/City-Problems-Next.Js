@@ -45,13 +45,9 @@ export function LanguagesComponent(props){
  
  return(
   <div onClick={lang_list} className="languages_container">
-   <div  className="lang_active">
-    {active}
-   </div>
+
    <ul className="languages_list"
-   style={{
-    display: langList ? 'flex' : 'none'
-   }}
+   
    >
    {
     langs.map(item => {

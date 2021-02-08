@@ -24,9 +24,24 @@
 }
 
 .admin_menu_button {
+  width: 100%;
+  height: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   color: gray;
   font-size: 2.5rem;
   text-align: center;
+
+  .btn_elements {
+    width: 80%;
+    height: 90%;
+    background-color: rgb(39, 39, 39);
+    border-radius: 3px;
+  }
 
   &-content {
     position: absolute;

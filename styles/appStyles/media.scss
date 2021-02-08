@@ -29,7 +29,7 @@
     display: none;
   }
   .header_section {
-    height: 100%;
+    height: calc(100% - 45px);
     top: 45px;
     display: none;
     background: #000000;
@@ -64,23 +64,30 @@
 
   // single case ==> ==> ==>
 
+  .single_case_container {
+    display: block;
+  }
+
   .single_case {
     height: auto;
 
     .single_case_header {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-top: 2rem;
-      background: #383838;
+      display: block;
+      text-align: left;
       padding-top: 0.5rem;
 
-      div {
+      .single_case-uploaded {
         margin-bottom: 0.5rem;
+        margin-left: 1rem;
+        display: inline-block;
       }
 
       .single_case-type {
-        font-size: 1.2rem;
+        display: inline-block;
+        font-size: 1rem;
+        padding: 0.5rem;
+        padding-left: 0;
+        background: rgb(29, 29, 29);
         text-align: left;
       }
 

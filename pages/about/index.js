@@ -1,12 +1,12 @@
-import Router, { useRouter } from "next/router";
+import Router, { useRouter } from 'next/router';
 // import MainLayoutTest from "../../Csr/mainLayout";
 // import styles from "../styles/main.module.css";
-import Head from "next/head";
-import { useEffect, useState } from "react";
-import { _url } from "../../Csr/_urls";
-import { SingleCaseItem } from "../../Csr/Components/singleCaseContent/singleCaseItem";
-import { MainLayoutTest } from "../../Csr/mainLayout";
-import { useSelector } from "react-redux";
+import Head from 'next/head';
+import { useEffect, useState } from 'react';
+import { _url } from '../../Csr/_urls';
+import { SingleCaseItem } from '../../Csr/Components/singleCaseContent/singleCaseItem';
+import { MainLayoutTest } from '../../Csr/mainLayout';
+import { useSelector } from 'react-redux';
 
 export default function AboutPage({ content }) {
   const [mounted, setMounted] = useState(false);
@@ -20,9 +20,9 @@ export default function AboutPage({ content }) {
       loadFbSdk();
     }
     if (!storeData) {
-      console.log("STORE IS EMPTY BABE FROM ABOUT INDEX", storeData);
+      console.log('STORE IS EMPTY BABE FROM ABOUT INDEX', storeData);
     } else {
-      console.log("STORE FROM ABOUT INDEX", storeData);
+      console.log('STORE FROM ABOUT INDEX', storeData);
     }
 
     // console.log(router.query.docId, " ############ Router");
@@ -39,7 +39,7 @@ export default function AboutPage({ content }) {
     if (link !== metaLink) {
       setMetaLink(link);
     }
-    console.log(link, " <- link");
+    console.log(link, ' <- link');
   };
 
   const loadFbSdk = () => {
@@ -49,11 +49,11 @@ export default function AboutPage({ content }) {
         cookie: true, // enable cookies to allow the server to access
         // the session
         xfbml: true, // parse social plugins on this page
-        version: "v2.5", // use version 2.1
+        version: 'v2.5', // use version 2.1
       });
     };
 
-    console.log("Loading fb api");
+    console.log('Loading fb api');
     // Load the SDK asynchronously
     (function (d, s, id) {
       var js,
@@ -61,14 +61,14 @@ export default function AboutPage({ content }) {
       if (d.getElementById(id)) return;
       js = d.createElement(s);
       js.id = id;
-      js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+      js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
       fjs.parentNode.insertBefore(js, fjs);
-    })(document, "script", "facebook-jssdk");
+    })(document, 'script', 'facebook-jssdk');
   };
 
   const { address, type, description, Url, upload_date } = content.data;
   const { docId, lastSnapshot, length } = router.query;
-  console.log("######### CONTENT TYPE FROM ABOUT PAGE", content);
+  console.log('######### CONTENT TYPE FROM ABOUT PAGE', content);
   return (
     <>
       <Head>
@@ -85,22 +85,22 @@ export default function AboutPage({ content }) {
       <div
         className="single_case_container"
         onMouseEnter={() => {
-          console.log("Mouse down on container");
+          console.log('Mouse down on container');
         }}
       >
         <div className="single_case">
           <header className="single_case_header">
-            <div className="single_case-type">{type.toUpperCase()}</div>
+            <div className="single_case-type">{type.toUpperCase()} </div>
+            <div className="single_case-uploaded">
+              {upload_date ? upload_date : ' - '}
+            </div>
             <div className="single_case-address">
               <div className="single_case-address_title">Location: </div>
               <div className="single_case-address_text">
-                {address ? address : "-"}
+                {address ? address : '-'}
               </div>
             </div>
-            <div className="single_case-upload_date">
-              <div className="single_case-upload_date_title">Uploaded:</div>
-              <div>{upload_date ? upload_date : " - "}</div>
-            </div>
+            <div className="single_case-upload_date"></div>
           </header>
           <div className="single_case_content">
             {Url.map((item, index) => {
@@ -120,7 +120,7 @@ export default function AboutPage({ content }) {
             <div
               className="fb-share-button"
               onMouseEnter={() => {
-                console.log("Mouse down");
+                console.log('Mouse down');
               }}
               data-layout="button"
               data-size="small"
@@ -138,7 +138,7 @@ export default function AboutPage({ content }) {
 AboutPage.getInitialProps = async (ctx) => {
   // let content = null;
   const response = await fetch(
-    _url.getSingleCase + "?docId=" + ctx.query.docId
+    _url.getSingleCase + '?docId=' + ctx.query.docId
   );
 
   const data = await response.json();

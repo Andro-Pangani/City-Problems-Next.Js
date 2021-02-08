@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
-import Router from "next/router";
+import React, { useEffect, useState } from 'react';
+import Router from 'next/router';
 import {
   loginUser,
   loginUserGet,
   logoutUser,
-} from "../../Csr/Components/functions/loginUser";
-import { ChangeCredentials } from "../../serverComponents/controlPanel";
+} from '../../Csr/Components/functions/loginUser';
+import { ChangeCredentials } from '../../serverComponents/controlPanel';
 
 export default function Login() {
   const [form, updateForm] = useState({
-    user_name: "",
-    user_password: "",
+    user_name: '',
+    user_password: '',
   });
 
   const [logged, setLogged] = useState(false);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
   const [profile, setProfile] = useState({
-    name: "",
+    name: '',
     id: undefined,
     logged: false,
     status: null,
@@ -25,7 +25,7 @@ export default function Login() {
   const updatePage = () => {
     loginUserGet().then((data) => {
       let user = data.user;
-      console.log(user, " From Front Login get");
+
       setProfile({
         name: user.name,
         id: user.id,
@@ -37,7 +37,6 @@ export default function Login() {
   };
 
   useEffect(() => {
-    console.log("111111111111111  INDEX PAGE UPDATE");
     updatePage();
   }, []);
 
@@ -52,19 +51,19 @@ export default function Login() {
     e.preventDefault();
 
     loginUser(form.user_name, form.user_password).then((data) => {
-      console.log(data, " RESPONSE FROM FORM DATA");
+      console.log(data, ' RESPONSE FROM FORM DATA');
       setMessage(data.message);
       updatePage();
     });
 
     updateForm({
-      user_name: "",
-      user_password: "",
+      user_name: '',
+      user_password: '',
     });
   };
 
   const backToHomeHandler = () => {
-    Router.push("/");
+    Router.push('/');
   };
 
   const logoutHandler = () => {
@@ -110,8 +109,8 @@ export default function Login() {
           <div className="logged_user_component">
             <h1 className="logged_user-name">Hi {profile.name} !</h1>
             <h2 className="logged_user-status">
-              Status:{" "}
-              <span className="user_status_value">{profile.status}</span>{" "}
+              Status:{' '}
+              <span className="user_status_value">{profile.status}</span>{' '}
             </h2>
 
             <ChangeCredentials profile={profile} updatePage={updatePage} />
