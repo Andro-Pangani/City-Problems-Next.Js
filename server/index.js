@@ -30,7 +30,7 @@ const bodyParser = require('body-parser');
 // COOKIE SECURITY
 // IF USER WILL CHANGE COOKIES
 
-const COOKIE_SECRET = 'Q323421341ASDFFASD3235AWAEDFA';
+const COOKIE_SECRET = 'very_secret_cookie';
 exports.COOKIE_OPTIONS = {
   httpOnly: true,
   secure: !dev,
