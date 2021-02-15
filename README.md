@@ -1,30 +1,30 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Web Application for Cityzens
 
-First, run the development server:
+# 1. Uploading Photo and Video Data
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+User is able to upload photo and video data with locations. After verification it would be displayed in problems section.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# 2. Air Quality API
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+App interacts with Georgian Air Quality Monitoring System API and displays current air quality across the Country, if it's available;
 
-## Learn More
+# 3. Google Maps Api
 
-To learn more about Next.js, take a look at the following resources:
+App uses Google Maps Api wich simplifies setting problems location and finding problems addresses on the map.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# 4. Admin Panel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+With admin panel, administrators are able to remove or veryfy posts.
 
-## Deploy on Vercel
+# 5. Socials
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Users can share problems cases from app
+with facebook.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Tech:
+
+# Next.js, node.js, express.js, Google Maps Api
+
+## In Development Process
